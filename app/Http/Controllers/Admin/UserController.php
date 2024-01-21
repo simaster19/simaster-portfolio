@@ -7,21 +7,18 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){
-      
+    public function index()
+    {
+
+        return response()->view("App.Admin.User.index");
     }
-    
-    public function register(){
-      
+
+
+    public function login()
+    {
     }
-    
-    public function login(){
-      
+
+    public function logout()
+    {
     }
-    
-    public function logout(){
-      
-    }
-    
-    
 }
