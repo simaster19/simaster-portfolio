@@ -24,6 +24,9 @@ Route::prefix("admin/")->group(function () {
 
     //USER
     Route::get("user", [UserController::class, "index"])->name("data-user");
+    Route::get("user/{id}/edit", [UserController::class, "edit"])->name("edit-user");
+    Route::put("user", [UserController::class, "update"])->name("update-user");
+    
 })->middleware(['auth']);
 
 

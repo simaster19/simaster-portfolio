@@ -29,7 +29,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string("username")->unique();
             $table->text('password');
+            $table->integer("status")->default(1);
             $table->rememberToken();
+            $table->dateTime("last_login")->nullable(true)->default(NULL);
             $table->timestamps();
         });
     }
