@@ -52,4 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return hash_equals($this->remember_token, hash('sha256', $token));
     }
+
+    public function lastLogin()
+    {
+        $this->update(['last_login' => date("Y-m-d H:i:s", time())]);
+    }
 }

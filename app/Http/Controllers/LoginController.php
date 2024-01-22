@@ -32,6 +32,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember_me)) {
             $user = Auth::user();
+            $user->lastLogin();
 
             $sessionDuration = $remember_me ? $rememberDuration : config('session.lifetime');
             config(["session.lifetime" => $sessionDuration]);
