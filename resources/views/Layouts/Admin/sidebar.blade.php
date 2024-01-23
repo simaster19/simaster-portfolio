@@ -19,7 +19,7 @@
             <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Post</span></a>
         </li>
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Project</span></a>
+            <a href="{{ route('data-project') }}" class="nav-link"><i class="fas fa-fire"></i><span>Project</span></a>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Skill</span></a>

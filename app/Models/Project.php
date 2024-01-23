@@ -9,7 +9,9 @@ class Project extends Model
 {
     use HasFactory;
     protected $table = "projects";
-  protected $primaryKey = "id_project";
-  public $keyatype = "int";
-  public $timestamps = true;
+    protected $primaryKey = "id_project";
+    public $keyatype = "int";
+    public $timestamps = true;
+
+    protected $guarded = ["id_project"];
 }
