@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Skill;
+use Illuminate\Support\Facades\Validator;
+
+class SkillController extends Controller
+{
+  public function index() {
+    $skill = Skill::all();
+    return response()->view("App.Admin.Skill.index", [
+      "datas" => $skill
+    ]);
+  }
+
+  public function create() {
+    return response()->view("App.Admin.Skill.create");
+  }
+
+  public function store(Request $request) {
+    $data = Validator::make($request->all(), [
+      "nama_skill" => ["required"],
+      "level" => ["required"]
+    ]);
+
+    if ($data->fails()) {
+      return back()->withErrors($data, "messageError");
+    }
+
+    $skill = Skill::create([
+      "nama_skill" => $request->input("nama_skill"),
+      "level" => $request->input("level")
+    ]);
+
+    return redirect()->route("create-skill")->with("message", "Data berhasil ditambahkan!");
+  }
+
+  public function edit($id) {
+    $skill = Skill::where("id_skill", $id)->get()->first();
+    return response()->view("App.Admin.Skill.edit", [
+      "data" => $skill
+    ]);
+  }
+
+  public function update(Request $request, $id) {
+    $data = Validator::make($request->all(), [
+      "nama_skill" => ["required"],
+      "level" => ["required"]
+    ]);
+
+    if ($data->fails()) {
+      return back()->withErrors($data, "messageError");
+    }
+
+    $skill = Skill::findOrFail($id);
+    $skill->update([
+      "nama_skill" => $request->input("nama_skill"),
+      "level" => $request->input("level")
+    ]);
+
+    return redirect()->route("data-skill")->with("message", "Data berhasil diubah!");
+  }
+
+  public function show($id) {
+    $skill = Skill::find($id);
+    return response()->view("App.Admin.Skill.detail");
+  }
+
+  public function destroy($id) {
+    $skill = Skill::findOrFail($id);
+    
+    $skill->delete();
+    
+    return redirect()->route("data-skill")->with("message","Data berhasil dihapus!");
+  }
+}

@@ -12,4 +12,6 @@ class Skill extends Model
   protected $primaryKey = "id_skill";
   public $keyatype = "int";
   public $timestamps = true;
+  
+  protected $guarded = ["id_skill"];
 }
