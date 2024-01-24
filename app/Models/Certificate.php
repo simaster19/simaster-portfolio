@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Certificate extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $table = "certicates";
-  protected $primaryKey = "id_certificate";
-  public $keyatype = "int";
-  public $timestamps = true; 
+    protected $table = "certificates";
+    protected $primaryKey = "id_certificate";
+    public $keyatype = "int";
+    public $timestamps = true;
+
+    protected $guarded = ["id_certificate"];
 }
