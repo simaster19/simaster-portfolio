@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Message;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\User;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -53,10 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
     return hash_equals($this->remember_token, hash('sha256', $token));
   }
 
-  public function lastLogin() {
-    $this->update(['last_login' => date("Y-m-d H:i:s", time())]);
-  }
-
+  
   public function message():HasMany
   {
     return $this->hasMany(Message::class, "id_user", "id_user");

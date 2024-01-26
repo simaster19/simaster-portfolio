@@ -13,7 +13,12 @@
         </div>
         <div class="form-group col-md-6">
           <label for="level">Level</label>
-          <input type="text" class="form-control" id="level" name="level">
+          <select name="level" id="level" class="form-control">
+            <option value="BEGINNER">BEGINNER</option>
+            <option value="INTERMEDIATE">INTERMEDIATE</option>
+            <option value="PRO">PRO</option>
+          </select>
+
         </div>
       </div>
 

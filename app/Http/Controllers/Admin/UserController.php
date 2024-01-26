@@ -9,98 +9,106 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        if (auth()->user()->role == 1) {
-            $user = User::where("role", "!=", 0)->orderBy("role", "ASC")->get();
-        } else {
-            $user = User::where("username", auth()->user()->username)->where("role", 2)->get()->first();
-        }
-        return response()->view("App.Admin.User.index", [
-            "datas" => $user
-        ]);
+  public function index() {
+    if (auth()->user()->role == 1) {
+      $user = User::where("role", "!=", 0)->orderBy("role", "ASC")->get();
+    } else {
+      $user = User::where("username", auth()->user()->username)->where("role", 2)->get()->first();
+    }
+    return response()->view("App.Admin.User.index", [
+      "datas" => $user
+    ]);
+  }
+
+  public function edit($id) {
+    $user = User::where("id_user", $id)->get()->first();
+    return response()->view("App.Admin.User.edit", [
+      "data" => $user
+    ]);
+  }
+
+  public function update(UpdateUserRequest $request, $id) {
+    $data = Validator::make($request->all(), $request->rules());
+
+    if ($data->fails()) {
+      return back()->withErrors($data, "messageError");
     }
 
-    public function edit($id)
-    {
-        $user = User::where("id_user", $id)->get()->first();
-        return response()->view("App.Admin.User.edit", [
-            "data" => $user
-        ]);
+    $user = User::findOrFail($id);
+    if ($request->input("password") == "") {
+      $newPassword = $user->password;
+    } else {
+      $newPassword = Hash::make($request->input("password"));
     }
 
-    public function update(Request $request, $id)
-    {
+    if ($request->hasFile("foto")) {
+      $foto = $request->file("foto");
+      $fotoName = time().".".$foto->getClientOriginalExtension();
+      $tmp = "images/foto/".$fotoName;
 
+      if (!File::exists("public/images/foto/")) {
+        File::makeDirectory("public/images/foto/", 0777, true, true);
+      }
+      if (!$user->foto == null || !$user->foto == "") {
+        Storage::disk("public")->delete("images/foto/" . $user->foto);
+      }
 
-        $data = Validator::make($request->all(), [
-            "nama" => ["required"],
-            "email" => ["required"],
-            "username" => ["required"],
-            "tanggal_lahir" => ["required"],
-            "no_hp" => ["required"],
-            "alamat" => ["required"]
-        ]);
-
-        if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
-        }
-
-        $user = User::findOrFail($id);
-        if ($request->input("password") == "") {
-            $newPassword = $user->password;
-        } else {
-            $newPassword = Hash::make($request->input("password"));
-        }
-
-
-        $user->update([
-            "nama" => $request->input("nama"),
-            "tanggal_lahir" => $request->input("tanggal_lahir"),
-            "no_hp" => $request->input("no_hp"),
-            "username" => $request->input("username"),
-            "password" => $newPassword,
-            "alamat" => $request->input("alamat"),
-            "kota" => $request->input("kota"),
-            "kecamatan" => $request->input("kecamatan"),
-            "desa" => $request->input("desa"),
-            "rt" => $request->input("rt"),
-            "rw" => $request->input("rw"),
-            "kode_pos" => $request->input("kode_pos")
-        ]);
-
-        return redirect()->route("data-user")->with("message", "Data berhasil diubah!");
+      Storage::disk("public")->put($tmp, file_get_contents($foto->getRealPath()));
+      $fotoImage = $fotoName;
+    } else {
+      $fotoImage = $user->foto;
     }
 
-    public function show($id)
-    {
-        $user = User::findOrFail($id);
 
-        return response()->view("App.Admin.User.detail", [
-            "data" => $user
-        ]);
-    }
 
-    public function destroy($id)
-    {
-        $user = User::find($id);
+    $user->update([
+      "foto" => $fotoImage,
+      "nama" => $request->input("nama"),
+      "tanggal_lahir" => $request->input("tanggal_lahir"),
+      "no_hp" => $request->input("no_hp"),
+      "username" => $request->input("username"),
+      "password" => $newPassword,
+      "alamat" => $request->input("alamat"),
+      "kota" => $request->input("kota"),
+      "kecamatan" => $request->input("kecamatan"),
+      "desa" => $request->input("desa"),
+      "rt" => $request->input("rt"),
+      "rw" => $request->input("rw"),
+      "kode_pos" => $request->input("kode_pos")
+    ]);
 
-        $user->delete();
+    return redirect()->route("data-user")->with("message", "Data berhasil diubah!");
+  }
 
-        return back()->with("message", "Data berhasil dihapus!");
-    }
+  public function show($id) {
+    $user = User::findOrFail($id);
 
-    public function logout()
-    {
-        Auth::logout();
+    return response()->view("App.Admin.User.detail", [
+      "data" => $user
+    ]);
+  }
 
-        request()->session()->invalidate();
+  public function destroy($id) {
+    $user = User::find($id);
 
-        $cookie = Cookie::forget(Auth::getRecallerName());
+    $user->delete();
 
-        return redirect()->route("login")->withCookie($cookie);
-    }
+    return back()->with("message", "Data berhasil dihapus!");
+  }
+
+  public function logout() {
+    Auth::logout();
+
+    request()->session()->invalidate();
+
+    $cookie = Cookie::forget(Auth::getRecallerName());
+
+    return redirect()->route("login")->withCookie($cookie);
+  }
 }
