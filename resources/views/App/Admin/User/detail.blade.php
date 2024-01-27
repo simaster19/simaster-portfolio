@@ -14,8 +14,8 @@
                     <div class="card profile-widget">
                         <div class="profile-widget-header">
                             <img alt="image"
-                                src="{{ $data->foto == '' ? public_path('Backend/assets/img/avatar/avatar-1.png') : public_path('storage/app/images/foto/', $data->foto) }} "
-                                class="rounded-circle profile-widget-picture">
+                                src="{{ $data->foto == '' ? public_path('Backend/assets/img/avatar/avatar-1.png') : Storage::url('images/foto/' . $data->foto) }} "
+                                width="50px" height="100px" class="rounded-circle profile-widget-picture">
                             <div class="profile-widget-items">
                                 <div class="profile-widget-item">
                                     <div class="profile-widget-item-label">Posts</div>

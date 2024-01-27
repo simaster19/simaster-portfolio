@@ -29,7 +29,7 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
+        <a href="{{ route('my-profile') }}" class="navbar-brand ml-lg-3">
             <h1 class="m-0 display-5"><span class="text-primary">Miftakhul </span>.K</h1>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -46,6 +46,7 @@
                 <a href="#testimonial" class="nav-item nav-link">Review</a>
                 <a href="#blog" class="nav-item nav-link">Blog</a>
                 <a href="#contact" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('login') }}" class="nav-item nav-link">Login/Register</a>
             </div>
             <a href="" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
         </div>
@@ -80,13 +81,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="{{ url('Frontend/img/profile.jpg') }}"
-                        alt="">
+                    <img class="img-fluid w-100 rounded-circle shadow-sm"
+                        src="{{ Storage::url('images/foto/' . $data->foto) }}" alt="">
                 </div>
                 <div class="col-lg-7 text-center text-lg-left">
                     <h3 class="text-white font-weight-normal mb-3">I'm</h3>
                     <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">
-                        Miftakhul Kirom</h1>
+                        {{ $data->nama }}</h1>
                     <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div class="typed-text d-none">
                         Web Developer, Back End Developer, Full Stack Developer
@@ -115,7 +116,8 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="{{ url('Frontend/img/about.jpg') }}" alt="">
+                    <img class="img-fluid rounded w-100" width="600" height="600"
+                        src="{{ Storage::url('images/foto/' . $data->foto) }}" alt="">
                 </div>
                 <div class="col-lg-7">
                     <h3 class="mb-4">Full Stack Developer & Web Developer</h3>
@@ -126,16 +128,16 @@
                     </p>
                     <div class="row mb-3">
                         <div class="col-sm-6 py-2">
-                            <h6>Name: <span class="text-secondary">Miftakhul Kirom</span></h6>
+                            <h6>Name: <span class="text-secondary">{{ $data->nama }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
-                            <h6>Experience: <span class="text-secondary">3 Years</span></h6>
+                            <h6>Experience: <span class="text-secondary">2 Years</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
-                            <h6>Phone: <span class="text-secondary">+62 89635032061</span></h6>
+                            <h6>Phone: <span class="text-secondary">+62 {{ $data->no_hp }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
-                            <h6>Email: <span class="text-secondary">miftakhulkirom@gmail.com</span></h6>
+                            <h6>Email: <span class="text-secondary">{{ $data->email }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
                             <h6>Address: <span class="text-secondary">Kaliwungu , Kendal, Jawa Tengah</span></h6>
@@ -166,43 +168,27 @@
                         <div class="position-relative mb-4">
                             <i class="far fa-dot-circle text-primary position-absolute"
                                 style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Master In CSE</h5>
+                            <h5 class="font-weight-bold mb-1">Frontend and Backend Developer</h5>
                             <p class="mb-2">
-                                <strong>Cambridge University</strong> | <small>2000 - 2050</small>
+                                <strong>Universitas Selamat Sri</strong> | <small>2017 - 2022</small>
                             </p>
                             <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
+                                Sejak 2017 sampai dengan lulus pada tahun 2022 menghasilkan Nilai IPK 3.20
                             </p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Master In CSE</h5>
+
                             <p class="mb-2">
-                                <strong>Cambridge University</strong> | <small>2000 - 2050</small>
+                                <strong>Sistem Pemetaan Tempat Kos Berbasis Web Di Kabupaten Kendal</strong> |
+                                <small>SKRIPSI</small>
                             </p>
                             <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
+                                Merancang dan Membangun Sistem Pemetaan Tempat kos di Wilayah Kabupaten Kendal guna
+                                untuk mengetahui persebaran tempat Kos di sekitar kabupaten Kendal.
                             </p>
                         </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Master In CSE</h5>
-                            <p class="mb-2">
-                                <strong>Cambridge University</strong> | <small>2000 - 2050</small>
-                            </p>
-                            <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
-                            </p>
-                        </div>
+
+
                     </div>
+
                 </div>
                 <div class="col-lg-6">
                     <h3 class="mb-4">My Expericence</h3>
@@ -210,7 +196,7 @@
                         <div class="position-relative mb-4">
                             <i class="far fa-dot-circle text-primary position-absolute"
                                 style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
+                            <h5 class="font-weight-bold mb-1">Web Developer</h5>
                             <p class="mb-2">
                                 <strong>Soft Company</strong> | <small>2000 - 2050</small>
                             </p>
@@ -219,11 +205,6 @@
                                 ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
                                 stet lorem diam
                             </p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
                             <p class="mb-2">
                                 <strong>Soft Company</strong> | <small>2000 - 2050</small>
                             </p>
@@ -232,11 +213,6 @@
                                 ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
                                 stet lorem diam
                             </p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Web Designer</h5>
                             <p class="mb-2">
                                 <strong>Soft Company</strong> | <small>2000 - 2050</small>
                             </p>
@@ -245,7 +221,9 @@
                                 ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
                                 stet lorem diam
                             </p>
+
                         </div>
+
                     </div>
                 </div>
             </div>
