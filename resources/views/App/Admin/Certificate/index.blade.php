@@ -36,7 +36,9 @@
                                             {{ $loop->iteration }}
                                         </td>
                                         <td>{{ $data->nama_online_course }}</td>
-                                        <td>{{ $data->gambar }}</td>
+                                        <td><img class="img rounded-circle mx-auto d-block"
+                                                src="{{ Storage::url('images/certificate/' . $data->gambar) }}"
+                                                width="50px" height="50px"></td>
                                         <td>{{ $data->judul }}</td>
                                         <td>{{ $data->link_certificate }}</td>
 

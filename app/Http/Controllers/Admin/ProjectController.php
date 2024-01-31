@@ -30,6 +30,8 @@ class ProjectController extends Controller
 
     public function store(StoreProjectRequest $request)
     {
+
+
         $data = Validator::make($request->all(), $request->rules());
 
         if ($data->fails()) {
@@ -39,7 +41,7 @@ class ProjectController extends Controller
 
         if ($request->hasFile("cover")) {
             $cover = $request->file("cover");
-            $coverName = time() . "." . $cover->getClientOriginalExtension();
+            $coverName = time() . rand(10, 99999) . "." . $cover->getClientOriginalExtension();
             $tmp = "images/cover/" . $coverName;
 
             if (!File::exists("public/images/cover/")) {
@@ -63,7 +65,7 @@ class ProjectController extends Controller
 
             foreach ($images as $image) {
 
-                $imageName = time() . "." . $image->getClientOriginalExtension();
+                $imageName = time() . rand(10, 99999) .  "." . $image->getClientOriginalExtension();
                 $tmp = "images/image/" . $imageName;
 
                 $resizeImage = Image::make($image)->fit(600, 600);
@@ -72,6 +74,11 @@ class ProjectController extends Controller
             }
 
             $finalImage[] = $imageImage;
+        }
+
+        $tech = [];
+        foreach ($request->input("dibuat_dengan") as $dibuat_dengan) {
+            $tech[] = $dibuat_dengan;
         }
 
 
@@ -83,7 +90,8 @@ class ProjectController extends Controller
             "project_url" => $request->input("project_url"),
             "nama_client" => $request->input("nama_client"),
             "keterangan" => $request->input("keterangan"),
-            "dibuat_dengan" => $request->input("dibuat_dengan"),
+            "dibuat_dengan" => json_encode($tech),
+            "tahun_project" => $request->input("tahun_project"),
             "status" => $request->input("status")
         ]);
 
@@ -115,7 +123,7 @@ class ProjectController extends Controller
 
         if ($request->hasFile("cover")) {
             $cover = $request->file("cover");
-            $coverName = time() . "." . $cover->getClientOriginalExtension();
+            $coverName = time() . rand(10, 99999) .  "." . $cover->getClientOriginalExtension();
             $tmp = "images/cover/" . $coverName;
 
             Storage::disk("public")->delete("images/cover/" . $project->cover);
@@ -149,7 +157,7 @@ class ProjectController extends Controller
 
             foreach ($images as $image) {
 
-                $imageName = time() . "." . $image->getClientOriginalExtension();
+                $imageName = time() . rand(10, 99999) .  "." . $image->getClientOriginalExtension();
                 $tmp = "images/image/" . $imageName;
 
                 $resizeImage = Image::make($image)->fit(600, 600);
@@ -163,6 +171,8 @@ class ProjectController extends Controller
         }
 
 
+
+
         $project->update([
             "cover" => $coverImage,
             "jenis_project" => $request->input("jenis_project"),
@@ -172,6 +182,7 @@ class ProjectController extends Controller
             "nama_client" => $request->input("nama_client"),
             "keterangan" => $request->input("keterangan"),
             "dibuat_dengan" => $request->input("dibuat_dengan"),
+            "tahun_project" => $request->input("tahun_project"),
             "status" => $request->input("status")
         ]);
 
@@ -183,16 +194,26 @@ class ProjectController extends Controller
 
         return redirect()->route("data-project")->with("message", "Data berhasil diubah!");
     }
+
+    public function show($id)
+    {
+        $project = Project::with(['image'])->where("id_project", $id)->get()->first();
+        return response()->view("App.Admin.Project.detail", [
+            "data" => $project
+        ]);
+    }
     public function destroy($id)
     {
         $project = Project::with(["image"])->where("id_project", $id)->get()->first();
 
         Storage::disk("public")->delete("images/cover/" . $project->cover);
-        foreach ($project->image[0]->gambar as $gambar) {
+        foreach (json_decode($project->image[0]->gambar) as $gambar) {
             Storage::disk("public")->delete("images/image/" . $gambar);
         }
 
         Images::where("id_project", $id)->delete();
         Project::where("id_project", $id)->delete();
+
+        return back()->with("message", "Data berhasil dihapus!");
     }
 }

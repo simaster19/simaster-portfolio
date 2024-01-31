@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-               <div class="card-header">
+                <div class="card-header">
                     <a href="{{ route('create-skill') }}" class="btn btn-outline-success btn-round btn-sm"><i
                             class="fas fa-plus"></i></a>
                 </div>
@@ -23,6 +23,7 @@
                                     </th>
                                     <th>Skill</th>
                                     <th>Level</th>
+                                    <th>Type</th>
                                     <th>Dibuat Tanggal</th>
                                     <th>Diubah Tanggal</th>
                                     <th>Action</th>
@@ -36,7 +37,8 @@
                                         </td>
                                         <td>{{ $data->nama_skill }}</td>
                                         <td>{{ $data->level }}</td>
-                                        
+                                        <td>{{ $data->type }}</td>
+
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                                         </td>

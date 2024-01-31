@@ -82,12 +82,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
                     <img class="img-fluid w-100 rounded-circle shadow-sm"
-                        src="{{ Storage::url('images/foto/' . $data->foto) }}" alt="">
+                        src="{{ Storage::url('images/foto/' . $datas['user']->foto) }}" alt="">
                 </div>
                 <div class="col-lg-7 text-center text-lg-left">
                     <h3 class="text-white font-weight-normal mb-3">I'm</h3>
                     <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">
-                        {{ $data->nama }}</h1>
+                        {{ $datas['user']->nama }}</h1>
                     <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div class="typed-text d-none">
                         Web Developer, Back End Developer, Full Stack Developer
@@ -117,27 +117,26 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 pb-4 pb-lg-0">
                     <img class="img-fluid rounded w-100" width="600" height="600"
-                        src="{{ Storage::url('images/foto/' . $data->foto) }}" alt="">
+                        src="{{ Storage::url('images/foto/' . $datas['user']->foto) }}" alt="">
                 </div>
                 <div class="col-lg-7">
                     <h3 class="mb-4">Full Stack Developer & Web Developer</h3>
                     <p>
-                        Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est
-                        tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum. Amet dolor stet
-                        lorem diam dolor justo et dolor dolor dolor
+                        I am an intermediate Web Developer more than 1 Year of Freelance Experience. Experienced in
+                        various development for Dynamic Web Projects and Strong analytical Skill.
                     </p>
                     <div class="row mb-3">
                         <div class="col-sm-6 py-2">
-                            <h6>Name: <span class="text-secondary">{{ $data->nama }}</span></h6>
+                            <h6>Name: <span class="text-secondary">{{ $datas['user']->nama }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
                             <h6>Experience: <span class="text-secondary">2 Years</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
-                            <h6>Phone: <span class="text-secondary">+62 {{ $data->no_hp }}</span></h6>
+                            <h6>Phone: <span class="text-secondary">+62 {{ $datas['user']->no_hp }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
-                            <h6>Email: <span class="text-secondary">{{ $data->email }}</span></h6>
+                            <h6>Email: <span class="text-secondary">{{ $datas['user']->email }}</span></h6>
                         </div>
                         <div class="col-sm-6 py-2">
                             <h6>Address: <span class="text-secondary">Kaliwungu , Kendal, Jawa Tengah</span></h6>
@@ -197,30 +196,18 @@
                             <i class="far fa-dot-circle text-primary position-absolute"
                                 style="top: 2px; left: -32px;"></i>
                             <h5 class="font-weight-bold mb-1">Web Developer</h5>
-                            <p class="mb-2">
-                                <strong>Soft Company</strong> | <small>2000 - 2050</small>
-                            </p>
-                            <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
-                            </p>
-                            <p class="mb-2">
-                                <strong>Soft Company</strong> | <small>2000 - 2050</small>
-                            </p>
-                            <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
-                            </p>
-                            <p class="mb-2">
-                                <strong>Soft Company</strong> | <small>2000 - 2050</small>
-                            </p>
-                            <p>
-                                Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos
-                                ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum
-                                stet lorem diam
-                            </p>
+                            @foreach ($datas['projects'] as $project)
+                                <p class="mb-2">
+                                    <strong>{{ $project->judul }}</strong> |
+                                    <small>{{ $project->status }}</small> |
+                                    <small>{{ $project->tahun_project }}</small>
+                                </p>
+                                <p>
+                                    {{ $project->keterangan }}
+                                </p>
+                            @endforeach
+
+
 
                         </div>
 
@@ -240,70 +227,47 @@
                 <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">HTML</h6>
-                            <h6 class="font-weight-bold">95%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">CSS</h6>
-                            <h6 class="font-weight-bold">85%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">PHP</h6>
-                            <h6 class="font-weight-bold">90%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    @foreach ($datas['skills'] as $skill)
+                        @if ($skill->type == 'BAHASA')
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
+                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                </div>
+
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-                <div class="col-md-6">
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Javascript</h6>
-                            <h6 class="font-weight-bold">90%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Angular JS</h6>
-                            <h6 class="font-weight-bold">95%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="skill mb-4">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-bold">Wordpress</h6>
-                            <h6 class="font-weight-bold">85%</h6>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    @foreach ($datas['skills'] as $skill)
+                        @if ($skill->type == 'FRAMEWORK')
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
+                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                </div>
+
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
+                <div class="col-md-4">
+                    @foreach ($datas['skills'] as $skill)
+                        @if ($skill->type == 'LAINNYA')
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
+                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                </div>
+
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -314,17 +278,19 @@
     <div class="container-fluid pt-5" id="service">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service
+                </h1>
                 <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
             </div>
             <div class="row pb-3">
                 <div class="col-lg-4 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center mb-4">
                         <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Web Design</h4>
+                        <h4 class="font-weight-bold m-0">Web Development</h4>
                     </div>
                     <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est
+                        amet
                         labore eirmod erat clita
                     </p>
                     <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
@@ -332,54 +298,35 @@
                 <div class="col-lg-4 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center mb-4">
                         <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Web Development</h4>
+                        <h4 class="font-weight-bold m-0">Backend Development</h4>
                     </div>
                     <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est
+                        amet
                         labore eirmod erat clita
                     </p>
                     <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Apps Design</h4>
+                        <i class="fab fa-2x fa-error service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Bug Servise</h4>
                     </div>
                     <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est
+                        amet
                         labore eirmod erat clita
                     </p>
                     <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center mb-5">
                     <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Apps Development</h4>
+                        <i class="fab fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
+                        <h4 class="font-weight-bold m-0">Documentation OpenAPI</h4>
                     </div>
                     <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
-                        labore eirmod erat clita
-                    </p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">SEO</h4>
-                    </div>
-                    <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
-                        labore eirmod erat clita
-                    </p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Content Creating</h4>
-                    </div>
-                    <p>
-                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet
+                        Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est
+                        amet
                         labore eirmod erat clita
                     </p>
                     <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
@@ -394,80 +341,76 @@
     <div class="container-fluid pt-5 pb-3" id="portfolio">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery
+                </h1>
                 <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
             </div>
             <div class="row">
                 <div class="col-12 text-center mb-2">
                     <ul class="list-inline mb-4" id="portfolio-flters">
                         <li class="btn btn-sm btn-outline-primary m-1 active" data-filter="*">All</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Design</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Development</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Marketing</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Web</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Desktop</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">App</li>
                     </ul>
                 </div>
             </div>
             <div class="row portfolio-container">
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @foreach ($datas['projects'] as $project)
+                        @if ($project->jenis_project == 'WEB')
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100"
+                                    src="{{ Storage::url('images/cover/' . $project->cover) }}" alt="">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ Storage::url('images/cover/' . $project->cover) }}"
+                                        data-lightbox="portfolio" style="text-decoration:none;">
+                                        <p class="text-white" style="font-size: 40px; ">
+                                            {{ $project->status }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-2.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @foreach ($datas['projects'] as $project)
+                        @if ($project->jenis_project == 'DESKTOP')
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100"
+                                    src="{{ Storage::url('images/cover/' . $project->cover) }}" alt="">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ Storage::url('images/cover/' . $project->cover) }}"
+                                        data-lightbox="portfolio" style="text-decoration:none;">
+
+                                        <p class="text-white" style="font-size: 40px; ">
+                                            {{ $project->status }}</p>
+
+
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-3.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @foreach ($datas['projects'] as $project)
+                        @if ($project->jenis_project == 'ANDROID')
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100"
+                                    src="{{ Storage::url('images/cover/' . $project->cover) }}" alt="">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ Storage::url('images/cover/' . $project->cover) }}"
+                                        data-lightbox="portfolio" style="text-decoration:none;">
+                                        <p class="text-white" style="font-size: 40px; ">
+                                            {{ $project->status }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-4.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-5.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-6.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -478,7 +421,8 @@
     <div class="container-fluid py-5" id="testimonial">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Review</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Review
+                </h1>
                 <h1 class="position-absolute text-uppercase text-primary">Clients Say</h1>
             </div>
             <div class="row justify-content-center">
@@ -486,7 +430,8 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos.
+                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est
+                                eos.
                                 Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet
                                 accusam amet eirmod eos, labore diam clita</h4>
                             <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-1.jpg"
@@ -496,7 +441,8 @@
                         </div>
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos.
+                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est
+                                eos.
                                 Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet
                                 accusam amet eirmod eos, labore diam clita</h4>
                             <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-2.jpg"
@@ -506,7 +452,8 @@
                         </div>
                         <div class="text-center">
                             <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos.
+                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est
+                                eos.
                                 Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet
                                 accusam amet eirmod eos, labore diam clita</h4>
                             <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-3.jpg"
@@ -526,7 +473,8 @@
     <div class="container-fluid pt-5" id="blog">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog
+                </h1>
                 <h1 class="position-absolute text-uppercase text-primary">Latest Blog</h1>
             </div>
             <div class="row">
@@ -538,7 +486,8 @@
                             <small class="text-white text-uppercase">Jan</small>
                         </div>
                     </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum
+                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr
+                        ipsum
                     </h5>
                     <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
                 </div>
@@ -550,7 +499,8 @@
                             <small class="text-white text-uppercase">Jan</small>
                         </div>
                     </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum
+                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr
+                        ipsum
                     </h5>
                     <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
                 </div>
@@ -562,7 +512,8 @@
                             <small class="text-white text-uppercase">Jan</small>
                         </div>
                     </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum
+                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr
+                        ipsum
                     </h5>
                     <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
                 </div>
@@ -576,7 +527,8 @@
     <div class="container-fluid py-5" id="contact">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact
+                </h1>
                 <h1 class="position-absolute text-uppercase text-primary">Contact Me</h1>
             </div>
             <div class="row justify-content-center">

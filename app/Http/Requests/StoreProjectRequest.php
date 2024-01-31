@@ -23,8 +23,8 @@ class StoreProjectRequest extends FormRequest
     {
         return
             [
-                "cover" => ["required", "mimes:jpg,png,webp"],
-                "image" => ["required", "mimes:jpg,png,webp"],
+                // "cover" => ["required", "mimes:jpg,png,webp"],
+                // "image" => ["required", "mimes:jpg,png,webp"],
                 "jenis_project" => ["required"],
                 "judul" => ["required", "min:5"],
                 "nama_client" => ["required"],

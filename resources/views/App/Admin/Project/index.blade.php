@@ -37,7 +37,11 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ $data->cover }}</td>
+                                        <td>
+                                            <img class="img rounded-circle mx-auto d-block"
+                                                src="{{ Storage::url('images/cover/' . $data->cover) }}" width="50px"
+                                                height="50px">
+                                        </td>
                                         <td>{{ $data->judul }}</td>
                                         <td>{{ $data->jenis_project }}</td>
 

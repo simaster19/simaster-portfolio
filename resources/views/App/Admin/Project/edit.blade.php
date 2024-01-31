@@ -54,6 +54,18 @@
                             <option value="ONLINE COURSE">ONLINE COURSE</option>
                         </select>
                     </div>
+                    <div class="form-group col-md-4">
+                        <label for="tahun_project">Status Project</label>
+                        <select name="tahun_project" id="tahun_project" class="form-control">
+                            <option value="{{ $data->tahun_project }}">--Jangan diubah--{{ $data->tahun_project }}</option>
+                            @php
+                                for ($i = date('Y'); $i >= date('Y') - 20; $i--) {
+                                    echo "<option value='{$i}'>{$i}</option>";
+                                }
+                            @endphp
+
+                        </select>
+                    </div>
                 </div>
                 <div class="form-row">
                     <label for="keterangan">Keterangan</label>
