@@ -35,10 +35,7 @@
                         <label for="project_url">Project URL</label>
                         <input type="text" class="form-control" id="project_url" name="project_url">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="nama_client">Nama Client</label>
-                        <input type="text" class="form-control" id="nama_client" name="nama_client">
-                    </div>
+                    
                     <div class="form-group col-md-4">
                         <label for="dibuat_dengan">Dibuat Dengan</label>
                         <select name="dibuat_dengan[]" class="form-control select2" multiple="">

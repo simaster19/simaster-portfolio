@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("judul")->nullable(false);
             $table->string("slug")->nullable(false);
             $table->text("project_url")->nullable(true)->default(null);
-            $table->string("nama_client");
             $table->longText("keterangan")->nullable(true);
             $table->text("dibuat_dengan")->nullable(false); //PHP Laravel, Javascript, dll
             $table->string("status")->default("PERSONAL"); //PERSONAL,FREELANCE, COURSE,

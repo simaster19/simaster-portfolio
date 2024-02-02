@@ -25,7 +25,7 @@ class UpdateProjectRequest extends FormRequest
 
             "jenis_project" => ["required"],
             "judul" => ["required", "min:5"],
-            "nama_client" => ["required"],
+          
             "dibuat_dengan" => ["required"],
             "status" => ["required"]
         ];

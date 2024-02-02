@@ -35,11 +35,7 @@
                         <input type="text" class="form-control" id="project_url" name="project_url"
                             value="{{ $data->project_url }}">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="nama_client">Nama Client</label>
-                        <input type="text" class="form-control" id="nama_client" name="nama_client"
-                            value="{{ $data->nama_client }}">
-                    </div>
+
                     <div class="form-group col-md-4">
                         <label for="dibuat_dengan">Dibuat Dengan</label>
                         <input type="dibuat_dengan" class="form-control" id="dibuat_dengan" name="dibuat_dengan"

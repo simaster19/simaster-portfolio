@@ -47,7 +47,7 @@
 
                                         <td>{{ $data->project_url }}
                                         </td>
-                                        <td>{{ $data->nama_client }}</td>
+                                        <td>Nama Client</td>
                                         <td>{{ $data->dibuat_dengan }}</td>
                                         <td>
                                             {{ $data->status }}

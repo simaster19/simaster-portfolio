@@ -23,7 +23,6 @@ class ProjectSeeder extends Seeder
       "project_url" => "-",
       "judul" => "Sistem ABC",
       "slug" => Str::slug("Sistem ABC"),
-      "nama_client" => "Parman",
       "keterangan" => "Sistem inindibuat dengan xxx",
       "dibuat_dengan" => json_encode(["PHP", "LARAVEL", "JAVASCRIPT"]),
 
