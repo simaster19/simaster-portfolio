@@ -4,11 +4,15 @@
     <link rel="stylesheet" href="{{ url('Backend/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url('Backend/node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
 @endpush
-@section('header-title', 'Data Message')
+@section('header-title', 'Data Testimonial')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('create-testimonial') }}" class="btn btn-outline-success btn-round btn-sm"><i
+                            class="fas fa-plus"></i></a>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table-1">
@@ -17,10 +21,10 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>User</th>
+                                    <th>Foto</th>
                                     <th>Nama</th>
-                                    <th>Email</th>
-                                    <th>Message</th>
+                                    <th>Keterangan</th>
+                                    <th>Nama Project</th>
                                     <th>Dibuat Tanggal</th>
                                     <th>Action</th>
                                 </tr>
@@ -31,21 +35,24 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ is_null($data->user) ? '' : $data->user->username }}</td>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->email }}</td>
-                                        <td>{{ $data->message }}</td>
+                                        <td>{{ $data->foto }}</td>
+                                        <td>{{ $data->nama_client }}</td>
+                                        <td>{{ $data->keterangan }}</td>
+                                        <td>{{ $data->project->judul }}</td>
+
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                                         </td>
 
                                         <td>
                                             <div class="buttons">
-
-                                                <a href="{{ route('detail-message', $data->id_message) }}"
+                                                <a href="{{ route('edit-testimonial', $data->id_testimonial) }}"
+                                                    class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="{{ route('detail-testimonial', $data->id_testimonial) }}"
                                                     class="btn btn-warning btn-sm btn-round"><i class="fas fa-eye"></i>
                                                 </a>
-                                                <form action="{{ route('delete-message', $data->id_message) }}"
+                                                <form action="{{ route('delete-testimonial', $data->id_testimonial) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')

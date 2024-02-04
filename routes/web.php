@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SkillController;
-use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\DashboardUserController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CertificateController;
+use App\Http\Controllers\Admin\CvController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 //Halaman Portofolio
 Route::get("/", [DashboardUserController::class, "index"])->name("my-profile");
-
+Route::post("/sendMessage", [DashboardUserController::class, "sendMessage"])->name("send");
 //Halamn Login
 Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "proccessLogin"])->name("proccess-login");
@@ -65,6 +67,17 @@ Route::prefix("admin/")->group(function () {
         Route::delete("message/{id}/delete", "destroy")->name("delete-message");
     });
 
+    //Testimonial
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get("testimonial", "index")->name("data-testimonial");
+        Route::get("testimonial/create", "create")->name("create-testimonial");
+        Route::post("testimonial", "store")->name("store-testimonial");
+        Route::get("testimonial/{id}/edit", "edit")->name("edit-testimonial");
+        Route::put("testimonial/{id}/update", "update")->name("update-testimonial");
+        Route::get("testimonial/{id}/detail", "show")->name("detail-testimonial");
+        Route::delete("testimonial/{id}/delete", "destroy")->name("delete-testimonial");
+    });
+
     //Certificate
     Route::controller(CertificateController::class)->group(function () {
         Route::get("certificate", "index")->name("data-certificate");
@@ -74,6 +87,16 @@ Route::prefix("admin/")->group(function () {
         Route::put("certificate/{id}/update", "update")->name("update-certificate");
         Route::get("certificate/{id}/detail", "show")->name("detail-certificate");
         Route::delete("certificate/{id}/delete", "destroy")->name("delete-certificate");
+    });
+
+    //Certificate
+    Route::controller(CvController::class)->group(function () {
+        Route::get("cv", "index")->name("data-cv");
+        Route::get("cv/create", "create")->name("create-cv");
+        Route::post("cv", "store")->name("store-cv");
+        Route::get("cv/{id}/edit", "edit")->name("edit-cv");
+        Route::put("cv/{id}/update", "update")->name("update-cv");
+        Route::delete("cv/{id}/delete", "destroy")->name("delete-cv");
     });
 })->middleware(['auth']);
 

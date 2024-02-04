@@ -29,8 +29,15 @@
                     class="fas fa-envelope"></i><span>Message</span></a>
         </li>
         <li class="nav-item dropdown">
+            <a href="{{ route('data-testimonial') }}" class="nav-link"><i
+                    class="fas fa-envelope"></i><span>Testimonial</span></a>
+        </li>
+        <li class="nav-item dropdown">
             <a href="{{ route('data-certificate') }}" class="nav-link"><i
                     class="fas fa-file-archive"></i><span>Certificate</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="{{ route('data-cv') }}" class="nav-link"><i class="fas fa-file-archive"></i><span>CV</span></a>
         </li>
 
 
