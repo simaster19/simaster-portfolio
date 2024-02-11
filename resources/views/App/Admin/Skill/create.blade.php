@@ -4,6 +4,19 @@
     <form action="{{ route('store-skill') }}" method="POST">
         @csrf
         <div class="card">
+            @if (session()->has('message'))
+                <div>
+                    <script>
+                        {!! session('message') !!}
+                    </script>
+                </div>
+            @endif
+            @if (session()->has('messageError'))
+                <script>
+                    {!! session('messageError') !!}
+                </script>
+            @endif
+
             <div class="card-body">
                 <div class="form-row">
 
@@ -22,7 +35,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="type">Type</label>
-                        <select name="type" id="type" class="form-control">
+                        <select name="type" id="type" class="form-control" required>
                             <option value="">--Pilih--</option>
                             <option value="BAHASA">BAHASA</option>
                             <option value="FRAMEWORK">FRAMEWORK</option>

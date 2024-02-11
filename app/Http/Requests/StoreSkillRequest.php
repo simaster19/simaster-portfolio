@@ -11,7 +11,7 @@ class StoreSkillRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -19,11 +19,21 @@ class StoreSkillRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             "nama_skill" => ["required"],
-            "level" => ["required"]
+            "level" => ["required"],
+            "type" => ["required"]
         ];
     }
+
+    // public function messages(): array
+    // {
+    //     return [
+    //         "nama_skill.required" => "Nama skill tidak boleh kosong!",
+    //         "level.required" => "Level tidak boleh kosong!",
+    //         "type.required" => "Type tidak boleh kosong!"
+    //     ];
+    // }
 }

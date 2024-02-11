@@ -47,8 +47,15 @@
 
                                         <td>{{ $data->project_url }}
                                         </td>
-                                        <td>Nama Client</td>
-                                        <td>{{ $data->dibuat_dengan }}</td>
+                                        <td>{{ $data->testimonial[0]->nama_client }}</td>
+                                        @php
+                                            $dibuat_dengan = json_decode($data->dibuat_dengan);
+                                        @endphp
+                                        <td>
+                                            @foreach ($dibuat_dengan as $datas)
+                                                {{ $datas }}
+                                            @endforeach
+                                        </td>
                                         <td>
                                             {{ $data->status }}
                                         </td>

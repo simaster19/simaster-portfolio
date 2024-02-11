@@ -22,10 +22,10 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            "cover" => ["image", "mimes:jpg,png,webp"],
+            "image" => ["image", "mimes:jpg,png,webp"],
             "jenis_project" => ["required"],
             "judul" => ["required", "min:5"],
-          
             "dibuat_dengan" => ["required"],
             "status" => ["required"]
         ];

@@ -9,6 +9,11 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                @if (session()->has('message'))
+                    <script>
+                        {!! session('message') !!}
+                    </script>
+                @endif
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped" id="table-1">

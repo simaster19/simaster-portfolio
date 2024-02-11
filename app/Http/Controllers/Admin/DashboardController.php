@@ -4,13 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Post;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return response()->view("App.Admin.Dashboard.dashboard");
+        $user = User::all();
+        $message = Message::all();
+        $project = Project::all();
+        $post = Post::all();
+
+        $allData = collect(["user" => $user, "message" => $message, "project" => $project, "post" => $post]);
+
+        return response()->view("App.Admin.Dashboard.dashboard", [
+            "data" => $allData
+        ]);
     }
 
     public function getMessage()

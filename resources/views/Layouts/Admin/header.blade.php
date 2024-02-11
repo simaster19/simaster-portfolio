@@ -10,8 +10,12 @@
 
 <!-- CSS Libraries -->
 @stack('css-style')
+<link rel="stylesheet" href="{{ url('Backend/node_modules/izitoast/dist/css/iziToast.min.css') }}">
 <link rel="stylesheet" href="{{ url('Backend/node_modules/jqvmap/dist/jqvmap.min.css') }}">
 <link rel="stylesheet" href="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.css') }}">
+
+{{-- Toastr --}}
+<script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{ url('Backend/assets/css/style.css') }}">

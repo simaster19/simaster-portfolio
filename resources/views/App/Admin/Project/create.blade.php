@@ -35,18 +35,15 @@
                         <label for="project_url">Project URL</label>
                         <input type="text" class="form-control" id="project_url" name="project_url">
                     </div>
-                    
+
                     <div class="form-group col-md-4">
                         <label for="dibuat_dengan">Dibuat Dengan</label>
                         <select name="dibuat_dengan[]" class="form-control select2" multiple="">
-                            <option value="PHP">PHP</option>
-                            <option value="JAVASCRIPT">Javascript</option>
-                            <option value="LARAVEL">Laravel</option>
-                            <option value="JQUERY">Jquery</option>
-                            <option value="VUE JS">Vue Js</option>
-                            <option value="ANGULAR">Angular</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
+                            <option value="">--Pilih--</option>
+                            @foreach ($listBahasa as $dibuat_dengan)
+                                <option value="{{ $dibuat_dengan }}">{{ $dibuat_dengan }}</option>
+                            @endforeach
+
                         </select>
                     </div>
                     <div class="form-group col-md-4">

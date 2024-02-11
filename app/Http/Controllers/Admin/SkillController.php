@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Validator;
+use App\Helpers\ToastrMessage;
+use App\Http\Requests\StoreSkillRequest;
 
 class SkillController extends Controller
 {
@@ -22,25 +24,40 @@ class SkillController extends Controller
         return response()->view("App.Admin.Skill.create");
     }
 
-    public function store(Request $request)
+    public function store(StoreSkillRequest $rule, Request $request)
     {
-        $data = Validator::make($request->all(), [
-            "nama_skill" => ["required"],
-            "level" => ["required"],
-            "type" => ["required"]
-        ]);
+
+
+        $data = Validator::make(
+            $request->all(),
+            [
+                "nama_skill" => ["required"],
+                "level" => ["required"],
+                "type" => ["required"]
+            ],
+            [
+                "nama_skill.required" => "Nama skill tidak boleh kosong!",
+                "level.required" => "Level tidak boleh kosong!",
+                "type.required" => "Type tidak boleh kosong!"
+            ]
+
+        );
+
+
+
 
         if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
         }
+
+
 
         $skill = Skill::create([
             "nama_skill" => $request->input("nama_skill"),
             "level" => $request->input("level"),
             "type" => $request->input('type')
         ]);
-
-        return redirect()->route("create-skill")->with("message", "Data berhasil ditambahkan!");
+        return redirect()->route("create-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil ditambahkan!", "topRight"));
     }
 
     public function edit($id)

@@ -16,10 +16,12 @@
   <script src="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.js') }}"></script>
   <script src="{{ url('Backend/node_modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
+
   <!-- Template JS File -->
   <script src="{{ url('Backend/assets/js/scripts.js') }}"></script>
   <script src="{{ url('Backend/assets/js/custom.js') }}"></script>
   @stack('script-js')
+  <script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{ url('Backend/assets/js/page/index-0.js') }}"></script>

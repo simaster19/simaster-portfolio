@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ToastrMessage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -36,12 +37,30 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = Validator::make($request->all(), $request->rules());
+
+        $data = Validator::make($request->all(), [
+            "foto" => ["image", "mimes:jpg,png,webp"],
+            "nama" => ["required"],
+            "email" => ["required"],
+            "username" => ["required", "unique:users,username,$id,id_user"],
+            "tanggal_lahir" => ["required"],
+            "no_hp" => ["required", "numeric"],
+            "alamat" => ["required"]
+        ], [
+            "foto.image" => "File harus berupa gambar!",
+            "nama.required" => "Nama tidak boleh kosong!",
+            "email.required" => "Email tidak boleh kosong!",
+            "username.required" => "Username tidak boleh kosong!",
+            "username.unique" => "Username sudah digunakan!",
+            "no_hp.required" => "No hp tidak boleh kosong!",
+            "no_hp.numeric" => "Anda tidak memasukkan angka!",
+            "alamat.required" => "Alamat tidak boleh kosong!"
+        ]);
 
         if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
         }
 
         $user = User::findOrFail($id);
@@ -89,7 +108,7 @@ class UserController extends Controller
             "kode_pos" => $request->input("kode_pos")
         ]);
 
-        return redirect()->route("data-user")->with("message", "Data berhasil diubah!");
+        return redirect()->route("data-user")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!"));
     }
 
     public function show($id)

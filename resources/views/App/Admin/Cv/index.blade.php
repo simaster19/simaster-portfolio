@@ -35,8 +35,18 @@
                                             {{ $loop->iteration }}
                                         </td>
                                         <td>{{ $data->user->nama }}</td>
-                                        <td>File</td>
-                                        <td>{{ $data->status }}</td>
+                                        <td>
+                                            @php
+                                                $file = explode('.', $data->file_cv);
+                                                $extension = end($file);
+                                            @endphp
+                                            @if ($extension == 'pdf')
+                                                PDF
+                                            @else
+                                                WORD
+                                            @endif
+                                        </td>
+                                        <td>{{ $data->status == 1 ? 'Default' : 'Not-Set' }}</td>
 
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
