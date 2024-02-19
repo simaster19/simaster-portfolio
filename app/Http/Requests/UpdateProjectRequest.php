@@ -30,4 +30,14 @@ class UpdateProjectRequest extends FormRequest
             "status" => ["required"]
         ];
     }
+    public function messages()
+    {
+        return [
+            "cover.image" => "File harus berupa gambar!",
+            "image.image" => "File harus berupa gambar!",
+            "jenis_project.required" => "Jenis project tidak boleh kosong!",
+            "dibuat_dengan.required" => "Dibuat dengan tidak boleh kosong!",
+            "status" => "Status tidak boleh kosong!"
+        ];
+    }
 }

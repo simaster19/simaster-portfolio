@@ -9,6 +9,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+
                 <div class="card-header">
                     <a href="{{ route('create-cv') }}" class="btn btn-outline-success btn-round btn-sm"><i
                             class="fas fa-plus"></i></a>
@@ -24,6 +25,7 @@
                                     <th>Nama</th>
                                     <th>File</th>
                                     <th>Status</th>
+                                    <th>Default</th>
                                     <th>Dibuat Tanggal</th>
                                     <th>Action</th>
                                 </tr>
@@ -47,7 +49,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $data->status == 1 ? 'Default' : 'Not-Set' }}</td>
-
+                                        <td><input type="radio" id="default{{ $data->id_cv }}" name="default"></td>
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                                         </td>

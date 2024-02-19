@@ -5,11 +5,9 @@
         @csrf
         <div class="card">
             @if (session()->has('message'))
-                <div>
-                    <script>
-                        {!! session('message') !!}
-                    </script>
-                </div>
+                <script>
+                    {!! session('message') !!}
+                </script>
             @endif
             @if (session()->has('messageError'))
                 <script>

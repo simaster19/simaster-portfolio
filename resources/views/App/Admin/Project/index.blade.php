@@ -9,6 +9,16 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                @if (session()->has('message'))
+                    <script>
+                        {!! session('message') !!}
+                    </script>
+                @endif
+                @if (session()->has('messageError'))
+                    <script>
+                        {!! session('messageError') !!}
+                    </script>
+                @endif
                 <div class="card-header">
                     <a href="{{ route('create-project') }}" class="btn btn-outline-success btn-round btn-sm"><i
                             class="fas fa-plus"></i></a>
@@ -47,7 +57,9 @@
 
                                         <td>{{ $data->project_url }}
                                         </td>
-                                        <td>{{ $data->testimonial[0]->nama_client }}</td>
+
+                                        <td>{{ count($data->testimonial) == 0 ? '' : $data->testimonial[0]->nama_client }}
+                                        </td>
                                         @php
                                             $dibuat_dengan = json_decode($data->dibuat_dengan);
                                         @endphp

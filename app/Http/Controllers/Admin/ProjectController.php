@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\ListBahasaPemograman;
 use App\Models\Project;
-use App\Models\Image as Images;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Helpers\ToastrMessage;
+use App\Models\Image as Images;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image;
+use App\Helpers\ListBahasaPemograman;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $project = Project::all();
+        $project = Project::with(["testimonial" => function ($query) {
+            $query->select("id_testimonial", "nama_client", "id_project");
+        }])->get();
+        //dd($project);
         return response()->view("App.Admin.Project.index", [
             "datas" => $project
         ]);
@@ -32,14 +36,29 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function store(StoreProjectRequest $request)
+    public function store(Request $request)
     {
 
 
-        $data = Validator::make($request->all(), $request->rules());
+        $data = Validator::make($request->all(), [
+            "cover" => ["required", "image", "mimes:jpg,png,webp"],
+            "image" => ["required", "image", "mimes:jpg,png,webp"],
+            "jenis_project" => ["required"],
+            "judul" => ["required", "min:5"],
+            "dibuat_dengan" => ["required"],
+            "status" => ["required"]
+        ], [
+            "cover.image" => "File harus berupa gambar!",
+            "cover.mimes" => "File harus ber format jpg,png,webp",
+            "image.image" => "File harus berupa gambar!",
+            "image.mimes" => "File harus ber format jpg,png,webp",
+            "jenis_project.required" => "Jenis project tidak boleh kosong!",
+            "dibuat_dengan.required" => "Dibuat dengan tidak boleh kosong!",
+            "status" => "Status tidak boleh kosong!"
+        ]);
 
         if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
         }
 
 
@@ -104,7 +123,7 @@ class ProjectController extends Controller
 
         ]);
 
-        return back()->with("message", "Data berhasil ditambahkan!");
+        return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil ditambahkan!"));
     }
 
     public function edit($id)
@@ -117,12 +136,27 @@ class ProjectController extends Controller
             "listBahasa" => $listBahasa
         ]);
     }
-    public function update(UpdateProjectRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = Validator::make($request->all(), $request->rules());
+        $data = Validator::make($request->all(), [
+            "cover" => ["image", "mimes:jpg,png,webp"],
+            "image" => ["image", "mimes:jpg,png,webp"],
+            "jenis_project" => ["required"],
+            "judul" => ["required", "min:5"],
+            "dibuat_dengan" => ["required"],
+            "status" => ["required"]
+        ], [
+            "cover.image" => "File harus berupa gambar!",
+            "cover.mimes" => "File harus ber format jpg,png,webp",
+            "image.image" => "File harus berupa gambar!",
+            "image.mimes" => "File harus ber format jpg,png,webp",
+            "jenis_project.required" => "Jenis project tidak boleh kosong!",
+            "dibuat_dengan.required" => "Dibuat dengan tidak boleh kosong!",
+            "status" => "Status tidak boleh kosong!"
+        ]);
 
         if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
         }
 
         $project = Project::with(["image"])->where("id_project", $id)->get()->first();
@@ -198,7 +232,7 @@ class ProjectController extends Controller
             "gambar" => !$request->file('image') ? $finalImage : json_encode($finalImage[0])
         ]);
 
-        return redirect()->route("data-project")->with("message", "Data berhasil diubah!");
+        return redirect()->route("data-project")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!"));
     }
 
     public function show($id)
@@ -220,6 +254,6 @@ class ProjectController extends Controller
         Images::where("id_project", $id)->delete();
         Project::where("id_project", $id)->delete();
 
-        return back()->with("message", "Data berhasil dihapus!");
+        return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
     }
 }

@@ -24,7 +24,7 @@ class SkillController extends Controller
         return response()->view("App.Admin.Skill.create");
     }
 
-    public function store(StoreSkillRequest $rule, Request $request)
+    public function store(Request $request)
     {
 
 
@@ -47,7 +47,7 @@ class SkillController extends Controller
 
 
         if ($data->fails()) {
-            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
         }
 
 
@@ -77,7 +77,7 @@ class SkillController extends Controller
         ]);
 
         if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
         }
 
         $skill = Skill::findOrFail($id);
@@ -87,7 +87,7 @@ class SkillController extends Controller
             "type" => $request->input("type")
         ]);
 
-        return redirect()->route("data-skill")->with("message", "Data berhasil diubah!");
+        return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!"));
     }
 
     public function show($id)
@@ -102,6 +102,6 @@ class SkillController extends Controller
 
         $skill->delete();
 
-        return redirect()->route("data-skill")->with("message", "Data berhasil dihapus!");
+        return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
     }
 }
