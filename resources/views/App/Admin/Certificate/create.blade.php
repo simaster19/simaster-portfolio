@@ -4,6 +4,18 @@
     <form action="{{ route('store-certificate') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card">
+                                @if (session()->has('message'))
+                <div>
+                    <script>
+                        {!! session('message') !!}
+                    </script>
+                </div>
+            @endif
+            @if (session()->has('messageError'))
+                <script>
+                    {!! session('messageError') !!}
+                </script>
+            @endif
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group col-md-12">
