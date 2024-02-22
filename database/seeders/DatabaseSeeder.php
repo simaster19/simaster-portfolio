@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\Seeder\UserSeeder;
+use Database\Seeders\Seeder\CategorySeeder;
 use Database\Seeders\Seeder\SkillSeeder;
 use Database\Seeders\Seeder\ProjectSeeder;
 use Database\Seeders\Seeder\PostSeeder;
@@ -27,7 +28,8 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             MessageSeeder::class,
             ImageSeeder::class,
-            TestimonialSeeder::class
+            TestimonialSeeder::class,
+            CategorySeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 

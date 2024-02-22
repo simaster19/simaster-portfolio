@@ -16,7 +16,7 @@
       <a href="{{ route('data-user') }}" class="nav-link"><i class="fas fa-users"></i><span>User</span></a>
     </li>
     <li class="nav-item dropdown">
-      <a href="#" class="nav-link"><i class="fas fa-pen"></i><span>Post</span></a>
+      <a href="{{ route('data-post')}}" class="nav-link"><i class="fas fa-pen"></i><span>Post</span></a>
     </li>
     <li class="nav-item dropdown">
       <a href="{{ route('data-project') }}" class="nav-link"><i class="fas fa-hdd"></i><span>Project</span></a>

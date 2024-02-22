@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Message;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
@@ -60,5 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function message(): HasMany
     {
         return $this->hasMany(Message::class, "id_user", "id_user");
+    }
+    
+    public function post(): HasMany
+    {
+        return $this->hasMany(Post::class, "id_user", "id_user");
     }
 }
