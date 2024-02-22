@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CvController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TestimonialController;
 
 //Halaman Portofolio
@@ -47,6 +48,17 @@ Route::prefix("admin/")->group(function () {
         Route::put("project/{id}/update", "update")->name("update-project");
         Route::get("project/{id}/detail", "show")->name("detail-project");
         Route::delete("project/{id}/delete", "destroy")->name("delete-project");
+    });
+    
+    //Post
+    Route::controller(PostController::class)->group(function () {
+        Route::get("post", "index")->name("data-post");
+        Route::get("post/create", "create")->name("create-post");
+        Route::post("post", "store")->name("store-post");
+        Route::get("post/{id}/edit", "edit")->name("edit-post");
+        Route::put("post/{id}/update", "update")->name("update-post");
+        Route::get("post/{id}/detail", "show")->name("detail-post");
+        Route::delete("post/{id}/delete", "destroy")->name("delete-post");
     });
 
     //Skill

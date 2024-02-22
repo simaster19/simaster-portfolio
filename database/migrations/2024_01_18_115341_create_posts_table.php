@@ -14,6 +14,7 @@ return new class extends Migration
     Schema::create('posts', function (Blueprint $table) {
       $table->bigIncrements("id_post");
       $table->unsignedBigInteger("id_user");
+      $table->unsignedBigInteger("id_category");
       $table->string("judul")->nullable(false);
       $table->string("slug", 100);
       $table->text("gambar")->nullable(true);

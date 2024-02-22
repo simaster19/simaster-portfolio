@@ -19,6 +19,7 @@ class PostSeeder extends Seeder
         
         Post::create([
           "id_user" => $user->id_user,
+          "id_category" => 1,
           "judul" => "Cara xxxx",
           "slug" => Str::slug("Cara xxx"),
           "gambar" => "coba.png",
