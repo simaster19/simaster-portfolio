@@ -10,6 +10,19 @@
         <div class="col-12">
             <div class="card">
 
+                @if (session()->has('message'))
+                    <div>
+                        <script>
+                            {!! session('message') !!}
+                        </script>
+                    </div>
+                @endif
+                @if (session()->has('messageError'))
+                    <script>
+                        {!! session('messageError') !!}
+                    </script>
+                @endif
+
                 <div class="card-header">
                     <a href="{{ route('create-cv') }}" class="btn btn-outline-success btn-round btn-sm"><i
                             class="fas fa-plus"></i></a>

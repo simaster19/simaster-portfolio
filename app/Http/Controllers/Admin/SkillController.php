@@ -47,7 +47,7 @@ class SkillController extends Controller
 
 
         if ($data->fails()) {
-            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
         }
 
 
@@ -74,10 +74,14 @@ class SkillController extends Controller
             "nama_skill" => ["required"],
             "level" => ["required"],
             "type" => ["required"]
+        ],      [
+            "nama_skill.required" => "Nama skill tidak boleh kosong!",
+            "level.required" => "Level tidak boleh kosong!",
+            "type.required" => "Type tidak boleh kosong!"
         ]);
 
         if ($data->fails()) {
-            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
         }
 
         $skill = Skill::findOrFail($id);
@@ -90,11 +94,14 @@ class SkillController extends Controller
         return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!"));
     }
 
+
     public function show($id)
     {
         $skill = Skill::find($id);
         return response()->view("App.Admin.Skill.detail");
     }
+
+
 
     public function destroy($id)
     {

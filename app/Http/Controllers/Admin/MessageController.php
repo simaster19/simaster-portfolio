@@ -8,13 +8,12 @@ use App\Helpers\ToastrMessage;
 use App\Http\Controllers\Controller;
 
 
+
 class MessageController extends Controller
 {
     public function index()
     {
-        $message = Message::with(["user" => function ($query) {
-            $query->select("id_user", "nama", "username");
-        }])->get();
+        $message = Message::with(["user"])->get();
         //dd($message);
 
         return response()->view("App.Admin.Message.index", [
@@ -35,6 +34,6 @@ class MessageController extends Controller
         $message = Message::find($id);
         $message->delete();
 
-        return redirect()->route("data-message")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
+        return redirect()->route("data-message")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));
     }
 }

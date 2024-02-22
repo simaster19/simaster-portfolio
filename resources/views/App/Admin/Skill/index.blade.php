@@ -9,10 +9,13 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+
                 @if (session()->has('message'))
-                    <script>
-                        {!! session('message') !!}
-                    </script>
+                    <div>
+                        <script>
+                            {!! session('message') !!}
+                        </script>
+                    </div>
                 @endif
                 @if (session()->has('messageError'))
                     <script>
