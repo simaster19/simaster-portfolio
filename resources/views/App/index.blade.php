@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Stisla</title>
+    <title>Login &mdash; Admin</title>
+      <!-- Favicon -->
+      <link href="{{ url('Frontend/img/favicon.ico') }}" rel="icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -74,9 +76,9 @@
                             </div>
 
                             <div class="form-group text-right">
-                                <a href="#" class="float-left mt-3">
+                                {{-- <a href="#" class="float-left mt-3">
                                     Forgot Password?
-                                </a>
+                                </a> --}}
                                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right"
                                     tabindex="4">
                                     Login
@@ -95,12 +97,12 @@
                     </div>
                 </div>
                 <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
-                    data-background="{{ url('Backend/assets/img/unsplash/login-bg.jpg') }}">
+                    data-background="{{ url('Backend/assets/img/unsplash/simaster.jpg') }}">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
-                                <h1 class="mb-2 display-4 font-weight-bold">Good Morning</h1>
-                                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                                {{-- <h1 class="mb-2 display-4 font-weight-bold">Good Morning</h1>
+                                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5> --}}
                             </div>
                         </div>
                     </div>

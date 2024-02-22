@@ -93,7 +93,8 @@
                         Web Developer, Back End Developer, Full Stack Developer
                     </div>
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="{{ Storage::url('files/cv/') }}" class="btn btn-outline-light mr-5">Download CV</a>
+                        <a href="{{ Storage::url('files/cv/'.$datas['cv'][0]->file_cv) }}" class="btn btn-outline-light mr-5" download>Download
+                            CV</a>
                         {{-- <button type="button" class="btn-play" data-toggle="modal"
                             data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
                             <span></span>
@@ -560,12 +561,13 @@
         <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
             <div class="container text-center py-5">
                 <div class="d-flex justify-content-center mb-4">
-                    <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+
+                    <a class="btn btn-light btn-social mr-2" href="https://github.com/simaster19"><i
+                            class="fab fa-github"></i></a>
+                    <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/miftakhulkirom/"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
-                <div class="d-flex justify-content-center mb-3">
+                {{-- <div class="d-flex justify-content-center mb-3">
                     <a class="text-white" href="#">Privacy</a>
                     <span class="px-3">|</span>
                     <a class="text-white" href="#">Terms</a>
@@ -573,17 +575,17 @@
                     <a class="text-white" href="#">FAQs</a>
                     <span class="px-3">|</span>
                     <a class="text-white" href="#">Help</a>
-                </div>
+                </div> --}}
                 <p class="m-0">
-                    &copy; <a class="text-white font-weight-bold" href="#">Domain Name</a>. All Rights Reserved.
-                    Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                    &copy; <a class="text-white font-weight-bold" href="/">simaster19</a>. All Rights Reserved.
+
                 </p>
             </div>
         </div>
         <!-- Footer End -->
 
         <!-- Scroll to Bottom -->
-        <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+        {{-- <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i> --}}
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>

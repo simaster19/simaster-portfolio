@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Testimonial;
 use App\Models\User;
+use App\Models\Cv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,10 +21,12 @@ class DashboardUserController extends Controller
         )->first();
         $project = Project::with(["image"])->get();
         $skill = Skill::all();
+        $cv = Cv::all();
+      
         $testimonial = Testimonial::all();
 
 
-        $allData = collect(["user" => $user, "projects" => $project, "skills" => $skill, "testimonials" => $testimonial]);
+        $allData = collect(["user" => $user, "projects" => $project, "skills" => $skill, "testimonials" => $testimonial, "cv" => $cv]);
         //dd($allData);
         return response()->view("index", [
             "datas" => $allData

@@ -6,6 +6,8 @@ use App\Helpers\ToastrMessage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Message;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
@@ -124,9 +126,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
+        $message = Message::where("id_user",$id)->delete();
+        $post = Post::where("id_user",$id)->delete();
+
         $user->delete();
 
-        return back()->with("message", "Data berhasil dihapus!");
+        return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
     }
 
     public function logout()
