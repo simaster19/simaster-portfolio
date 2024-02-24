@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements("id_message");
-            $table->unsignedBigInteger("id_user");
+            $table->unsignedBigInteger("id_user")->nullable(true)->default(null);
             $table->string("nama")->nullable(false);
             $table->string("email")->nullable(false);
             $table->longText("message")->nullable(false);
             $table->timestamps();
-            
+
             //Relasi
-            $table->foreign("id_user")->references("id_user")->on("users");
-     
+            //$table->foreign("id_user")->references("id_user")->on("users");
+
         });
     }
 

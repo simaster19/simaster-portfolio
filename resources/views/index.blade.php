@@ -235,7 +235,13 @@
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
-                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                    <h6 class="font-weight-bold">{!! $skill->level == 'BEGINNER'
+                                        ? "<span class='badge badge-danger'>BEGINNER</span>"
+                                        : ($skill->level == 'INTERMEDIATE'
+                                            ? "<span class='badge badge-warning'>INTERMEDIATE</span>"
+                                            : ($skill->level == 'PRO'
+                                                ? "<span class='badge badge-success'>PRO</span>"
+                                                : '')) !!}</h6>
                                 </div>
 
                             </div>
@@ -248,7 +254,13 @@
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
-                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                    <h6 class="font-weight-bold">{!! $skill->level == 'BEGINNER'
+                                        ? "<span class='badge badge-danger'>BEGINNER</span>"
+                                        : ($skill->level == 'INTERMEDIATE'
+                                            ? "<span class='badge badge-warning'>INTERMEDIATE</span>"
+                                            : ($skill->level == 'PRO'
+                                                ? "<span class='badge badge-success'>PRO</span>"
+                                                : '')) !!}</h6>
                                 </div>
 
                             </div>
@@ -261,7 +273,13 @@
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">{{ $skill->nama_skill }}</h6>
-                                    <h6 class="font-weight-bold">{{ $skill->level }}</h6>
+                                    <h6 class="font-weight-bold">{!! $skill->level == 'BEGINNER'
+                                        ? "<span class='badge badge-danger'>BEGINNER</span>"
+                                        : ($skill->level == 'INTERMEDIATE'
+                                            ? "<span class='badge badge-warning'>INTERMEDIATE</span>"
+                                            : ($skill->level == 'PRO'
+                                                ? "<span class='badge badge-success'>PRO</span>"
+                                                : '')) !!}</h6>
                                 </div>
 
                             </div>
