@@ -49,7 +49,7 @@ Route::prefix("admin/")->group(function () {
         Route::get("project/{id}/detail", "show")->name("detail-project");
         Route::delete("project/{id}/delete", "destroy")->name("delete-project");
     });
-    
+
     //Post
     Route::controller(PostController::class)->group(function () {
         Route::get("post", "index")->name("data-post");
@@ -109,6 +109,8 @@ Route::prefix("admin/")->group(function () {
         Route::get("cv/{id}/edit", "edit")->name("edit-cv");
         Route::put("cv/{id}/update", "update")->name("update-cv");
         Route::delete("cv/{id}/delete", "destroy")->name("delete-cv");
+        //Ajax
+        Route::get("cv/{id}/default", "getDefault")->name("getDefault");
     });
 })->middleware(['auth']);
 

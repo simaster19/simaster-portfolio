@@ -21,8 +21,8 @@ class DashboardUserController extends Controller
         )->first();
         $project = Project::with(["image"])->get();
         $skill = Skill::all();
-        $cv = Cv::all();
-      
+        $cv = Cv::where("status", 1)->get()->first();
+
         $testimonial = Testimonial::all();
 
 

@@ -93,7 +93,8 @@
                         Web Developer, Back End Developer, Full Stack Developer
                     </div>
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="{{ Storage::url('files/cv/'.$datas['cv'][0]->file_cv) }}" class="btn btn-outline-light mr-5" download>Download
+                        <a href="{{ Storage::url('files/cv/' . $datas['cv']->file_cv) }}"
+                            class="btn btn-outline-light mr-5" download>Download
                             CV</a>
                         {{-- <button type="button" class="btn-play" data-toggle="modal"
                             data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">

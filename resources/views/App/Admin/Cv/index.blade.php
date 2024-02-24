@@ -3,6 +3,7 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ url('Backend/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url('Backend/node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('Backend/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 @endpush
 @section('header-title', 'Data Cv')
 @section('content')
@@ -22,7 +23,6 @@
                         {!! session('messageError') !!}
                     </script>
                 @endif
-
                 <div class="card-header">
                     <a href="{{ route('create-cv') }}" class="btn btn-outline-success btn-round btn-sm"><i
                             class="fas fa-plus"></i></a>
@@ -37,7 +37,6 @@
                                     </th>
                                     <th>Nama</th>
                                     <th>File</th>
-                                    <th>Status</th>
                                     <th>Default</th>
                                     <th>Dibuat Tanggal</th>
                                     <th>Action</th>
@@ -56,13 +55,21 @@
                                                 $extension = end($file);
                                             @endphp
                                             @if ($extension == 'pdf')
-                                                PDF
+                                                <span class="badge badge-danger">PDF</span>
                                             @else
-                                                WORD
+                                                <span class="badge badge-primary">WORD</span>
                                             @endif
                                         </td>
-                                        <td>{{ $data->status == 1 ? 'Default' : 'Not-Set' }}</td>
-                                        <td><input type="radio" id="default{{ $data->id_cv }}" name="default"></td>
+
+                                        <td>
+                                            <label class="custom-switch">
+                                                <input type="radio" name="default" id="default"
+                                                    value="{{ $data->id_cv }}" class="custom-switch-input default"
+                                                    {{ $data->status == 1 ? 'checked' : '' }}>
+                                                <span class="custom-switch-indicator"></span>
+
+                                            </label>
+                                        </td>
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                                         </td>
@@ -72,7 +79,8 @@
                                                 <a href="{{ route('edit-cv', $data->id_cv) }}"
                                                     class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="" class="btn btn-warning btn-sm btn-round"><i
+                                                <a href="{{ Storage::url('files/cv/' . $data->file_cv) }}"
+                                                    class="btn btn-warning btn-sm btn-round" download><i
                                                         class="fas fa-download"></i>
                                                 </a>
                                                 <form action="{{ route('delete-cv', $data->id_cv) }}" method="POST">
@@ -102,7 +110,32 @@
     <script src="{{ url('Backend/node_modules/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('Backend/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ url('Backend/node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
+    <script src="{{ url('Backend/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
+    <script>
+        $(document).ready(function() {
+            $(".default").change(function(e) {
+                e.preventDefault();
+                let row = $(this).closest('tr');
+                let id = row.find("input[name='default']").val();
+
+                $.ajax({
+                    type: "GET",
+                    url: "cv/" + id + "/default",
+                    success: function(response) {
+                        console.log(response.data);
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'Berhasil menjadikan default!',
+                            position: 'topRight'
+                        })
+
+
+                    }
+                });
+            });
+        });
+    </script>
 
     <!-- Page Specific JS File -->
     <script src="{{ url('Backend/assets/js/page/modules-datatables.js') }}"></script>

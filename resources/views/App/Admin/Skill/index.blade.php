@@ -48,8 +48,14 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ $data->nama_skill }}</td>
-                                        <td>{{ $data->level }}</td>
+                                        <td><strong>{{ $data->nama_skill }}</strong></td>
+                                        <td>{!! $data->level == 'BEGINNER'
+                                            ? "<span class='badge badge-danger'>BEGINNER</span>"
+                                            : ($data->level == 'INTERMEDIATE'
+                                                ? "<span class='badge badge-warning'>INTERMEDIATE</span>"
+                                                : ($data->level == 'PRO'
+                                                    ? "<span class='badge badge-success'>PRO</span>"
+                                                    : '')) !!}</td>
                                         <td>{{ $data->type }}</td>
 
 
