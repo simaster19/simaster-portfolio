@@ -455,13 +455,15 @@
         <div class="col-lg-8">
           <div class="owl-carousel testimonial-carousel">
             @foreach ($datas['testimonials'] as $testimonial)
+
             <div class="text-center">
               <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
               <h4 class="font-weight-light mb-4">{{ $testimonial->keterangan }}</h4>
               <img class="img-fluid rounded-circle mx-auto mb-3"
-              src="{{ Storage::url('images/testimonial/' . $testimonial->foto) }}"
+              src="{{ is_null($testimonial->foto) ? url('Backend/assets/img/avatar/avatar-'.rand(2,5).'.png') : Storage::url('images/testimonial/' . $testimonial->foto) }}"
               style="width: 80px; height: 80px;">
               <h5 class="font-weight-bold m-0">{{ $testimonial->nama_client }}</h5>
+              <h6 class="font-weight-light mt-2">({{ $testimonial->project->judul }})</h6>
             </div>
             @endforeach
           </div>

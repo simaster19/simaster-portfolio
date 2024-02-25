@@ -71,7 +71,8 @@ class TestimonialController extends Controller
     return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil ditambahkan!", "topRight"));
   }
   public function edit($id) {
-    $testimonial = Testimonial::with(["project"])->get()->first();
+    $testimonial = Testimonial::where("id_testimonial", $id)->with(["project"])->get()->first();
+
     $project = Project::all(["id_project", "judul", "slug"]);
     return response()->view("App.Admin.Testimonial.edit", [
       "data" => $testimonial,
