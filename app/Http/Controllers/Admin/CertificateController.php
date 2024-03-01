@@ -16,7 +16,7 @@ use App\Helpers\ToastrMessage;
 class CertificateController extends Controller
 {
   public function index() {
-    $certificate = Certificate::all();
+    $certificate = Certificate::orderBy("id_certificate","desc")->get();
 
     return response()->view("App.Admin.Certificate.index", [
       "datas" => $certificate

@@ -21,7 +21,7 @@ class ProjectController extends Controller
   public function index() {
     $project = Project::with(["testimonial" => function ($query) {
       $query->select("id_testimonial", "nama_client", "id_project");
-    }])->get();
+    }])->orderBy("id_project","desc")->get();
     //dd($project);
     return response()->view("App.Admin.Project.index", [
       "datas" => $project

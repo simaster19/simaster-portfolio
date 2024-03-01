@@ -2,11 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 </head>
 
 <body>
-    {{ $userMessage->message }}
-</body>
+  Hello, Saya {{$userMessage->nama}}
+  </br></br>
 
-</html>
+    {{ $userMessage->message }}
+
+    </br></br>
+      Please Respons
+
+    </body>
+
+    </html>

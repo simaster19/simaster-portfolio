@@ -11,29 +11,28 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
-    public function index()
-    {
-        $message = Message::with(["user"])->get();
-        //dd($message);
+  public function index() {
+    $message = Message::with(["user" => function ($query) {
+      $query->select("id_user", "nama", "username");
+    }])->orderBy("id_message","desc")->get();
 
-        return response()->view("App.Admin.Message.index", [
-            "datas" => $message
-        ]);
+
+      return response()->view("App.Admin.Message.index", [
+        "datas" => $message
+      ]);
     }
 
-    public function show($id)
-    {
-        $message = Message::where("id_message", $id)->get()->first();
-        return response()->view("App.Admin.Message.detail", [
-            "data" => $message
-        ]);
+    public function show($id) {
+      $message = Message::where("id_message", $id)->get()->first();
+      return response()->view("App.Admin.Message.detail", [
+        "data" => $message
+      ]);
     }
 
-    public function destroy($id)
-    {
-        $message = Message::find($id);
-        $message->delete();
+    public function destroy($id) {
+      $message = Message::find($id);
+      $message->delete();
 
-        return redirect()->route("data-message")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));
+      return redirect()->route("data-message")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));
     }
-}
+  }

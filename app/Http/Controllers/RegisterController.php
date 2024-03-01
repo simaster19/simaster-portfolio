@@ -10,74 +10,75 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function register()
-    {
-        return response()->view("App.register");
+  public function register() {
+    return response()->view("App.register");
+  }
+
+  public function proccessRegister(Request $request) {
+    $data = Validator::make($request->all(), [
+      "nama" => ["required", "min:5"],
+      "tanggal_lahir" => ["required"],
+      "no_hp" => ["required", "numeric"],
+      "email" => ["required"],
+      "username" => ["required", "min:5"],
+      "alamat" => ["required"]
+    ]);
+
+    //Valdasi
+    if ($data->fails()) {
+      return back()->withErrors($data, "messageError");
     }
 
-    public function proccessRegister(Request $request)
-    {
-        $data = Validator::make($request->all(), [
-            "nama" => ["required", "min:5"],
-            "tanggal_lahir" => ["required"],
-            "no_hp" => ["required", "numeric"],
-            "email" => ["required"],
-            "username" => ["required", "min:5"],
-            "alamat" => ["required"]
-        ]);
+    //Create User
+    $user = User::create([
+      "role" => 2,
+      "nama" => $request->input("nama"),
+      "tanggal_lahir" => $request->input("tanggal_lahir"),
+      "no_hp" => $request->input("no_hp"),
+      "email" => $request->input("email"),
+      "username" => $request->input("username"),
+      "password" => Hash::make($request->input("password")),
+      "alamat" => $request->input("alamat")
+    ]);
 
-        //Valdasi
-        if ($data->fails()) {
-            return back()->withErrors($data, "messageError");
-        }
+    // Kirim email verifikasi
+    event(new Registered($user));
 
-        //Create User
-        $user = User::create([
-            "role" => 2,
-            "nama" => $request->input("nama"),
-            "tanggal_lahir" => $request->input("tanggal_lahir"),
-            "no_hp" => $request->input("no_hp"),
-            "email" => $request->input("email"),
-            "username" => $request->input("username"),
-            "password" => Hash::make($request->input("password")),
-            "alamat" => $request->input("alamat")
-        ]);
+    return redirect()->route("login")->with("message", "Email verifikasi berhasil dikirim!, Check inbox/spam di Email anda.");
+  }
 
-        // Kirim email verifikasi
-        event(new Registered($user));
 
-        return redirect()->route("login")->with("message", "Email verifikasi berhasil dikirim!, Check inbox/spam di Email anda.");
+  // public function showEmailVerificationNotice()
+  // {
+  //     return view('App.Auth.verify');
+  // }
+
+  // Metode untuk melakukan verifikasi email
+  public function verifyEmail($id, $hash) {
+    $user = User::find($id);
+
+    if ($user && $user->hasVerifiedEmail()) {
+      return redirect()->route("login")->with("message", "Akun ini sudah terverifikasi!, silahkan login!");
+    }
+
+    if ($user && !$user->hasVerifiedEmail()) {
+      if ($user->markEmailAsVerified()) {
+        event(new \Illuminate\Auth\Events\Verified($user));
+      }
     }
 
 
-    // public function showEmailVerificationNotice()
-    // {
-    //     return view('App.Auth.verify');
-    // }
+    return redirect('/login')->with('message', "Berhasil Memverifikasi Akun!");
+  }
 
-    // Metode untuk melakukan verifikasi email
-    public function verifyEmail($id, $hash)
-    {
-        $user = User::find($id);
+  // Metode untuk mengirim ulang email verifikasi
+  public function resendVerificationEmail() {
+    $user = User::find(auth()->user()->id_user);
+    
 
-        if ($user && !$user->hasVerifiedEmail()) {
-            if ($user->markEmailAsVerified()) {
-                event(new \Illuminate\Auth\Events\Verified($user));
-            }
-        }
 
-        return redirect('/')->with('verified', true);
-    }
+    $user->sendEmailVerificationNotification();
 
-    // Metode untuk mengirim ulang email verifikasi
-    public function resendVerificationEmail()
-    {
-        if (auth()->user()->hasVerifiedEmail()) {
-            return redirect('/');
-        }
-
-        auth()->user()->sendEmailVerificationNotification();
-
-        return back()->with('resent', true);
-    }
+    return back()->with('message', "Email verifikasi berhasil dikirim ulang!");
+  }
 }

@@ -13,7 +13,7 @@ class PostController extends Controller
     {
         $post = Post::with(["user" => function ($query) {
             $query->select("id_user", "nama", "foto");
-        }])->get();
+        }])->orderBy("id_post","desc")->get();
         return response()->view(
             "App.Admin.Post.index",
             [
