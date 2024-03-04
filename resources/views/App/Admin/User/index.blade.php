@@ -40,7 +40,7 @@
                   {{ $loop->iteration }}
                 </td>
                 <td><img class="img rounded-circle mx-auto d-block"
-                  src="{{ $data->foto == null ? Storage::url('images/foto/' . $data->foto) : url('Backend/assets/img/avatar/avatar-1.png')}}" width="50px"
+                  src="{{ $data->foto != null ? Storage::url('images/foto/' . $data->foto) : url('Backend/assets/img/avatar/avatar-1.png')}}" width="50px"
                   height="50px"></td>
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->email }}</td>
