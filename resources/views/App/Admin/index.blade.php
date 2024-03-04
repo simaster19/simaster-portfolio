@@ -94,23 +94,11 @@
                   <a href="#">Mark All As Read</a>
                 </div>
               </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="{{ url('Backend/assets/img/avatar/avatar-1.png') }}"
-                    class="rounded-circle">
 
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>{{ '' }}</b>
-                    <p>
-                      Hello, Bro!
-                    </p>
-                    <div class="time">
-                      10 Hours Ago
-                    </div>
-                  </div>
-                </a>
+              <div class="dropdown-list-content dropdown-list-message">
+                <div class="data-message-all">
+                  <!-- Isi Ajax -->
+                </div>
 
               </div>
               <div class="dropdown-footer text-center">

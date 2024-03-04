@@ -27,7 +27,11 @@ Route::get("/register", [RegisterController::class, "register"])->name("register
 Route::post("/register", [RegisterController::class, "proccessRegister"])->name("proccessRegister");
 
 Route::prefix("admin/")->group(function () {
-  Route::get('dashboard', [DashboardController::class, "dashboard"])->name("dashboard-admin");
+  Route::controller(DashboardController::class)->group(function(){
+  Route::get('dashboard', "dashboard")->name("dashboard-admin");
+  Route::get('getMessage', "getMessage")->name("dashboard-getmessage");
+    
+  });
 
   //USER
   Route::controller(UserController::class)->group(function () {

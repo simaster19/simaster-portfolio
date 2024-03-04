@@ -40,7 +40,8 @@ class DashboardUserController extends Controller
       "nama" => $request->input("name"),
       "email" => $request->input("email"),
       "subject" => $request->input("subject"),
-      "message" => $request->input("message")
+      "message" => $request->input("message"),
+      "status" => 1
     ]);
 
     $mail = Mail::to("miftakhulkirom@simaster19.my.id")->send(new ContactEmail($message));

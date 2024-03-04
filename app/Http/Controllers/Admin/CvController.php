@@ -16,7 +16,7 @@ class CvController extends Controller
   public function index() {
     $cv = Cv::with(["user" => function($query){
       $query->select("id_user","nama","username");
-      ])->orderBy("id_cv", "desc")->get();
+      }])->orderBy("id_cv", "desc")->get();
     return response()->view("App.Admin.Cv.index", [
       "datas" => $cv
     ]);

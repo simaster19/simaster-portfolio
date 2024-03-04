@@ -11,24 +11,25 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function dashboard()
-    {
-        $user = User::all();
-        $message = Message::all();
-        $project = Project::all();
-        $post = Post::all();
+  public function dashboard() {
+    $user = User::all();
+    $message = Message::all();
+    $project = Project::all();
+    $post = Post::all();
 
-        $allData = collect(["user" => $user, "message" => $message, "project" => $project, "post" => $post]);
+    $allData = collect(["user" => $user, "message" => $message, "project" => $project, "post" => $post]);
 
-        return response()->view("App.Admin.Dashboard.dashboard", [
-            "data" => $allData
-        ]);
-    }
+    return response()->view("App.Admin.Dashboard.dashboard", [
+      "data" => $allData
+    ]);
+  }
 
-    public function getMessage()
-    {
-        $message = Message::all();
-
-        return response()->json($message, 200);
-    }
+  public function getMessage() {
+    $message = Message::where("status", 1)->get(["id_message", "nama", "message", "created_at", "status"]);
+    //dd($message);
+    return response()->json([
+      "status" => true,
+      "data" => $message
+    ], 200);
+  }
 }

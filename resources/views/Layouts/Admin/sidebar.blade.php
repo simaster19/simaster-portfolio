@@ -1,3 +1,4 @@
+<div id="base-url" data-url="{{url("/")}}"></div>
 <aside id="sidebar-wrapper">
   <div class="sidebar-brand">
     <a href="{{ route('dashboard-admin') }}">SI-MASTER</a>

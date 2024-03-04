@@ -17,7 +17,7 @@ class TestimonialController extends Controller
   public function index() {
     $testimonial = Testimonial::with(["project" => function ($query){
       $query->select("id_project","judul");
-      ])->orderBy("id_testimonial","desc")->get();
+     } ])->orderBy("id_testimonial","desc")->get();
 
     return response()->view("App.Admin.Testimonial.index", [
       "datas" => $testimonial
