@@ -19,6 +19,8 @@
     <li class="nav-item dropdown">
       <a href="{{ route('data-post')}}" class="nav-link"><i class="fas fa-pen"></i><span>Post</span></a>
     </li>
+    @if(auth()->user()->role == 2)
+    @else
     <li class="nav-item dropdown">
       <a href="{{ route('data-project') }}" class="nav-link"><i class="fas fa-hdd"></i><span>Project</span></a>
     </li>
@@ -40,6 +42,7 @@
     <li class="nav-item dropdown">
       <a href="{{ route('data-cv') }}" class="nav-link"><i class="fas fa-file-archive"></i><span>CV</span></a>
     </li>
+    @endif
 
 
 
