@@ -3,16 +3,13 @@
 @section('content')
 <div>
   <div class="row">
-    @if (session()->has('message'))
-    <div class="alert alert-warning alert-dismissible show fade">
-      <div class="alert-body">
-        <button class="close" data-dismiss="alert">
-          <span>&times;</span>
-        </button>
-        {{ session('message') }}
-      </div>
-    </div>
-    @endif
+                @if (session()->has('message'))
+                    <div>
+                        <script>
+                            {!! session('message') !!}
+                        </script>
+                    </div>
+                @endif
     @if (auth()->user()->email_verified_at == null)
     <div class="alert alert-warning alert-dismissible show fade">
       <div class="alert-body">
@@ -22,7 +19,7 @@
         <form method="POST" action="{{route('verification.send')}}">
           @csrf
           Akun anda belum verifikasi, silahkan lakukan verifikasi terlebih dahulu atau
-          <button class="btn btn-info">Minta ulang</button> verifilasi
+          <button class="btn btn-outline-info btn-round">Minta ulang</button> verifilasi
         </form>
       </div>
     </div>

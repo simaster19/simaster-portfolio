@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Helpers\ToastrMessage;
 
 class RegisterController extends Controller
 {
@@ -24,9 +25,10 @@ class RegisterController extends Controller
       "alamat" => ["required"]
     ]);
 
+
     //Valdasi
     if ($data->fails()) {
-      return back()->withErrors($data, "messageError");
+      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
     }
 
     //Create User
@@ -68,17 +70,15 @@ class RegisterController extends Controller
     }
 
 
-    return redirect('/login')->with('message', "Berhasil Memverifikasi Akun!");
+    return redirect('/login')->with('message', "Akun anda berhasil verifikasi!");
   }
 
   // Metode untuk mengirim ulang email verifikasi
   public function resendVerificationEmail() {
     $user = User::find(auth()->user()->id_user);
-    
-
 
     $user->sendEmailVerificationNotification();
 
-    return back()->with('message', "Email verifikasi berhasil dikirim ulang!");
+    return back()->with('message', ToastrMessage::message("success", "Success", "Email verifikasi berhasil dikirim ulang!", "topRight"));
   }
 }

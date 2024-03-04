@@ -22,16 +22,34 @@
 
 <body>
   <div id="app">
+    @if (session()->has('message'))
+    <div>
+      <script>
+        {!! session('message') !!}
+      </script>
+    </div>
+    @endif
+    @if (session()->has('messageError'))
+    <script>
+      {!! session('messageError') !!}
+    </script>
+    @endif
     <section class="section">
       <div class="container mt-5">
         <div class="row">
           <div
-            class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            class="col-12 col-sm-12  col-md-12  col-lg-12  col-xl-12">
 
             <div class="card card-primary">
               <div class="card-header">
                 <h4>Register</h4>
+                <div class="d-block">
+                  <p>
+                    <strong>Note :</strong> Akun ini hanya bisa untuk membuat Postingan Blog saja, dan harus sudah terverifikasi! <a href="#" class="text-underline">Kunjungi Blog</a>
+                  </p>
+                </div>
               </div>
+
 
               <div class="card-body">
                 <div class="form-divider">
@@ -43,17 +61,17 @@
                     <div class="form-group col-lg-4 col-md-12">
                       <label for="nama">Nama</label>
                       <input id="nama" type="text" class="form-control" name="nama"
-                      autofocus>
+                      autofocus required>
                     </div>
                     <div class="form-group col-lg-4 col-md-12">
                       <label for="tanggal_lahir">Tanggal lahir</label>
                       <input id="tanggal_lahir" type="date" class="form-control"
-                      name="tanggal_lahir">
+                      name="tanggal_lahir" required>
                     </div>
 
                     <div class="form-group col-lg-4 col-md-12">
                       <label for="no_hp">No Handphone</label>
-                      <input id="no_hp" type="text" class="form-control" name="no_hp">
+                      <input id="no_hp" type="text" class="form-control" name="no_hp" required>
                     </div>
                   </div>
 
@@ -61,14 +79,13 @@
                   <div class="row">
                     <div class="form-group col-lg-6 col-md-12">
                       <label for="email">Email</label>
-                      <input id="email" type="email" class="form-control" name="email">
-                      <div class="invalid-feedback">
-                      </div>
+                      <input id="email" type="email" class="form-control" name="email" placeholder="Email Aktif" required>
+
                     </div>
                     <div class="form-group col-lg-6 col-md-12">
                       <label for="username" class="d-block">Username</label>
-                      <input id="username" type="username" class="form-control pwstrength"
-                      name="username">
+                      <input id="username" type="username" class="form-control"
+                      name="username" required>
 
                     </div>
                     <div class="form-group col-lg-6 col-md-12">
@@ -83,7 +100,9 @@
                     <div class="form-group col-lg-6 col-md-12">
                       <label for="password2" class="d-block">Password Confirmation</label>
                       <input id="password2" type="password" class="form-control"
-                      name="password-confirm">
+                      name="password-confirm" required>
+                      <p class="password2"></p>
+
                     </div>
                   </div>
 
@@ -93,7 +112,7 @@
                   <div class="row">
                     <div class="form-group col-12">
                       <label>Alamat</label>
-                      <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="10"></textarea>
+                      <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="10" required></textarea>
                     </div>
 
                     <div class="form-group col-lg-4 col-md-12">
@@ -135,10 +154,11 @@
                       <label class="custom-control-label" for="agree">I agree with the terms
                         and conditions</label>
                     </div>
+
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block btn-register" disabled="disabled">
                       Register
                     </button>
                   </div>

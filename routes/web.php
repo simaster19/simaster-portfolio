@@ -72,7 +72,7 @@ Route::prefix("admin/")->group(function () {
     Route::post("skill", "store")->name("store-skill");
     Route::get("skill/{id}/edit", "edit")->name("edit-skill");
     Route::put("skill/{id}/update", "update")->name("update-skill");
-    Route::get("skill/{id}/detail", "show")->name("detail-skill");
+    //Route::get("skill/{id}/detail", "show")->name("detail-skill");
     Route::delete("skill/{id}/delete", "destroy")->name("delete-skill");
   });
 

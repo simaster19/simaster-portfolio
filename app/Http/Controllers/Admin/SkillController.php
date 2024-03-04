@@ -12,7 +12,7 @@ use App\Http\Requests\StoreSkillRequest;
 class SkillController extends Controller
 {
   public function index() {
-    $skill = Skill::orderBy("id_skill","desc")->get();
+    $skill = Skill::orderBy("id_skill", "desc")->get();
     return response()->view("App.Admin.Skill.index", [
       "datas" => $skill
     ]);
@@ -23,8 +23,6 @@ class SkillController extends Controller
   }
 
   public function store(Request $request) {
-
-
     $data = Validator::make(
       $request->all(),
       [
@@ -86,17 +84,15 @@ class SkillController extends Controller
 
 
   public function show($id) {
-    $skill = Skill::find($id);
-    return response()->view("App.Admin.Skill.detail");
+    //$skill = Skill::find($id);
+    //return response()->view("App.Admin.Skill.detail");
   }
 
 
 
   public function destroy($id) {
     $skill = Skill::findOrFail($id);
-
     $skill->delete();
-
     return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
   }
 }

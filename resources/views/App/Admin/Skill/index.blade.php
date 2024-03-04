@@ -68,9 +68,7 @@
                                                 <a href="{{ route('edit-skill', $data->id_skill) }}"
                                                     class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('detail-skill', $data->id_skill) }}"
-                                                    class="btn btn-warning btn-sm btn-round"><i class="fas fa-eye"></i>
-                                                </a>
+
                                                 <form action="{{ route('delete-skill', $data->id_skill) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
