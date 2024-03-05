@@ -19,7 +19,7 @@ class DashboardUserController extends Controller
     $user = User::where("nama", "Miftakhul Kirom")->where("role", 1)->get(
       ["nama", "email", "alamat", "foto", "no_hp"]
     )->first();
-    $project = Project::where("status", "FREELANCE")->with(["image"])->get();
+    $project = Project::with(["image"])->get();
     $skill = Skill::all();
     $cv = Cv::where("status", 1)->get()->first();
 

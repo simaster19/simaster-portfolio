@@ -200,6 +200,9 @@
                 style="top: 2px; left: -32px;"></i>
               <h5 class="font-weight-bold mb-1">Web Developer</h5>
               @foreach ($datas['projects'] as $project)
+              @if($project->status != "FREELANCE")
+              @continue
+              @else
               <p class="mb-2">
                 <strong>{{ $project->judul }}</strong> |
                 <small>{{ $project->status }}</small> |
@@ -208,6 +211,7 @@
               <p>
                 {{ $project->keterangan }}
               </p>
+              @endif
               @endforeach
 
 
