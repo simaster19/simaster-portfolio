@@ -23,9 +23,9 @@ class RegisterController extends Controller
       "email" => ["required", "unique:users", "email"],
       "username" => ["required", "min:5", "unique:users"],
       "alamat" => ["required"],
-      "rt" => ["numeric","min:3","max:3"],
-      "rw" => ["numeric","min:3", "max:3"],
-      "kode_pos" => ["numeric", "min:5","max:6"],
+      "rt" => ["numeric", "min:3", "max:3"],
+      "rw" => ["numeric", "min:3", "max:3"],
+      "kode_pos" => ["numeric", "min:5", "max:6"],
 
     ], [
       "nama.required" => "Nama tidak boleh kosong!",
@@ -38,7 +38,7 @@ class RegisterController extends Controller
       "username.required" => "Username tidak boleh kosong!",
       "username.min" => "Panjang karakter kurang!",
       "username.unique" => "Username ini sudah dipakai!",
-      "alamat.required" => "Alamat tidak boleh kosong!"
+      "alamat.required" => "Alamat tidak boleh kosong!",
       "rt.numeric" => "RT Hanya boleh memasukkan angka!",
       "rw.numeric" => "RW Hanya boleh memasukkan angka!",
     ]);
