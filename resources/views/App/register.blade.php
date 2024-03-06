@@ -14,6 +14,10 @@
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ url('Backend/node_modules/selectric/public/selectric.css') }}">
+  
+  {{-- Toastr --}}
+<script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
+
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ url('Backend/assets/css/style.css') }}">

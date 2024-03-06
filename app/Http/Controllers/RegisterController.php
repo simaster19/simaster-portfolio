@@ -20,10 +20,20 @@ class RegisterController extends Controller
       "nama" => ["required", "min:5"],
       "tanggal_lahir" => ["required"],
       "no_hp" => ["required", "numeric"],
-      "email" => ["required"],
-      "username" => ["required", "min:5"],
+      "email" => ["required","unique","email"],
+      "username" => ["required", "min:5","unique"],
       "alamat" => ["required"]
-    ]);
+    ],[
+      "nama.required" => "Nama tidak boleh kosong!",
+      "nama.min" => "Panjang Karakter kurang!",
+      "tanggal_lahir.required" => "Tanggal lahir tidak boleh kosong!",
+      "email.required" => "Alamat email tidak boleh kosong!",
+      "email.unique" => "Email ini sudah dipakai!",
+      "username.required" => "Username tidak boleh kosong!",
+      "username.min" => "Panjang karakter kurang!",
+      "username.unique" => "Username ini sudah dipakai!",
+      "alamat.required" => "Alamat tidak boleh kosong!"
+      ]);
 
 
     //Valdasi

@@ -462,7 +462,7 @@
 
             <div class="text-center">
               <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-              <h4 class="font-weight-light mb-4">{{ $testimonial->keterangan }}</h4>
+              <h6 class="font-weight-light mb-4">{{ $testimonial->keterangan }}</h6>
               <img class="img-fluid rounded-circle mx-auto mb-3"
               src="{{ is_null($testimonial->foto) ? url('Backend/assets/img/avatar/avatar-'.rand(2,5).'.png') : Storage::url('images/testimonial/' . $testimonial->foto) }}"
               style="width: 80px; height: 80px;">
