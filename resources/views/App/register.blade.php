@@ -14,9 +14,9 @@
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ url('Backend/node_modules/selectric/public/selectric.css') }}">
-  
+
   {{-- Toastr --}}
-<script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
+  <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 
 
   <!-- Template CSS -->
@@ -75,7 +75,7 @@
 
                     <div class="form-group col-lg-4 col-md-12">
                       <label for="no_hp">No Handphone</label>
-                      <input id="no_hp" type="text" class="form-control" name="no_hp" required>
+                      <input id="no_hp" type="text" class="form-control" name="no_hp" placeholder="896xxxxxxxxx" required>
                     </div>
                   </div>
 
@@ -137,16 +137,16 @@
                     <div class="form-group col-lg-4 col-md-6">
                       <label>RT</label>
                       <input id="rt" type="text" class="form-control"
-                      name="rt">
+                      name="rt" placeholder="001">
                     </div>
                     <div class="form-group col-lg-4 col-md-6">
                       <label>RW</label>
                       <input id="rw" type="text" class="form-control"
-                      name="rw">
+                      name="rw" placeholder="009">
                     </div>
                     <div class="form-group col-lg-4 col-md-12">
-                      <label>Kode POS</label>
-                      <input type="text" class="form-control">
+                      <label for="kode_pos">Kode POS</label>
+                      <input type="text" name="kode_pos" id="kode_pos" class="form-control" placeholder="54365">
                     </div>
                   </div>
 

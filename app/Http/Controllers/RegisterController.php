@@ -19,21 +19,29 @@ class RegisterController extends Controller
     $data = Validator::make($request->all(), [
       "nama" => ["required", "min:5"],
       "tanggal_lahir" => ["required"],
-      "no_hp" => ["required", "numeric"],
-      "email" => ["required","unique","email"],
-      "username" => ["required", "min:5","unique"],
-      "alamat" => ["required"]
-    ],[
+      "no_hp" => ["required", "numeric", "max:12"],
+      "email" => ["required", "unique:users", "email"],
+      "username" => ["required", "min:5", "unique:users"],
+      "alamat" => ["required"],
+      "rt" => ["numeric","min:3","max:3"],
+      "rw" => ["numeric","min:3", "max:3"],
+      "kode_pos" => ["numeric", "min:5","max:6"],
+
+    ], [
       "nama.required" => "Nama tidak boleh kosong!",
       "nama.min" => "Panjang Karakter kurang!",
       "tanggal_lahir.required" => "Tanggal lahir tidak boleh kosong!",
+      "no_hp.required" => "No HP tidak boleh kosong!",
+      "no_hp.numeric" => "Hanya boleh diisi number!",
       "email.required" => "Alamat email tidak boleh kosong!",
       "email.unique" => "Email ini sudah dipakai!",
       "username.required" => "Username tidak boleh kosong!",
       "username.min" => "Panjang karakter kurang!",
       "username.unique" => "Username ini sudah dipakai!",
       "alamat.required" => "Alamat tidak boleh kosong!"
-      ]);
+      "rt.numeric" => "RT Hanya boleh memasukkan angka!",
+      "rw.numeric" => "RW Hanya boleh memasukkan angka!",
+    ]);
 
 
     //Valdasi
