@@ -14,6 +14,7 @@
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ url('Backend/node_modules/selectric/public/selectric.css') }}">
+<link rel="stylesheet" href="{{ url('Backend/node_modules/izitoast/dist/css/iziToast.min.css') }}">
 
   {{-- Toastr --}}
   <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
@@ -197,6 +198,7 @@
   <!-- Template JS File -->
   <script src="{{ url('Backend/assets/js/scripts.js') }}"></script>
   <script src="{{ url('Backend/assets/js/custom.js') }}"></script>
+  <script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{ url('Backend/assets/js/page/auth-register.js') }}"></script>

@@ -19,13 +19,13 @@ class RegisterController extends Controller
     $data = Validator::make($request->all(), [
       "nama" => ["required", "min:5"],
       "tanggal_lahir" => ["required"],
-      "no_hp" => ["required", "numeric", "max:12"],
-      "email" => ["required", "unique:users", "email"],
-      "username" => ["required", "min:5", "unique:users"],
+      "no_hp" => ["required", "numeric", "digits_between:1,12"],
+      "email" => ["required", "unique:users,email", "email"],
+      "username" => ["required", "min:5", "unique:users,username"],
       "alamat" => ["required"],
-      "rt" => ["numeric", "min:3", "max:3"],
-      "rw" => ["numeric", "min:3", "max:3"],
-      "kode_pos" => ["numeric", "min:5", "max:6"],
+      "rt" => ["numeric", "digits:3", "nullable"],
+      "rw" => ["numeric", "digits:3","nullable"],
+      "kode_pos" => ["numeric", "digits:6","nullable"],
 
     ], [
       "nama.required" => "Nama tidak boleh kosong!",
