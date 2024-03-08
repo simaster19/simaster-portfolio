@@ -12,8 +12,8 @@
 
 <!-- JS Libraies -->
 <script src="{{ url('Backend/node_modules/chart.js/dist/Chart.min.js') }}"></script>
-<script src="{{ url('Backend/node_modules/jqvmap/dist/jquery.vmap.min.js') }}""></script>
-  <script src="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.js') }}"></script>
+<script src="{{ url('Backend/node_modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
+
   <script src="{{ url('Backend/node_modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
 

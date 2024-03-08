@@ -3,8 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Register &mdash; User</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="Portfolio Web" name="keywords">
+    <meta content="Portofolio Web" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url('Frontend/img/favicon.ico') }}" rel="icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -43,6 +48,10 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12 col-sm-12  col-md-12  col-lg-12  col-xl-12">
+                        <div class="login-brand">
+                            <img src="{{ url('Backend/assets/img/unsplash/simaster.jpg') }}" alt="logo"
+                                width="100" class="shadow-light rounded-circle">
+                        </div>
 
                         <div class="card card-primary">
                             <div class="card-header d-block">
@@ -93,7 +102,7 @@
                                         <div class="form-group col-lg-6 col-md-12">
                                             <label for="username" class="d-block">Username</label>
                                             <input id="username" type="username" class="form-control" name="username"
-                                              value="{{ old('username') }}"  required>
+                                                value="{{ old('username') }}" required>
 
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
@@ -120,12 +129,13 @@
                                     <div class="row">
                                         <div class="form-group col-12">
                                             <label>Alamat</label>
-                                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="50"  required>{{ old('alamat') }}</textarea>
+                                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="50" required>{{ old('alamat') }}</textarea>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label>Kota</label>
-                                            <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}">
+                                            <input id="kota" type="text" class="form-control" name="kota"
+                                                value="{{ old('kota') }}">
 
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12">
@@ -135,8 +145,8 @@
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label>Desa</label>
-                                            <input id="desa" type="text" class="form-control"
-                                                name="desa" value="{{ old('desa') }}">
+                                            <input id="desa" type="text" class="form-control" name="desa"
+                                                value="{{ old('desa') }}">
                                         </div>
                                         <div class="form-group col-lg-4 col-md-6">
                                             <label>RT</label>
@@ -151,7 +161,8 @@
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label for="kode_pos">Kode POS</label>
                                             <input type="text" name="kode_pos" id="kode_pos"
-                                                class="form-control" placeholder="54365" value="{{ old('kode_pos') }}">
+                                                class="form-control" placeholder="54365"
+                                                value="{{ old('kode_pos') }}">
                                         </div>
                                     </div>
 

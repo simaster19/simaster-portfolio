@@ -10,18 +10,22 @@ use App\Models\Category;
 
 class Post extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $table = "posts";
-  protected $primaryKey = "id_post";
-  public $keyatype = "int";
-  public $timestamps = true;
+    protected $table = "posts";
+    protected $primaryKey = "id_post";
+    public $keyatype = "int";
+    public $timestamps = true;
 
-  public function user():BelongsTo {
-    return $this->belongsTo(User::class, "id_user", "id_user");
-  }
-  
-  public function category():BelongTo{
-    return $this->belongsTo(Category::class,"id_category","id_category");
-  }
+    protected $guarded = ["id_post"];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, "id_user", "id_user");
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, "id_category", "id_category");
+    }
 }
