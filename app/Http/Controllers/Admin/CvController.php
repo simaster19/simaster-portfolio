@@ -39,7 +39,7 @@ class CvController extends Controller
     );
 
     if ($data->fails()) {
-      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
+      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"))->withInput();
     }
 
     $fileCv = $request->file("file_cv");

@@ -17,7 +17,11 @@
       <a href="{{ route('data-user') }}" class="nav-link"><i class="fas fa-users"></i><span>User</span></a>
     </li>
     <li class="nav-item dropdown">
-      <a href="{{ route('data-post')}}" class="nav-link"><i class="fas fa-pen"></i><span>Post</span></a>
+      <a href="#" class="nav-link has-dropdown"><i class="fas fa-pen"></i><span>Blog</span></a>
+      <ul class="dropdown-menu">
+        <li><a class="nav-link" href="{{route('data-post')}}">Post</a></li>
+        <li><a class="nav-link" href="{{route('data-category')}}">Category</a></li>
+      </ul>
     </li>
     @if(auth()->user()->role == 2)
     @else

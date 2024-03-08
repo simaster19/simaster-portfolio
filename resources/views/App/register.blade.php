@@ -72,13 +72,13 @@
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label for="tanggal_lahir">Tanggal lahir</label>
                                             <input id="tanggal_lahir" type="date" class="form-control"
-                                                name="tanggal_lahir" required>
+                                                name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" required>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label for="no_hp">No Handphone</label>
                                             <input id="no_hp" type="text" class="form-control" name="no_hp"
-                                                placeholder="896xxxxxxxxx" required>
+                                                placeholder="896xxxxxxxxx" value="{{ old('no_hp') }}" required>
                                         </div>
                                     </div>
 
@@ -87,13 +87,13 @@
                                         <div class="form-group col-lg-6 col-md-12">
                                             <label for="email">Email</label>
                                             <input id="email" type="email" class="form-control" name="email"
-                                                placeholder="Email Aktif" required>
+                                                placeholder="Email Aktif" value="{{ old('email') }}" required>
 
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
                                             <label for="username" class="d-block">Username</label>
                                             <input id="username" type="username" class="form-control" name="username"
-                                                required>
+                                              value="{{ old('username') }}"  required>
 
                                         </div>
                                         <div class="form-group col-lg-6 col-md-12">
@@ -120,38 +120,38 @@
                                     <div class="row">
                                         <div class="form-group col-12">
                                             <label>Alamat</label>
-                                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="50" required></textarea>
+                                            <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="50"  required>{{ old('alamat') }}</textarea>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label>Kota</label>
-                                            <input id="kota" type="text" class="form-control" name="kota">
+                                            <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}">
 
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label>Kecamatan</label>
                                             <input id="kecamatan" type="text" class="form-control"
-                                                name="kecamatan">
+                                                name="kecamatan" value="{{ old('kecamatan') }}">
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label>Desa</label>
                                             <input id="desa" type="text" class="form-control"
-                                                name="desa">
+                                                name="desa" value="{{ old('desa') }}">
                                         </div>
                                         <div class="form-group col-lg-4 col-md-6">
                                             <label>RT</label>
                                             <input id="rt" type="text" class="form-control" name="rt"
-                                                placeholder="001">
+                                                placeholder="001" value="{{ old('rt') }}">
                                         </div>
                                         <div class="form-group col-lg-4 col-md-6">
                                             <label>RW</label>
                                             <input id="rw" type="text" class="form-control" name="rw"
-                                                placeholder="009">
+                                                placeholder="009" value="{{ old('rw') }}">
                                         </div>
                                         <div class="form-group col-lg-4 col-md-12">
                                             <label for="kode_pos">Kode POS</label>
                                             <input type="text" name="kode_pos" id="kode_pos"
-                                                class="form-control" placeholder="54365">
+                                                class="form-control" placeholder="54365" value="{{ old('kode_pos') }}">
                                         </div>
                                     </div>
 

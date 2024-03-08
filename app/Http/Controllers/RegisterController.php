@@ -46,7 +46,7 @@ class RegisterController extends Controller
 
     //Valdasi
     if ($data->fails()) {
-      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
+      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"))->withInput();
     }
 
     //Create User

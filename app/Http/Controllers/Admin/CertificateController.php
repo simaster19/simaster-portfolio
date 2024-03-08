@@ -39,7 +39,7 @@ class CertificateController extends Controller
     ]);
 
     if ($data->fails()) {
-      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
+      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"))->withInput();
     }
 
     if ($request->hasFile("gambar")) {

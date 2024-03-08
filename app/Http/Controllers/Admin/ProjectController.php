@@ -58,7 +58,7 @@ class ProjectController extends Controller
         ]);
 
         if ($data->fails()) {
-            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages()));
+            return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(),"topRight"))->withInput();
         }
 
 

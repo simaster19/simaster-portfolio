@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CvController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TestimonialController;
 
@@ -27,10 +28,10 @@ Route::get("/register", [RegisterController::class, "register"])->name("register
 Route::post("/register", [RegisterController::class, "proccessRegister"])->name("proccessRegister");
 
 Route::prefix("admin/")->group(function () {
-  Route::controller(DashboardController::class)->group(function(){
-  Route::get('dashboard', "dashboard")->name("dashboard-admin");
-  Route::get('getMessage', "getMessage")->name("dashboard-getmessage");
-    
+  Route::controller(DashboardController::class)->group(function() {
+    Route::get('dashboard', "dashboard")->name("dashboard-admin");
+    Route::get('getMessage', "getMessage")->name("dashboard-getmessage");
+
   });
 
   //USER
@@ -63,6 +64,16 @@ Route::prefix("admin/")->group(function () {
     Route::put("post/{id}/update", "update")->name("update-post");
     Route::get("post/{id}/detail", "show")->name("detail-post");
     Route::delete("post/{id}/delete", "destroy")->name("delete-post");
+  });
+
+  //Category
+  Route::controller(CategoryController::class)->group(function () {
+    Route::get("category", "index")->name("data-category");
+    Route::get("category/create", "create")->name("create-category");
+    Route::post("category", "store")->name("store-category");
+    Route::get("category/{id}/edit", "edit")->name("edit-category");
+    Route::put("category/{id}/update", "update")->name("update-category");
+    Route::delete("category/{id}/delete", "destroy")->name("delete-category");
   });
 
   //Skill
@@ -121,7 +132,7 @@ Route::prefix("admin/")->group(function () {
 
 // Rute Verifikasi Email
 Route::get('/verify-email', [RegisterController::class, 'showEmailVerificationNotice'])
-     ->name('verification.notice');
+->name('verification.notice');
 Route::get('/verify-email/{id}/{hash}', [RegisterController::class, 'verifyEmail'])
 // ->middleware(['auth', 'signed', 'throttle:6,1'])
 ->name('verification.verify');
