@@ -31,8 +31,8 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Message</th>
-                <th>Dibuat Tanggal</th>
                 <th>Status</th>
+                <th>Dibuat Tanggal</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -52,7 +52,7 @@
                 </td>
 
                 <td>
-                  <div class="buttons">
+                  <div class="d-flex align-items-center gap-2">
 
                     <a href="{{ route('detail-message', $data->id_message) }}"
                       class="btn btn-warning btn-sm btn-round"><i class="fas fa-eye"></i>

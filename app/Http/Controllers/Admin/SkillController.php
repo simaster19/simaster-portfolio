@@ -12,7 +12,7 @@ use App\Http\Requests\StoreSkillRequest;
 class SkillController extends Controller
 {
   public function index() {
-    $skill = Skill::orderBy("id_skill", "desc")->get();
+    $skill = Skill::orderBy("id_skill", "desc")->orderBy("level", "desc")->get();
     return response()->view("App.Admin.Skill.index", [
       "datas" => $skill
     ]);
@@ -26,16 +26,10 @@ class SkillController extends Controller
     $data = Validator::make(
       $request->all(),
       [
-        "nama_skill" => ["required"],
-        "level" => ["required"],
-        "type" => ["required"]
-      ],
-      [
-        "nama_skill.required" => "Nama skill tidak boleh kosong!",
-        "level.required" => "Level tidak boleh kosong!",
-        "type.required" => "Type tidak boleh kosong!"
+        "nama_skill" => ["required", "string"],
+        "level" => ["required", "string"],
+        "type" => ["required", "string"]
       ]
-
     );
 
     if ($data->fails()) {
@@ -62,10 +56,6 @@ class SkillController extends Controller
       "nama_skill" => ["required"],
       "level" => ["required"],
       "type" => ["required"]
-    ], [
-      "nama_skill.required" => "Nama skill tidak boleh kosong!",
-      "level.required" => "Level tidak boleh kosong!",
-      "type.required" => "Type tidak boleh kosong!"
     ]);
 
     if ($data->fails()) {
@@ -81,13 +71,6 @@ class SkillController extends Controller
 
     return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!"));
   }
-
-
-  public function show($id) {
-    //$skill = Skill::find($id);
-    //return response()->view("App.Admin.Skill.detail");
-  }
-
 
 
   public function destroy($id) {

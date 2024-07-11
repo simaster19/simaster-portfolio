@@ -51,7 +51,7 @@
                 <td>{{ \Carbon\Carbon::parse($data->updated_at)->isoFormat('LLLL') }}</td>
 
                 <td>
-                  <div class="buttons">
+                  <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('edit-category', $data->id_category) }}"
                       class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
                     </a>

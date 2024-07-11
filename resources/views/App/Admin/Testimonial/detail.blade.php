@@ -1,10 +1,13 @@
 @extends('App.Admin.index')
-@section('header-title', 'Detail Message')
+@section('header-title', 'Detail Testimonial')
 @section('content')
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
+        <img src="{{ Storage::url('images/testimonial/' . $data->foto) }}" width="300" height="300"
+        class="img img-cover mx-auto d-block img-round" alt="Cover">
+
         <div class="table-responsive">
           <table class="table table-responsive">
             <tr>
@@ -13,22 +16,21 @@
               <td>{{ $data->nama }}</td>
             </tr>
             <tr>
-              <td>Email</td>
+              <td>Project</td>
               <td>:</td>
-              <td>{{ $data->email }}</td>
+              <td>
+                <ul>
+                @foreach($data->project as $project)
+                  <li>{{$project->nama_project}}</li>
+                @endforeach
+                </ul>
+              </td>
             </tr>
             <tr>
-              <td>Message</td>
+              <td>Keterangan</td>
               <td>:</td>
-              <td>{{ $data->message }}</td>
+              <td>{{ $data->keterangan }}</td>
             </tr>
-            <tr>
-              <td>Status</td>
-              <td>:</td>
-              <td>{!! $data->staus == 1 ? '<span class="badge badge-success">Dibaca</span>' : '<span class="badge badge-warning">Belum dibaca</span>'!!}</td>
-
-            </tr>
-
           </table>
         </div>
       </div>
