@@ -41,7 +41,7 @@ class ProjectController extends Controller
       "image.*" => ["required", "image", "mimes:jpg,png,webp"],
       "jenis_project" => ["required"],
       "judul" => ["required", "string", "min:5"],
-      "dibuat_dengan" => ["required", "string"],
+      "dibuat_dengan" => ["required"],
       "status" => ["required", "string"]
     ]);
 
