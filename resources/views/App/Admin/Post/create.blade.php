@@ -55,6 +55,7 @@
     </form>
 @endsection
 @push('script-js')
+
     <script src="{{ url('Backend/node_modules/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.js') }}"></script>
 @endpush
