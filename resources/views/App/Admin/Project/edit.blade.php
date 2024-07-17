@@ -12,11 +12,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="cover">Cover</label>
-                        <input type="file" class="form-control" id="cover" name="cover">
+                        <input type="file" class="" id="cover" name="cover">
                     </div>
                     <div class="form-group col-md-12">
                         <label for="image">Image</label>
-                        <input type="file" class="form-control" id="image" name="image[]" multiple>
+                        <input type="file" class="" id="image" name="image[]" multiple>
                     </div>
 
                     <div class="form-group col-md-4">
@@ -72,7 +72,7 @@
                             </option>
                             @php
                                 for ($i = date('Y'); $i >= date('Y') - 20; $i--) {
-                                    echo "<option value='{$i}'>{$i}</option>";
+                                    echo "<option value='{$i}' $i == $data->tahun_project ? 'selected' : ''>{$i}</option>";
                                 }
                             @endphp
 

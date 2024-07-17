@@ -15,9 +15,9 @@ use Intervention\Image\ImageManagerStatic as Image;
 class TestimonialController extends Controller
 {
   public function index() {
-    $testimonial = Testimonial::with(["project" => function ($query){
-      $query->select("id_project","judul");
-     } ])->orderBy("id_testimonial","desc")->get();
+    $testimonial = Testimonial::with(["project" => function ($query) {
+      $query->select("id_project", "judul");
+    }])->orderBy("id_testimonial", "desc")->get();
 
     return response()->view("App.Admin.Testimonial.index", [
       "datas" => $testimonial
@@ -33,21 +33,15 @@ class TestimonialController extends Controller
     $data = Validator::make($request->all(), [
       "nama_client" => ["required"],
       "id_project" => ["required", "numeric"]
-    ], [
-      "nama_client.required" => "Nama client tidak boleh kosong!",
-      "id_project.required" => "Nama project tidak boleh kosong!",
-      "id_project.numeric" => "Error"
-
     ]);
 
     if ($data->fails()) {
       return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"))->withInput();
-
     }
 
     if ($request->hasFile("foto")) {
       $foto = $request->file("foto");
-      $fotoName = time() . "." . $foto->getClientOriginalExtension();
+      $fotoName = "Testimonial-".time() . "." . $foto->getClientOriginalExtension();
       $tmp = "images/testimonial/" . $fotoName;
 
       if (!File::exists("public/images/testimonial/")) {
@@ -85,11 +79,6 @@ class TestimonialController extends Controller
     $data = Validator::make($request->all(), [
       "nama_client" => ["required"],
       "id_project" => ["required", "numeric"]
-
-    ], [
-      "nama_client.required" => "Nama client tidak boleh kosong!",
-      "id_project.required" => "Nama project tidak boleh kosong!",
-      "id_project.numeric" => "Error"
     ]);
 
     if ($data->fails()) {
@@ -99,7 +88,7 @@ class TestimonialController extends Controller
     $testimonial = Testimonial::where("id_testimonial", $id)->get()->first();
     if ($request->hasFile("foto")) {
       $foto = $request->file("foto");
-      $fotoName = time() . "." . $foto->getClientOriginalExtension();
+      $fotoName = "Testimonial-".time() . "." . $foto->getClientOriginalExtension();
       $tmp = "images/testimonial/" . $fotoName;
 
       if (!File::exists("public/images/testimonial/")) {
@@ -126,11 +115,18 @@ class TestimonialController extends Controller
 
     return redirect()->route("data-testimonial")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!", "topRight"));
   }
+
+  public function show($id) {
+    $testimonial = Testimonial::with(["project"])->find($id);
+    return response()->view("App.Admin.Testimonial.detail", [
+      "data" => $testimonial
+    ]);
+
+  }
   public function destroy($id) {
     $testimonial = Testimonial::find($id);
 
     Storage::disk("public")->delete("images/testimonial/" . $testimonial->gambar);
-
     $testimonial->delete();
 
     return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));

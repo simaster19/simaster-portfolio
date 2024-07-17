@@ -37,7 +37,7 @@
                 <th>Nama</th>
                 <th>Judul</th>
                 <th>Gambar</th>
-                <th>Content</th>
+
                 <th>Tanggal Posting</th>
                 <th>Action</th>
               </tr>
@@ -53,13 +53,14 @@
                   height="50px"></td>
                 <td>{{ $data->user->nama }}</td>
                 <td>{{ $data->judul }}</td>
-                <td>{{ $data->gambar }}</td>
-                <td>{{ $data->content }}</td>
+                <td><img class="img mx-auto d-block"
+                  src="{{ Storage::url('images/post/cover/' . $data->gambar) }}" width="70px"
+                  height="70px"></td>
                 <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLL') }}
                 </td>
 
                 <td>
-                  <div class="buttons">
+                  <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('edit-post', $data->id_post) }}"
                       class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
                     </a>

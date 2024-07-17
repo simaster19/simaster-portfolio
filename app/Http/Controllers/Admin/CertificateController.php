@@ -16,7 +16,7 @@ use App\Helpers\ToastrMessage;
 class CertificateController extends Controller
 {
   public function index() {
-    $certificate = Certificate::orderBy("id_certificate","desc")->get();
+    $certificate = Certificate::orderBy("id_certificate", "desc")->get();
 
     return response()->view("App.Admin.Certificate.index", [
       "datas" => $certificate
@@ -31,11 +31,6 @@ class CertificateController extends Controller
       "gambar" => ["required", "image", "mimes:jpg,png,webp"],
       "judul" => ["required"],
       "nama_online_course" => ["required"],
-    ], [
-      "gambar.required" => "Gambar tidak boleh kosong!",
-      "gambar.mimes" => "File harus berformat jpg, png, webp",
-      "judul.required" => "Judul tidak boleh kosong!",
-      "nama_online_course.required" => "Online course wajib diisi!"
     ]);
 
     if ($data->fails()) {
@@ -45,7 +40,7 @@ class CertificateController extends Controller
     if ($request->hasFile("gambar")) {
       $gambar = $request->file("gambar");
 
-      $gambarName = time() . "." . $gambar->getClientOriginalExtension();
+      $gambarName = "Certificate-".time() . "." . $gambar->getClientOriginalExtension();
       $tmp = "images/certificate/" . $gambarName;
 
       if (!File::exists("public/images/certificate/")) {
@@ -79,64 +74,58 @@ class CertificateController extends Controller
       "gambar" => ["image", "mimes:jpg,png,webp"],
       "judul" => ["required"],
       "nama_online_course" => ["required"],
-    ],
-      [
-        "gambar.mimes" => "File harus berformat jpg, png, webp",
-        "judul.required" => "Judul tidak boleh kosong!",
-        "nama_online_course.required" => "Online course wajib diisi!"
+    ]);
 
-      ]);
-
-      if ($data->fails()) {
-        return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
-      }
-
-      $certificate = Certificate::find($id);
-
-      if ($request->hasFile("gambar")) {
-        $gambar = $request->file("gambar");
-
-        $gambarName = time() . "." . $gambar->getClientOriginalExtension();
-        $tmp = "images/certificate/" . $gambarName;
-
-        Storage::disk("public")->delete("images/certificate/" . $certificate->gambar);
-
-        if (!File::exists("public/images/certificate/")) {
-          File::makeDirectory("public/images/certificate/", 0777, true, true);
-        }
-
-        Storage::disk("public")->put($tmp, file_get_contents($gambar->getRealPath()));
-
-        $gambarImage = $gambarName;
-      } else {
-
-        $gambarImage = $certificate->gambar;
-      }
-
-      $certificate->update([
-        "gambar" => $gambarImage,
-        "nama_online_course" => $request->input("nama_online_course"),
-        "judul" => $request->input("judul"),
-        "slug" => Str::slug($request->input("judul")),
-        "link_certificate" => $request->input("link_certificate")
-      ]);
-
-      return redirect()->route("data-certificate")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!", "topRight"));
+    if ($data->fails()) {
+      return back()->with("messageError", ToastrMessage::message("error", "Error", $data->errors()->messages(), "topRight"));
     }
-    public function show($id) {
-      $certificate = Certificate::find($id);
 
-      return response()->view("App.Admin.Certificate.detail", [
-        "data" => $certificate
-      ]);
-    }
-    public function destroy($id) {
-      $certificate = Certificate::find($id);
+    $certificate = Certificate::find($id);
+
+    if ($request->hasFile("gambar")) {
+      $gambar = $request->file("gambar");
+
+      $gambarName = "Certificate-".time() . "." . $gambar->getClientOriginalExtension();
+      $tmp = "images/certificate/" . $gambarName;
 
       Storage::disk("public")->delete("images/certificate/" . $certificate->gambar);
 
-      $certificate->delete();
+      if (!File::exists("public/images/certificate/")) {
+        File::makeDirectory("public/images/certificate/", 0777, true, true);
+      }
 
-      return redirect()->route("data-certificate")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));
+      Storage::disk("public")->put($tmp, file_get_contents($gambar->getRealPath()));
+
+      $gambarImage = $gambarName;
+    } else {
+
+      $gambarImage = $certificate->gambar;
     }
+
+    $certificate->update([
+      "gambar" => $gambarImage,
+      "nama_online_course" => $request->input("nama_online_course"),
+      "judul" => $request->input("judul"),
+      "slug" => Str::slug($request->input("judul")),
+      "link_certificate" => $request->input("link_certificate")
+    ]);
+
+    return redirect()->route("data-certificate")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!", "topRight"));
   }
+  public function show($id) {
+    $certificate = Certificate::find($id);
+
+    return response()->view("App.Admin.Certificate.detail", [
+      "data" => $certificate
+    ]);
+  }
+  public function destroy($id) {
+    $certificate = Certificate::find($id);
+
+    Storage::disk("public")->delete("images/certificate/" . $certificate->gambar);
+
+    $certificate->delete();
+
+    return redirect()->route("data-certificate")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));
+  }
+}

@@ -14,7 +14,6 @@ class LoginController extends Controller
     if (Auth::viaRemember() || Auth::check()) {
       return redirect()->route("dashboard-admin");
     }
-    
     return response()->view("App.index");
   }
 
@@ -43,6 +42,7 @@ class LoginController extends Controller
       config(["session.lifetime" => $sessionDuration]);
 
       if ($user->role !== 0) {
+        
         if ($remember_me) {
           $rememberToken = $user->createRememberToken();
           $cookie = Cookie::make(

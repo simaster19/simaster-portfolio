@@ -62,7 +62,7 @@
                   @endif
                 </td>
                 <td>
-                  <div class="buttons">
+                  <div class="d-flex align-items-center gap-2">
                     <a href="{{ route('edit-user', $data->id_user) }}"
                       class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
                     </a>
