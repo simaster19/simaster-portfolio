@@ -13,58 +13,58 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Message;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens,
-        HasFactory,
-        Notifiable;
+  use HasApiTokens,
+  HasFactory,
+  Notifiable,
+  HasRoles;
 
-    protected $table = "users";
-    protected $primaryKey = "id_user";
-    public $keyType = "int";
-    public $timestamps = true;
-
-
-
-    protected $guarded = [
-        "id_user"
-    ];
+  protected $table = "users";
+  protected $primaryKey = "id_user";
+  public $keyType = "int";
+  public $timestamps = true;
 
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+
+  protected $guarded = [
+    "id_user"
+  ];
 
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
-    public function createRememberToken()
-    {
-        $token = Str::random(60);
-        $this->update(['remember_token' => hash('sha256', $token)]);
-
-        return $token;
-    }
-
-    public function validateRememberToken($token)
-    {
-        return hash_equals($this->remember_token, hash('sha256', $token));
-    }
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
 
 
-    public function message(): HasMany
-    {
-        return $this->hasMany(Message::class, "id_user", "id_user");
-    }
-    
-    public function post(): HasMany
-    {
-        return $this->hasMany(Post::class, "id_user", "id_user");
-    }
+  protected $casts = [
+    'email_verified_at' => 'datetime',
+    'password' => 'hashed',
+  ];
+
+  public function createRememberToken() {
+    $token = Str::random(60);
+    $this->update(['remember_token' => hash('sha256', $token)]);
+
+    return $token;
+  }
+
+  public function validateRememberToken($token) {
+    return hash_equals($this->remember_token, hash('sha256', $token));
+  }
+
+
+  public function message(): HasMany
+  {
+    return $this->hasMany(Message::class, "id_user", "id_user");
+  }
+
+  public function post(): HasMany
+  {
+    return $this->hasMany(Post::class, "id_user", "id_user");
+  }
 }

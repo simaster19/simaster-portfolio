@@ -41,8 +41,7 @@ class LoginController extends Controller
       $sessionDuration = $remember_me ? $rememberDuration : config('session.lifetime');
       config(["session.lifetime" => $sessionDuration]);
 
-      if ($user->role !== 0) {
-        
+      if ($user->status !== 0) {
         if ($remember_me) {
           $rememberToken = $user->createRememberToken();
           $cookie = Cookie::make(
