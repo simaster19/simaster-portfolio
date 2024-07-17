@@ -8,6 +8,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Helpers\ToastrMessage;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -18,29 +20,15 @@ class RegisterController extends Controller
   public function proccessRegister(Request $request) {
     $data = Validator::make($request->all(), [
       "nama" => ["required", "min:5"],
-      "tanggal_lahir" => ["required"],
+      "tanggal_lahir" => ["required", "date"],
       "no_hp" => ["required", "numeric", "digits_between:1,12"],
       "email" => ["required", "unique:users,email", "email"],
       "username" => ["required", "min:5", "unique:users,username"],
       "alamat" => ["required"],
       "rt" => ["numeric", "digits:3", "nullable"],
-      "rw" => ["numeric", "digits:3","nullable"],
-      "kode_pos" => ["numeric", "digits:6","nullable"],
+      "rw" => ["numeric", "digits:3", "nullable"],
+      "kode_pos" => ["numeric", "digits:6", "nullable"],
 
-    ], [
-      "nama.required" => "Nama tidak boleh kosong!",
-      "nama.min" => "Panjang Karakter kurang!",
-      "tanggal_lahir.required" => "Tanggal lahir tidak boleh kosong!",
-      "no_hp.required" => "No HP tidak boleh kosong!",
-      "no_hp.numeric" => "Hanya boleh diisi number!",
-      "email.required" => "Alamat email tidak boleh kosong!",
-      "email.unique" => "Email ini sudah dipakai!",
-      "username.required" => "Username tidak boleh kosong!",
-      "username.min" => "Panjang karakter kurang!",
-      "username.unique" => "Username ini sudah dipakai!",
-      "alamat.required" => "Alamat tidak boleh kosong!",
-      "rt.numeric" => "RT Hanya boleh memasukkan angka!",
-      "rw.numeric" => "RW Hanya boleh memasukkan angka!",
     ]);
 
 
@@ -61,9 +49,14 @@ class RegisterController extends Controller
       "alamat" => $request->input("alamat")
     ]);
 
+    //Role Peemission
+    $user->assignRole("pengguna");
+    $user->syncPermissions([
+      "create posts", "read posts", "update posts", "delete posts", "view statistic", "upload media", "create category", "read category", "update category", "delete category", "create labels", "read labels", "update labels", "delete labels"
+    ]);
+
     // Kirim email verifikasi
     event(new Registered($user));
-
     return redirect()->route("login")->with("message", "Email verifikasi berhasil dikirim!, Check inbox/spam di Email anda.");
   }
 
@@ -88,7 +81,7 @@ class RegisterController extends Controller
     }
 
 
-    return redirect('/login')->with('message', "Akun anda berhasil verifikasi!");
+    return redirect('/login')->with('message', "Akun anda berhasil di verifikasi!");
   }
 
   // Metode untuk mengirim ulang email verifikasi
