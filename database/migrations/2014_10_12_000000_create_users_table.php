@@ -33,6 +33,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->dateTime("last_login")->nullable(true)->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

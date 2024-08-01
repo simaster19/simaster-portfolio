@@ -8,18 +8,24 @@ use App\Models\Skill;
 use Illuminate\Support\Facades\Validator;
 use App\Helpers\ToastrMessage;
 use App\Http\Requests\StoreSkillRequest;
+use App\Helpers\ListBahasaPemograman;
 
 class SkillController extends Controller
 {
   public function index() {
-    $skill = Skill::orderBy("id_skill", "desc")->orderBy("level", "desc")->get();
+    $skill = Skill::orderBy("id_skill", "desc")->orderBy("nama_skill", "asc")->get();
     return response()->view("App.Admin.Skill.index", [
       "datas" => $skill
     ]);
   }
 
   public function create() {
-    return response()->view("App.Admin.Skill.create");
+    $listSkill = ListBahasaPemograman::class;
+
+    return response()->view("App.Admin.Skill.create", [
+      "levelSkill" => $listSkill::levelSkill(),
+      "typeSkill" => $listSkill::typeSkill()
+    ]);
   }
 
   public function store(Request $request) {
@@ -46,8 +52,11 @@ class SkillController extends Controller
 
   public function edit($id) {
     $skill = Skill::where("id_skill", $id)->get()->first();
+    $listSkill = ListBahasaPemograman::class;
     return response()->view("App.Admin.Skill.edit", [
-      "data" => $skill
+      "data" => $skill,
+            "levelSkill" => $listSkill::levelSkill(),
+      "typeSkill" => $listSkill::typeSkill()
     ]);
   }
 

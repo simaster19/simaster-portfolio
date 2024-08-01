@@ -37,7 +37,7 @@
         class="fas fa-file"></i><span>Certificate</span></a>
     </li>
     <li class="nav-item dropdown">
-      <a href="{{ route('data-cv') }}" class="nav-link"><i class="fas fa-file-archive"></i><span>CV</span></a>
+      <a href="{{ route('data-cv') }}" class="nav-link"><i class="fas fa-file-pdf"></i><span>CV</span></a>
     </li>
     @endif
     <li class="nav-item dropdown">
@@ -50,34 +50,19 @@
 
     <li class="menu-header">Lainnya</li>
     <li class="nav-item dropdown">
-      <a href="#" class="nav-link has-dropdown"><i class="fas fa-pen"></i><span>Source Code</span></a>
-      <ul class="dropdown-menu">
-        <li><a class="nav-link" href="#">Gratis</a></li>
-        <li><a class="nav-link" href="#">Premium</a></li>
-      </ul>
+      <a href="#" class="nav-link" onclick="return alert('Under Maintenance')"><i class="fas fa-file-archive"></i><span>Source Code</span></a>
+
     </li>
     <li class="nav-item dropdown">
-      <a href="#" class="nav-link has-dropdown"><i class="fas fa-pen"></i><span>E-Book</span></a>
-      <ul class="dropdown-menu">
-        <li><a class="nav-link" href="#">Gratis</a></li>
-        <li><a class="nav-link" href="#">Premium</a></li>
-      </ul>
+      <a href="#" class="nav-link" onclick="return alert('Under Maintenance')"><i class="fas fa-book"></i><span>E-Book</span></a>
     </li>
-        <li class="nav-item dropdown">
+    <li class="nav-item dropdown">
       <a href="#" class="nav-link has-dropdown"><i class="fas fa-pen"></i><span>Tutorial</span></a>
       <ul class="dropdown-menu">
         <li><a class="nav-link" href="#">gg</a></li>
         <li><a class="nav-link" href="#">gg</a></li>
       </ul>
     </li>
-
-
-
-
-
-
-
-
 
 
   </ul>

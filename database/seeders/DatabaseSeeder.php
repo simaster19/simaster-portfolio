@@ -11,6 +11,8 @@ use Database\Seeders\Seeder\ProjectSeeder;
 use Database\Seeders\Seeder\PostSeeder;
 use Database\Seeders\Seeder\MessageSeeder;
 use Database\Seeders\Seeder\ImageSeeder;
+use Database\Seeders\Seeder\CvSeeder;
+use Database\Seeders\Seeder\CertificateSeeder;
 use Database\Seeders\Seeder\TestimonialSeeder;
 use Database\Seeders\Seeder\RolePermissionSeeder;
 
@@ -27,6 +29,8 @@ class DatabaseSeeder extends Seeder
       SkillSeeder::class,
       ProjectSeeder::class,
       PostSeeder::class,
+      CertificateSeeder::class,
+      CvSeeder::class,
       MessageSeeder::class,
       ImageSeeder::class,
       TestimonialSeeder::class,

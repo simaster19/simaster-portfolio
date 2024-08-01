@@ -4,28 +4,29 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
+
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-responsive">
             <tr>
-              <td>Nama</td>
-              <td>:</td>
+              <th>Nama</th>
+              <th>:</th>
               <td>{{ $data->nama }}</td>
             </tr>
             <tr>
-              <td>Email</td>
-              <td>:</td>
+              <th>Email</th>
+              <th>:</th>
               <td>{{ $data->email }}</td>
             </tr>
             <tr>
-              <td>Message</td>
-              <td>:</td>
+              <th>Message</th>
+              <th>:</th>
               <td>{{ $data->message }}</td>
             </tr>
             <tr>
-              <td>Status</td>
-              <td>:</td>
-              <td>{!! $data->staus == 1 ? '<span class="badge badge-success">Dibaca</span>' : '<span class="badge badge-warning">Belum dibaca</span>'!!}</td>
+              <th>Status</th>
+              <th>:</th>
+              <td>{!! $data->status == 1 ? '<span class="badge badge-success">Dibaca</span>' : '<span class="badge badge-warning">Belum dibaca</span>'!!}</td>
 
             </tr>
 

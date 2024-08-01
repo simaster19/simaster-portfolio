@@ -26,18 +26,19 @@
           <label for="level">Level</label>
           <select name="level" id="level" class="form-control">
             <option value="">--Pilih--</option>
-            <option value="BEGINNER">BEGINNER</option>
-            <option value="INTERMEDIATE">INTERMEDIATE</option>
-            <option value="PRO">PRO</option>
+            @foreach ($levelSkill as $level_skill)
+            <option value="{{ $level_skill }}">{{ $level_skill }}</option>
+            @endforeach
+
           </select>
         </div>
         <div class="form-group col-md-4">
           <label for="type">Type</label>
           <select name="type" id="type" class="form-control" required>
             <option value="">--Pilih--</option>
-            <option value="BAHASA">BAHASA</option>
-            <option value="FRAMEWORK">FRAMEWORK</option>
-            <option value="LAINNYA">LAINNYA</option>
+            @foreach ($typeSkill as $type_skill)
+            <option value="{{ $type_skill }}">{{ $type_skill }}</option>
+            @endforeach
           </select>
         </div>
       </div>

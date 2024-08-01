@@ -28,9 +28,11 @@ class ProjectController extends Controller
     ]);
   }
   public function create() {
-    $listBahasa = ListBahasaPemograman::listBahasa();
+    $listBahasa = ListBahasaPemograman::class;
     return response()->view("App.Admin.Project.create", [
-      "listBahasa" => $listBahasa
+      "listBahasa" => $listBahasa::listBahasa(),
+      "jenisProject" => $listBahasa::jenisProject(),
+      "statusProject" => $listBahasa::statusProject()
     ]);
   }
 
@@ -116,10 +118,13 @@ class ProjectController extends Controller
 
   public function edit($id) {
     $project = Project::with(["image"])->where("id_project", $id)->get()->first();
-    $listBahasa = ListBahasaPemograman::listBahasa();
+    $listBahasa = ListBahasaPemograman::class;
     return response()->view("App.Admin.Project.edit", [
       "data" => $project,
-      "listBahasa" => $listBahasa
+      "listBahasa" => $listBahasa::listBahasa(),
+            "jenisProject" => $listBahasa::jenisProject(),
+      "statusProject" => $listBahasa::statusProject()
+ 
     ]);
   }
   public function update(Request $request, $id) {

@@ -48,7 +48,7 @@
 
                 <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                 </td>
-                <td>{{ \Carbon\Carbon::parse($data->last_login)->isoFormat('LLLL') }}</td>
+                <td>{{$data->last_login == null ? '': \Carbon\Carbon::parse($data->last_login)->isoFormat('LLLL') }}</td>
                 <td>
                   @if ($data->status == 1)
                   <div class="badge badge-success">
