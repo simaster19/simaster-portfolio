@@ -56,26 +56,29 @@ class SkillController extends Controller
       if (!File::exists("public/images/logo/")) {
         File::makeDirectory("public/images/logo/", 0777, true, true);
       }
-      
-      $logoImage = Image::make($logo->getRealPath())->fit(600, 600);
-      $imagick = new Imagick($logo->getRealPath());
+      // Load the image with Intervention Image
+      $image = Image::make($logo->getRealPath());
 
-      // Convert background to white first
-      $imagick->setImageAlphaChannel(\Imagick::ALPHACHANNEL_SET);
-      $imagick->setBackgroundColor(new ImagickPixel('white'));
-      $imagick->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+      // Resize canvas and set background to white
+      $image->resizeCanvas($image->width(), $image->height(), 'center', false, '#ffffff');
 
-      // Convert white background to transparent
-      $imagick->transparentPaintImage(new ImagickPixel('white'), 0, 65535, false);
+      // Convert to PNG format
+      $image->encode('png');
 
-      // Simpan gambar dengan latar belakang transparan ke storage Laravel
-      $logoImage = Image::make($imagick);
-      Storage::disk("public")->put($tmp, $logoImage->encode('png')->stream());
+      // Get the image core for Imagick manipulation
+      $imagick = $image->getCore();
+
+      // Change white background to transparent
+      $imagick->setImageFormat('png');
+      $imagick->setImageAlphaChannel(Imagick::ALPHACHANNEL_SET);
+      $imagick->transparentPaintImage('#ffffff', 0, 0, false);
+
+      // Save the image to storage
+      Storage::disk('public')->put($tmp, $imagick->getImageBlob());
 
 
 
-      Storage::disk("public")->put($tmp,
-        $logoImage->stream());
+      // Storage::disk("public")->put($tmp,$logoImage->stream());
       $imageLogo = $logoName;
 
     }
