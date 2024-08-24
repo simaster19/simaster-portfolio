@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Imagick;
 use Illuminate\Http\Request;
 use App\Models\Skill;
 use Illuminate\Support\Facades\Validator;
@@ -60,19 +61,13 @@ class SkillController extends Controller
       // Buat latar belakang menjadi putih terlebih dahulu
       $logoImage->resizeCanvas(600, 600, 'center', false, 'ffffff');
       $logoImage->encode("png");
-
+      
+      $imagick = new Imagick();
       // Ubah latar belakang putih menjadi transparan
-      $logoImage->getCore()->alphaBlending(false);
-      $logoImage->getCore()->saveAlpha(true);
+      $imagick = $logoImage->getCore(); // Mengambil core Imagick instance
+      $imagick->setImageAlphaChannel(\Imagick::ALPHACHANNEL_SET);
+      $imagick->transparentPaintImage('#ffffff', 0, 0, false);
 
-      for ($x = 0; $x < $logoImage->width(); $x++) {
-        for ($y = 0; $y < $logoImage->height(); $y++) {
-          $pixelColor = $logoImage->pickColor($x, $y, 'array');
-          if ($pixelColor[0] == 255 && $pixelColor[1] == 255 && $pixelColor[2] == 255) {
-            $logoImage->pixel('rgba(255, 255, 255, 0)', $x, $y);
-          }
-        }
-      }
 
 
       Storage::disk("public")->put($tmp,
