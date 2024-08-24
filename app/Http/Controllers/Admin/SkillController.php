@@ -58,16 +58,17 @@ class SkillController extends Controller
       }// Load the image with Intervention Image
         $image = Image::make($logo->getRealPath());
 
-        // Resize canvas and set background to white
-        $image->resizeCanvas($image->width(), $image->height(), 'center', false, '#ffffff');
+        // Create a white background image with the same size
+        $background = Image::canvas($image->width(), $image->height(), '#ffffff');
+
+        // Insert the loaded image onto the white background
+        $background->insert($image, 'center');
 
         // Convert to PNG format
-        $image->encode('png');
+        $background->encode('png');
 
         // Save the image to storage
-        Storage::disk('public')->put($tmp, (string) $image);
-
-
+        Storage::disk('public')->put($tmp, (string) $background);
 
 
       // Storage::disk("public")->put($tmp,$logoImage->stream());
