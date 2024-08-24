@@ -231,11 +231,11 @@ My Article
 <h2 class="mt-2">You can read my article for free.</h2>
 </div>
 <div class="row g-4">
+@foreach($datas['posts'] as $post)
 <div
 class="col-lg-4 col-md-6 wow zoomIn"
 data-wow-delay="0.1s"
 >
-@foreach($datas['posts'] as $post)
 <div
 class="service-item d-flex flex-column justify-content-center text-center rounded"
 >
@@ -255,8 +255,8 @@ alt=""
 >
 </div>
 
-@endforeach
 </div>
+@endforeach
 
 </div>
 </div>
