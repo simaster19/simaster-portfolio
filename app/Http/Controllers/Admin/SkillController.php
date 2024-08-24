@@ -61,12 +61,18 @@ class SkillController extends Controller
       $logoImage->resizeCanvas(600, 600, 'center', false, 'ffffff');
       $logoImage->encode("png");
 
-      $logoImage->getCore()->each(function($pixel) {
-        if ($pixel->r == 255 && $pixel->g == 255 && $pixel->b == 255) {
-          $pixel->a = 0;
-        }
-      });
+      // Ubah latar belakang putih menjadi transparan
+      $logoImage->getCore()->alphaBlending(false);
+      $logoImage->getCore()->saveAlpha(true);
 
+      for ($x = 0; $x < $logoImage->width(); $x++) {
+        for ($y = 0; $y < $logoImage->height(); $y++) {
+          $pixelColor = $logoImage->pickColor($x, $y, 'array');
+          if ($pixelColor[0] == 255 && $pixelColor[1] == 255 && $pixelColor[2] == 255) {
+            $logoImage->pixel('rgba(255, 255, 255, 0)', $x, $y);
+          }
+        }
+      }
 
 
       Storage::disk("public")->put($tmp,
@@ -163,7 +169,7 @@ class SkillController extends Controller
     $skill = Skill::findOrFail($id);
     if (!$skill->logo == null || !$skill->logo == "") {
       Storage::disk("public")->delete("images/logo/" . $skill->logo);
-    } 
+    }
     $skill->delete();
     return redirect()->route("data-skill")->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
   }
