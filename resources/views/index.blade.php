@@ -161,6 +161,11 @@ href="https://github.com/simaster19"
 ></a>
 <a
 class="btn btn-outline-primary btn-square me-3"
+href="https://youtube.com/playlist?list=PLrv8ONZDrRJSWd8q5J4bLWa6pB1Tju9RY"
+><i class="fab fa-youtube"></i
+></a>
+<a
+class="btn btn-outline-primary btn-square me-3"
 href="https://instagram.com/simaster19"
 ><i class="fab fa-instagram"></i
 ></a>
@@ -246,7 +251,7 @@ src="{{ Storage::url('images/post/cover/'.$post->gambar)}}"
 alt=""
 />
 </div>
-<h5 class="mb-3">{{ $post->judul}}</h5>
+<h5 class="mb-3">{!! $post->judul!!}</h5>
 <p>
 {{$post->content}}
 </p>
@@ -332,7 +337,7 @@ class="fa fa-plus fa-2x text-primary"
 <a
 class="h5 d-block text-white mt-1 mb-0"
 href=""
->Project Name</a
+>{{$project->judul}}</a
 >
 </div>
 </div>
@@ -362,7 +367,7 @@ class="fa fa-plus fa-2x text-primary"
 <a
 class="h5 d-block text-white mt-1 mb-0"
 href=""
->Project Name</a
+>{{$project->judul}}</a
 >
 </div>
 </div>
@@ -392,7 +397,7 @@ class="fa fa-plus fa-2x text-primary"
 <a
 class="h5 d-block text-white mt-1 mb-0"
 href=""
->Project Name</a
+>{{ $project->judul}}</a
 >
 </div>
 </div>
@@ -421,23 +426,15 @@ My Skills
 </h6>
 <h2 class="mt-2">Abilities that I have ever tried.</h2>
 </div>
-<div class="table table-responsive">
-<table
-border="0"
-class="table table-responsive text-center"
->
-<thead>
-<tr>
-<th>Nama Skill</th>
-<th>Level</th>
-</tr>
-<tr>
-<td>Laravel</td>
-<td>Intermediate</td>
-</tr>
-</thead>
-</table>
+
+<div class="skill-logo col-lg-12 col-md-12 col-sm-12 d-inline d-flex flex-wrap gap-3 justify-content-center align-items-center text-center">
+@foreach($datas["skills"] as $skill)
+<img src="{{url('Frontend/logo.png')}}" title="{{$skill->nama_skill}}" width="80px" height="60px" class="image" style="
+filter: grayscale(100%);
+">
+@endforeach
 </div>
+
 </div>
 </div>
 <!-- Skill End -->
@@ -584,16 +581,13 @@ Kendal, Jawa Tengah
 >miftakhulkirom@gmail.com
 </p>
 <div class="d-flex pt-2">
-<a class="btn btn-outline-light btn-social" href=""
-><i class="fab fa-twitter"></i
+<a class="btn btn-outline-light btn-social" href="https://github.com/simaster19"
+><i class="fab fa-github"></i
 ></a>
-<a class="btn btn-outline-light btn-social" href=""
-><i class="fab fa-facebook-f"></i
-></a>
-<a class="btn btn-outline-light btn-social" href=""
+<a class="btn btn-outline-light btn-social" href="https://youtube.com/playlist?list=PLrv8ONZDrRJSWd8q5J4bLWa6pB1Tju9RY"
 ><i class="fab fa-youtube"></i
 ></a>
-<a class="btn btn-outline-light btn-social" href=""
+<a class="btn btn-outline-light btn-social" href="https://instagram.com/simaster19"
 ><i class="fab fa-instagram"></i
 ></a>
 <a class="btn btn-outline-light btn-social" href=""
@@ -604,9 +598,7 @@ Kendal, Jawa Tengah
 <div class="col-md-6 col-lg-6">
 <h5 class="text-white mb-4">Subscribe Me</h5>
 <p>
-Lorem ipsum dolor sit amet elit. Phasellus nec
-pretium mi. Curabitur facilisis ornare velit non
-vulpu
+If you subscribe, you can get notification from my Article.
 </p>
 <div class="position-relative w-100 mt-3">
 <input

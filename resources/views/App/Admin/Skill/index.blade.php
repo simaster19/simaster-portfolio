@@ -34,6 +34,7 @@
                                     <th class="text-center">
                                         #
                                     </th>
+                                    <th>Logo</th>
                                     <th>Skill</th>
                                     <th>Level</th>
                                     <th>Type</th>
@@ -48,6 +49,7 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
+                                        <td>{{$data->logo}}</td>
                                         <td><strong>{{ $data->nama_skill }}</strong></td>
                                         <td>{!! $data->level == 'BEGINNER'
                                             ? "<span class='badge badge-danger'>BEGINNER</span>"

@@ -7,7 +7,10 @@
   <div class="card">
     <div class="card-body">
       <div class="form-row">
-
+        <div class="form-group col-md-12">
+          <label for="logo">Logo</label>
+          <input type="file" class="form-control" id="logo" name="logo">
+        </div>
         <div class="form-group col-md-6">
           <label for="nama_skill">Skill</label>
           <input type="text" class="form-control" id="nama_skill" name="nama_skill"

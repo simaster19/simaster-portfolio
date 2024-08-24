@@ -28,8 +28,8 @@ class DashboardUserController extends Controller
     //dd($project);
     $posts = Post::with(["category", "user" => function($query) {
       return $query->select("id_user", "nama", "foto", "username");
-    }])->get();
-    // dd($posts);
+    }])->orderBy("id_post", "desc")->take(6)->get();
+    //dd($posts);
     $skill = Skill::all();
     $cv = Cv::where("status", 1)->get()->first();
 
