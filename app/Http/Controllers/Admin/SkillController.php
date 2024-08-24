@@ -56,17 +56,21 @@ class SkillController extends Controller
       if (!File::exists("public/images/logo/")) {
         File::makeDirectory("public/images/logo/", 0777, true, true);
       }
-
-      $logoImage = Image::make($logo->getRealPath())->fit(600, 600);
-      // Buat latar belakang menjadi putih terlebih dahulu
-      $logoImage->resizeCanvas(600, 600, 'center', false, 'ffffff');
-      $logoImage->encode("png");
       
-      $imagick = new Imagick();
-      // Ubah latar belakang putih menjadi transparan
-      $imagick = $logoImage->getCore(); // Mengambil core Imagick instance
+      $logoImage = Image::make($logo->getRealPath())->fit(600, 600);
+      $imagick = new Imagick($logo->getRealPath());
+
+      // Convert background to white first
       $imagick->setImageAlphaChannel(\Imagick::ALPHACHANNEL_SET);
-      $imagick->transparentPaintImage('#ffffff', 0, 0, false);
+      $imagick->setBackgroundColor(new ImagickPixel('white'));
+      $imagick->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+
+      // Convert white background to transparent
+      $imagick->transparentPaintImage(new ImagickPixel('white'), 0, 65535, false);
+
+      // Simpan gambar dengan latar belakang transparan ke storage Laravel
+      $logoImage = Image::make($imagick);
+      Storage::disk("public")->put($tmp, $logoImage->encode('png')->stream());
 
 
 
