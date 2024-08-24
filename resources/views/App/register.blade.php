@@ -56,7 +56,7 @@
           <div class="col-12 col-sm-12  col-md-12  col-lg-12  col-xl-12">
             <div class="login-brand">
               <img src="{{ url('Backend/assets/img/unsplash/simaster.jpg') }}" alt="logo"
-              width="100" class="shadow-light rounded-circle">
+              width="150" class="shadow-light rounded-circle">
             </div>
 
             <div class="card card-primary">

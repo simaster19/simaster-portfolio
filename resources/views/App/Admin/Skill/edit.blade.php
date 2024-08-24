@@ -1,7 +1,7 @@
 @extends('App.Admin.index')
 @section('header-title', 'Ubah Skill')
 @section('content')
-<form action="{{ route('update-skill', $data->id_skill) }}" method="POST">
+<form action="{{ route('update-skill', $data->id_skill) }}" method="POST" enctype="multipart/form-data">
   @csrf
   @method('put')
   <div class="card">

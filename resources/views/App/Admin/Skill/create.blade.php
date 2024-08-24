@@ -1,7 +1,7 @@
 @extends('App.Admin.index')
 @section('header-title', 'Tambah Skill')
 @section('content')
-<form action="{{ route('store-skill') }}" method="POST">
+<form action="{{ route('store-skill') }}" method="POST" enctype="multipart/form-data">
   @csrf
   <div class="card">
     @if (session()->has('message'))

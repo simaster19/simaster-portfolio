@@ -429,7 +429,7 @@ My Skills
 
 <div class="skill-logo col-lg-12 col-md-12 col-sm-12 d-inline d-flex flex-wrap gap-3 justify-content-center align-items-center text-center">
 @foreach($datas["skills"] as $skill)
-<img src="{{url('Frontend/logo.png')}}" title="{{$skill->nama_skill}}" width="80px" height="60px" class="image" style="
+<img src="{{Storage::url('images/logo/'.$skill->logo)}}" title="{{$skill->nama_skill}}" alt="{{$skill->nama_skill}}" width="80px" height="60px" class="image shadow-dark" style="
 filter: grayscale(100%);
 ">
 @endforeach
