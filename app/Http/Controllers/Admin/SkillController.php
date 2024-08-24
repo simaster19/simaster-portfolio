@@ -55,26 +55,18 @@ class SkillController extends Controller
 
       if (!File::exists("public/images/logo/")) {
         File::makeDirectory("public/images/logo/", 0777, true, true);
-      }
-      // Load the image with Intervention Image
-      $image = Image::make($logo->getRealPath());
+      }// Load the image with Intervention Image
+        $image = Image::make($logo->getRealPath());
 
-      // Resize canvas and set background to white
-      $image->resizeCanvas($image->width(), $image->height(), 'center', false, '#ffffff');
+        // Resize canvas and set background to white
+        $image->resizeCanvas($image->width(), $image->height(), 'center', false, '#ffffff');
 
-      // Convert to PNG format
-      $image->encode('png');
+        // Convert to PNG format
+        $image->encode('png');
 
-      // Get the image core for Imagick manipulation
-      $imagick = $image->getCore();
+        // Save the image to storage
+        Storage::disk('public')->put($tmp, (string) $image);
 
-      // Change white background to transparent
-      $imagick->setImageFormat('png');
-      $imagick->setImageAlphaChannel(Imagick::ALPHACHANNEL_SET);
-      $imagick->transparentPaintImage('#ffffff', 0, 0, false);
-
-      // Save the image to storage
-      Storage::disk('public')->put($tmp, $imagick->getImageBlob());
 
 
 
