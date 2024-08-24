@@ -28,18 +28,20 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.cs
 rel="stylesheet"
 />
 
+
 <!-- Libraries Stylesheet -->
-<link href="{{ ('Frontend/lib/animate/animate.min.css') }}" rel="stylesheet" />
+<link href="{{ url('Frontend/lib/animate/animate.min.css') }}" rel="stylesheet" />
 <link
-href="{{ ('Frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}"
+href="{{ url('Frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}"
 rel="stylesheet"
 />
-<link href="{{ ('Frontend/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
+<link href="{{ url('Frontend/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
 <!-- Customized Bootstrap Stylesheet -->
-<link href="{{ ('Frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
+<link href="{{ url('Frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
 
+<script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 <!-- Template Stylesheet -->
-<link href="{{ ('Frontend/css/style.css') }}" rel="stylesheet" />
+<link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
 
 
 </head>
@@ -208,7 +210,7 @@ class="fa fa-paper-plane text-primary fs-4"
 <img
 class="img-fluid mt-5"
 style="height: 250px"
-src="{{ ('Frontend/img/newsletter.png')}}"
+src="{{ url('Frontend/img/newsletter.png')}}"
 />
 </div>
 </div>
@@ -233,48 +235,29 @@ My Article
 class="col-lg-4 col-md-6 wow zoomIn"
 data-wow-delay="0.1s"
 >
+@foreach($datas['posts'] as $post)
 <div
 class="service-item d-flex flex-column justify-content-center text-center rounded"
 >
 <div class="service-icon flex-shrink-0">
 <img
 class="img img-thumbnail"
-src="{{ ('Frontend/img/logo.png')}}"
+src="{{ Storage::url('images/post/cover/'.$post->gambar)}}"
 alt=""
 />
 </div>
-<h5 class="mb-3">Judul Artikel</h5>
+<h5 class="mb-3">{{ $post->judul}}</h5>
 <p>
-Erat ipsum justo amet duo et elitr dolor, est
-duo duo eos lorem sed diam stet diam sed stet
-lorem.
+{{$post->content}}
 </p>
 <a class="btn px-3 mt-auto mx-auto" href=""
 >Read More</a
 >
 </div>
+
+@endforeach
 </div>
-<div
-class="col-lg-4 col-md-6 wow zoomIn"
-data-wow-delay="0.3s"
->
-<div
-class="service-item d-flex flex-column justify-content-center text-center rounded"
->
-<div class="service-icon flex-shrink-0">
-<i class="fa fa-home fa-2x"></i>
-</div>
-<h5 class="mb-3">Web Design</h5>
-<p>
-Erat ipsum justo amet duo et elitr dolor, est
-duo duo eos lorem sed diam stet diam sed stet
-lorem.
-</p>
-<a class="btn px-3 mt-auto mx-auto" href=""
->Read More</a
->
-</div>
-</div>
+
 </div>
 </div>
 <div class="d-flex justify-content-center text-center rounded mt-5">
@@ -493,6 +476,13 @@ style="width: 50px; height: 50px"
 <!-- Testimonial End -->
 
 <!-- Contact Start -->
+
+@if (session()->has('message'))
+<script>
+{!! session('message') !!}
+</script>
+@endif
+
 <div
 id="contact"
 class="container-fluid py-5 certificate wow fadeInUp"
@@ -510,14 +500,15 @@ Contact
 </div>
 
 <div class="wow fadeInUp" data-wow-delay="0.3s">
-<form>
+<form action="{{route('send')}}" name="sentMessage" method="POST">
+@csrf
 <div class="row g-3">
 <div class="col-md-6">
 <div class="form-floating">
 <input
 type="text"
 class="form-control"
-id="name"
+id="name" name="name"
 placeholder="Your Name"
 />
 <label for="name">Your Name</label>
@@ -528,7 +519,7 @@ placeholder="Your Name"
 <input
 type="email"
 class="form-control"
-id="email"
+id="email" name="email"
 placeholder="Your Email"
 />
 <label for="email">Your Email</label>
@@ -539,7 +530,7 @@ placeholder="Your Email"
 <input
 type="text"
 class="form-control"
-id="subject"
+id="subject" name="subject"
 placeholder="Subject"
 />
 <label for="subject">Subject</label>
@@ -550,7 +541,7 @@ placeholder="Subject"
 <textarea
 class="form-control"
 placeholder="Leave a message here"
-id="message"
+id="message" name="message"
 style="height: 150px"
 ></textarea>
 <label for="message">Message</label>
@@ -670,15 +661,16 @@ class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ ('Frontend/lib/wow/wow.min.js')}}"></script>
-<script src="{{ ('Frontend/lib/easing/easing.min.js')}}"></script>
-<script src="{{ ('Frontend/lib/waypoints/waypoints.min.js')}}"></script>
-<script src="{{ ('Frontend/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-<script src="{{ ('Frontend/lib/isotope/isotope.pkgd.min.js')}}"></script>
-<script src="{{ ('Frontend/lib/lightbox/js/lightbox.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/wow/wow.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/easing/easing.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/waypoints/waypoints.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/isotope/isotope.pkgd.min.js')}}"></script>
+<script src="{{ url('Frontend/lib/lightbox/js/lightbox.min.js')}}"></script>
+<script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script>
 
 <!-- Template Javascript -->
-<script src="{{ ('Frontend/js/main.js')}}"></script>
+<script src="{{ url('Frontend/js/main.js')}}"></script>
 </body>
 
 </html>

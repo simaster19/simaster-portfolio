@@ -139,6 +139,6 @@ class UserController extends Controller
 
     $cookie = Cookie::forget(Auth::getRecallerName());
 
-    return redirect()->route("login")->withCookie($cookie);
+    return redirect()->route("my-profile")->withCookie($cookie);
   }
 }

@@ -15,7 +15,7 @@
 
 
 
-{{-- Toastr --}}
+<!-- Toastr -->
 <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 
 <!-- Template CSS -->
