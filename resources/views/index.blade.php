@@ -251,9 +251,9 @@ src="{{ Storage::url('images/post/cover/'.$post->gambar)}}"
 alt=""
 />
 </div>
-<h5 class="mb-3">{!! $post->judul!!}</h5>
+<h5 class="mb-3">{{ $post->judul}}</h5>
 <p>
-{{$post->content}}
+{!!$post->content!!}
 </p>
 <a class="btn px-3 mt-auto mx-auto" href=""
 >Read More</a

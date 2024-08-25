@@ -128,21 +128,20 @@ class SkillController extends Controller
         Storage::disk("public")->delete("images/logo/" . $skill->logo);
       }
 
-      $logoImage = Image::make($logo->getRealPath())->fit(600, 600);
-      // Buat latar belakang menjadi putih terlebih dahulu
-      $logoImage->resizeCanvas(600, 600, 'center', false, 'ffffff');
-      $logoImage->encode("png");
+        $image = Image::make($logo->getRealPath());
 
-      $logoImage->getCore()->each(function($pixel) {
-        if ($pixel->r == 255 && $pixel->g == 255 && $pixel->b == 255) {
-          $pixel->a = 0;
-        }
-      });
+        // Create a white background image with the same size
+        $background = Image::canvas($image->width(), $image->height(), '#ffffff');
 
+        // Insert the loaded image onto the white background
+        $background->insert($image, 'center');
 
+        // Convert to PNG format
+        $background->encode('png');
 
-      Storage::disk("public")->put($tmp,
-        $logoImage->stream());
+        // Save the image to storage
+        Storage::disk('public')->put($tmp, (string) $background);
+
       $imageLogo = $logoName;
 
     } else {
