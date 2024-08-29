@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text("gambar");
             $table->string("judul");
             $table->string("slug");
-            $table->text("link_certificate")->default("-");
-         
+            $table->text("link_certificate")->nullabel(true)->default(null);
+
             $table->timestamps();
         });
     }
