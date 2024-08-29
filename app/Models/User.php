@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Message;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -21,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
   use HasApiTokens,
   HasFactory,
   Notifiable,
+ // SoftDeletes,
   HasRoles;
 
   protected $table = "users";

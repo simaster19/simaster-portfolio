@@ -38,25 +38,25 @@
                 $dibuat = json_decode($data->dibuat_dengan);
 
                 @endphp
-                @foreach ($dibuat as $dibuat_dengan)
-                {{ $dibuat_dengan }}
-                @endforeach
-              </td>
-            </tr>
-            <tr>
-              <td>Images</td>
-              <td>:</td>
-              <td>
-                @foreach($data->image as $image)
-                <img class="d-inline mr-1 mb-1 mt-0 img" src="{{Storage::url('images/image/'.$image->image)}}" width="200px" height="200px">
-                @endforeach
+                @foreach ($dibuat as $key => $dibuat_dengan)
+                {{ $dibuat_dengan }}{{$key < count($dibuat) - 1 ? ' -':''}}
+                  @endforeach
+                </td>
+              </tr>
+              <tr>
+                <td>Images</td>
+                <td>:</td>
+                <td>
+                  @foreach($data->image as $image)
+                  <img class="d-inline mr-1 mb-1 mt-0 img" src="{{Storage::url('images/image/'.$image->image)}}" width="200px" height="200px">
+                  @endforeach
 
-              </td>
-            </tr>
-          </table>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-@endsection
+  @endsection

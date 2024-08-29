@@ -6,29 +6,30 @@
     <div class="card">
       <div class="card-body">
         <img src="{{ Storage::url('images/testimonial/' . $data->foto) }}" width="300" height="300"
-        class="img img-cover mx-auto d-block img-round" alt="Cover">
+        class="img img-cover mx-auto d-block img-round" alt="Foto">
 
         <div class="table-responsive">
           <table class="table table-responsive">
             <tr>
-              <td>Nama</td>
-              <td>:</td>
+              <th>Nama</th>
+              <th>:</th>
               <td>{{ $data->nama }}</td>
             </tr>
             <tr>
-              <td>Project</td>
-              <td>:</td>
+              <th>Project</th>
+              <th>:</th>
               <td>
-                <ul>
-                @foreach($data->project as $project)
-                  <li>{{$project->nama_project}}</li>
-                @endforeach
-                </ul>
+
+
+
+                {{$data->project->judul}}
+
+
               </td>
             </tr>
             <tr>
-              <td>Keterangan</td>
-              <td>:</td>
+              <th>Keterangan</th>
+              <th>:</th>
               <td>{{ $data->keterangan }}</td>
             </tr>
           </table>

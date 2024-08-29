@@ -19,11 +19,17 @@
         {!! session('messageError') !!}
       </script>
       @endif
+
+      <div class="card-header">
+        <button type="button" class="btn btn-danger btn-sm btn-round"><i class="fas fa-trash"></i> Hapus Terpilih</button>
+
+      </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-striped" id="table-1">
             <thead>
               <tr>
+                <th><input type="checkbox"class="form-check"></th>
                 <th class="text-center">
                   #
                 </th>
@@ -39,6 +45,7 @@
             <tbody>
               @foreach ($datas as $data)
               <tr>
+                <td><input type="checkbox"class="form-check"></td>
                 <td>
                   {{ $loop->iteration }}
                 </td>
@@ -46,7 +53,7 @@
                 <td>{{ $data->nama }}</td>
                 <td>{{ $data->email }}</td>
                 <td>{{ $data->message }}</td>
-                <td>{!! $data->staus == 1 ? '<span class="badge badge-success">Dibaca</span>' : '<span class="badge badge-warning">Belum dibaca</span>'!!}</td>
+                <td>{!! $data->status == 1 ? '<span class="badge badge-success">Dibaca</span>' : '<span class="badge badge-warning">Belum dibaca</span>'!!}</td>
 
                 <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}
                 </td>

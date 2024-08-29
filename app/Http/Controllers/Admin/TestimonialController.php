@@ -118,6 +118,7 @@ class TestimonialController extends Controller
 
   public function show($id) {
     $testimonial = Testimonial::with(["project"])->find($id);
+    
     return response()->view("App.Admin.Testimonial.detail", [
       "data" => $testimonial
     ]);

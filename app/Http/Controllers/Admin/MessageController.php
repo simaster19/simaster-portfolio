@@ -24,9 +24,10 @@ class MessageController extends Controller
     $message = Message::where("id_message", $id)->get()->first();
     //Update status
     if ($message->status == 0) {
-      Message::update([
+      $message = Message::find($id);
+      $message->update([
       "status" => 1,
-    ])->find($id);
+    ]);
     }
     
     return response()->view("App.Admin.Message.detail", [

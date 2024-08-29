@@ -36,9 +36,9 @@
           <label for="jenis_project">Jenis Project</label>
           <select name="jenis_project" id="jenis_project" class="form-control">
             <option value="">--Pilih--</option>
-            <option value="WEB">WEB</option>
-            <option value="DESKTOP">DESKTOP</option>
-            <option value="ANDROID">ANDROID</option>
+            @foreach ($jenisProject as $jenis_project)
+            <option value="{{ $jenis_project }}">{{ $jenis_project }}</option>
+            @endforeach
           </select>
         </div>
         <div class="form-group col-md-4">
@@ -60,13 +60,12 @@
           <label for="status">Status Project</label>
           <select name="status" id="status" class="form-control">
             <option value="">--Pilih--</option>
-            <option value="PERSONAL">PERSONAL</option>
-            <option value="FREELANCE">FREELANCE</option>
-            <option value="ONLINE COURSE">ONLINE COURSE</option>
-          </select>
+            @foreach ($statusProject as $status_project)
+            <option value="{{ $status_project }}">{{ $status_project }}</option>
+            @endforeach  </select>
         </div>
         <div class="form-group col-md-4">
-          <label for="tahun_project">Status Project</label>
+          <label for="tahun_project">Tahun Project</label>
           <select name="tahun_project" id="tahun_project" class="form-control">
             <option value="">--Pilih--</option>
             @php

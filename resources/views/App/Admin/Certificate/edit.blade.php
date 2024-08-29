@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="nama_online_course">Online Course</label>
+                        <label for="nama_online_course">Nama Online Course</label>
                         <input type="text" class="form-control" id="nama_online_course" name="nama_online_course"
                             value="{{ $data->nama_online_course }}">
                     </div>

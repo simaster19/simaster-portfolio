@@ -50,15 +50,6 @@ class UserController extends Controller
       "tanggal_lahir" => ["required"],
       "no_hp" => ["required", "numeric"],
       "alamat" => ["required"]
-    ], [
-      "foto.image" => "File harus berupa gambar!",
-      "nama.required" => "Nama tidak boleh kosong!",
-      "email.required" => "Email tidak boleh kosong!",
-      "username.required" => "Username tidak boleh kosong!",
-      "username.unique" => "Username sudah digunakan!",
-      "no_hp.required" => "No hp tidak boleh kosong!",
-      "no_hp.numeric" => "Anda tidak memasukkan angka!",
-      "alamat.required" => "Alamat tidak boleh kosong!"
     ]);
 
     if ($data->fails()) {
@@ -80,9 +71,7 @@ class UserController extends Controller
       if (!File::exists("public/images/foto/")) {
         File::makeDirectory("public/images/foto/", 0777, true, true);
       }
-      if (!$user->foto == null || !$user->foto == "") {
-        Storage::disk("public")->delete("images/foto/" . $user->foto);
-      }
+
 
       $resizeImage = Image::make($foto)->fit(600, 600);
 
@@ -139,6 +128,6 @@ class UserController extends Controller
 
     $cookie = Cookie::forget(Auth::getRecallerName());
 
-    return redirect()->route("login")->withCookie($cookie);
+    return redirect()->route("my-profile")->withCookie($cookie);
   }
 }
