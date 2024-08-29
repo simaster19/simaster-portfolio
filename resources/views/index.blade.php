@@ -1,223 +1,181 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-<title>SI Master - Portofolio</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-<meta content="Portofolio Web" name="keywords" />
-<meta content="Portofolio Web" name="description" />
-
-<!-- Favicon -->
-<link href="{{ url('Frontend/img/favicon.ico')}}" rel="icon" />
-
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
-rel="stylesheet"
-/>
-
-<!-- Icon Font Stylesheet -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-rel="stylesheet"
-/>
-<link
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-rel="stylesheet"
-/>
-
-
-<!-- Libraries Stylesheet -->
-<link href="{{ url('Frontend/lib/animate/animate.min.css') }}" rel="stylesheet" />
-<link
-href="{{ url('Frontend/lib/owlcarousel/assets/owl.carousel.min.css') }}"
-rel="stylesheet"
-/>
-<link href="{{ url('Frontend/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet" />
-<!-- Customized Bootstrap Stylesheet -->
-<link href="{{ url('Frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
-
-<script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
-<!-- Template Stylesheet -->
-<link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
-
-
+  @include("Layouts.Pengguna.header")
 </head>
 <body>
-<div class="container-fluid bg-white p-0">
-<!-- Navbar & Hero Start -->
-<nav
-class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
->
-<a href="" class="navbar-brand p-0">
-<h1 class="m-0">
-<img src="{{url('Frontend/img/logo.png')}}" alt="Logo" />
-<span class="fs-2">Miftakhul</span>
-<span class="fs-5">Kirom</span>
-</h1>
-</a>
-<button
-class="navbar-toggler"
-type="button"
-data-bs-toggle="collapse"
-data-bs-target="#navbarCollapse"
->
-<span class="fa fa-bars"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarCollapse">
-<div class="navbar-nav ms-auto py-0">
-<a href="#home" class="nav-item nav-link active">Home</a>
-<a href="#about" class="nav-item nav-link">About</a>
-<a href="#blog" class="nav-item nav-link">Blog</a>
-<a href="#project" class="nav-item nav-link">Project</a>
-<a href="#skill" class="nav-item nav-link">Skill</a>
-<div class="nav-item dropdown">
-<a
-href="#"
-class="nav-link dropdown-toggle"
-data-bs-toggle="dropdown"
->Pages</a
->
-<div class="dropdown-menu m-0">
-<a href="" class="dropdown-item">Blog</a>
-<a href="" class="dropdown-item">Source Code</a>
-<a href="" class="dropdown-item">E-book</a>
-</div>
-</div>
-<a href="#contact" class="nav-item nav-link">Contact</a>
-<hr />
-<a href="{{route('login')}}" class="nav-item nav-link">Login/Register</a>
-</div>
-</div>
+  <div class="container-fluid bg-white p-0">
+    <!-- Navbar & Hero Start -->
+    <nav
+      class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
+      >
+      <a href="" class="navbar-brand p-0">
+        <h1 class="m-0">
+          <img src="{{url('Frontend/img/logo.png')}}" alt="Logo" />
+        <span class="fs-2">Miftakhul</span>
+        <span class="fs-5">Kirom</span>
+      </h1>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      >
+      <span class="fa fa-bars"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+        <a href="#home" class="nav-item nav-link active">Home</a>
+        <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#blog" class="nav-item nav-link">Blog</a>
+        <a href="#project" class="nav-item nav-link">Project</a>
+        <a href="#skill" class="nav-item nav-link">Skill</a>
+        <div class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            >Pages</a
+          >
+          <div class="dropdown-menu m-0">
+            <a href="" class="dropdown-item">Blog</a>
+            <a href="" class="dropdown-item">Source Code</a>
+            <a href="{{route('data-ebook')}}" target="_blank" class="dropdown-item">E-book</a>
+          </div>
+        </div>
+        <a href="#contact" class="nav-item nav-link">Contact</a>
+        <hr />
+      <a href="{{route('login')}}" class="nav-item nav-link">Login/Register</a>
+    </div>
+  </div>
 </nav>
 <div class="container-fluid position-relative p-0">
-<!-- Navbar & Hero End -->
-<div
-id="home"
-class="container-fluid py-5 bg-primary hero-header mb-5"
->
-<div class="container my-5 py-5 px-lg-5">
-<div class="row g-5 py-5">
-<div class="col-lg-6 text-center text-lg-start">
-<h1 class="text-white mb-4 animated zoomIn">
-<i class="fas fa-quote-left"></i> You might not
-think that programmers are artists, but
-programming is an extremely creative profession.
-It’s logic-based creativity.
-<i class="fas fa-quote-right"></i>
-</h1>
-<p class="text-white pb-3 animated zoomIn">
-<i
-class="fas fa-circle text-success blinking"
-></i>
-<span class="fw-bold text-light">
-Available for new opportunities
-</span>
-<i
-class="fas fa-circle text-success blinking"
-></i>
-</p>
-<a
-href="#contact"
-class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight"
->Contact Me</a
->
-</div>
-</div>
-</div>
-</div>
+  <!-- Navbar & Hero End -->
+  <div
+    id="home"
+    class="container-fluid py-5 bg-primary hero-header mb-5"
+    >
+    <div class="container my-5 py-5 px-lg-5">
+      <div class="row g-5 py-5">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="text-white mb-4 animated zoomIn">
+            <i class="fas fa-quote-left"></i> You might not
+            think that programmers are artists, but
+            programming is an extremely creative profession.
+            It’s logic-based creativity.
+            <i class="fas fa-quote-right"></i>
+          </h1>
+          <p class="text-white pb-3 animated zoomIn">
+            <i
+              class="fas fa-circle text-success blinking"
+              ></i>
+            <span class="fw-bold text-light">
+              Available for new opportunities
+            </span>
+            <i
+              class="fas fa-circle text-success blinking"
+              ></i>
+          </p>
+          <a
+            href="#contact"
+            class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight"
+            >Contact Me</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Navbar & Hero End -->
 
 <!-- About Start -->
 <div id="about" class="container-fluid py-5">
-<div class="container px-lg-5">
-<div class="row g-5">
-<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-<div class="section-title position-relative mb-4 pb-2">
-<h6 class="position-relative text-primary ps-4">
-About Me
-</h6>
-<h2 class="mt-2">
-Web Developer with more than 2 years of
-experience
-</h2>
-</div>
-<p class="mb-4">
-Hi folks, I'm {{$datas['user']->nama}}. Web Developer based
-on Kabupaten Kendal, Indonesia. I'am more than 2
-Year of Freelance Experience. Experienced in various
-development for dynamic web and strong analitycal
-skill.
-</p>
+  <div class="container px-lg-5">
+    <div class="row g-5">
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="section-title position-relative mb-4 pb-2">
+          <h6 class="position-relative text-primary ps-4">
+            About Me
+          </h6>
+          <h2 class="mt-2">
+            Web Developer with more than 2 years of
+            experience
+          </h2>
+        </div>
+        <p class="mb-4">
+          Hi folks, I'm <strong>{{$datas['user']->nama}}</strong>. Web Developer based
+          on Kabupaten Kendal, Indonesia. I'am more than 2
+          Year of Freelance Experience. Experienced in various
+          development for dynamic web and strong analitycal
+          skill.
+        </p>
 
-<div class="d-flex align-items-center mt-4">
-<a
-class="btn btn-outline-primary btn-square me-3"
-href="https://github.com/simaster19"
-><i class="fab fa-github"></i
-></a>
-<a
-class="btn btn-outline-primary btn-square me-3"
-href="https://youtube.com/playlist?list=PLrv8ONZDrRJSWd8q5J4bLWa6pB1Tju9RY"
-><i class="fab fa-youtube"></i
-></a>
-<a
-class="btn btn-outline-primary btn-square me-3"
-href="https://instagram.com/simaster19"
-><i class="fab fa-instagram"></i
-></a>
-<a
-class="btn btn-outline-primary btn-square"
-href="#"
-><i class="fab fa-linkedin-in"></i
-></a>
-</div>
-</div>
-</div>
-</div>
+        <div class="d-flex align-items-center mt-4">
+          <a
+            class="btn btn-outline-primary btn-square me-3"
+            href="https://github.com/simaster19"
+            ><i class="fab fa-github"></i
+            ></a>
+          <a
+            class="btn btn-outline-primary btn-square me-3"
+            href="https://youtube.com/playlist?list=PLrv8ONZDrRJSWd8q5J4bLWa6pB1Tju9RY"
+            ><i class="fab fa-youtube"></i
+            ></a>
+          <a
+            class="btn btn-outline-primary btn-square me-3"
+            href="https://instagram.com/simaster19"
+            ><i class="fab fa-instagram"></i
+            ></a>
+          <a
+            class="btn btn-outline-primary btn-square"
+            href="#"
+            ><i class="fab fa-linkedin-in"></i
+            ></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- About End -->
 
 <!-- Newsletter Start -->
 <div
-class="container-fluid bg-primary newsletter my-5 wow fadeInUp"
-data-wow-delay="0.1s"
->
-<div class="container px-lg-5">
-<div class="row align-items-center" style="height: 250px">
-<div class="col-12 col-md-6">
-<h3 class="text-white">Subscribe Me</h3>
-<small class="text-white"
->If you subscribe, you can get notification from my
-Article.</small
->
-<div class="position-relative w-100 mt-3">
-<input
-class="form-control border-0 rounded-pill w-100 ps-4 pe-5"
-type="text"
-placeholder="Enter Your Email"
-style="height: 48px"
-/>
-<button
-type="button"
-class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"
->
-<i
-class="fa fa-paper-plane text-primary fs-4"
-></i>
-</button>
-</div>
-</div>
-<div class="col-md-6 text-center mb-n5 d-none d-md-block">
-<img
-class="img-fluid mt-5"
-style="height: 250px"
-src="{{ url('Frontend/img/newsletter.png')}}"
-/>
-</div>
+  class="container-fluid bg-primary newsletter my-5 wow fadeInUp"
+  data-wow-delay="0.1s"
+  >
+  <div class="container px-lg-5">
+    <div class="row align-items-center" style="height: 250px">
+      <div class="col-12 col-md-6">
+        <h3 class="text-white">Subscribe Me</h3>
+        <small class="text-white"
+          >If you subscribe, you can get notification from my
+          Article.</small
+        >
+        <div class="position-relative w-100 mt-3">
+          <input
+          class="form-control border-0 rounded-pill w-100 ps-4 pe-5"
+          type="text"
+          placeholder="Enter Your Email"
+          style="height: 48px"
+          />
+        <button
+          type="button"
+          class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"
+          >
+          <i
+            class="fa fa-paper-plane text-primary fs-4"
+            ></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
+      <img
+      class="img-fluid mt-5"
+      style="height: 250px"
+      src="{{ url('Frontend/img/newsletter.png')}}"
+      />
+  </div>
 </div>
 </div>
 </div>
@@ -252,9 +210,9 @@ alt=""
 />
 </div>
 <h5 class="mb-3">{{ $post->judul}}</h5>
-<p>
+<span>
 {!!$post->content!!}
-</p>
+</span>
 <a class="btn px-3 mt-auto mx-auto" href=""
 >Read More</a
 >
@@ -327,7 +285,7 @@ class="btn btn-light"
 href="{{ Storage::url('images/cover/'.$project->cover)}}"
 data-lightbox="portfolio"
 ><i
-class="fa fa-plus fa-2x text-primary"
+class="fa fa-eye fa-2x text-primary"
 ></i
 ></a>
 <div class="mt-auto">
@@ -336,7 +294,7 @@ class="fa fa-plus fa-2x text-primary"
 >
 <a
 class="h5 d-block text-white mt-1 mb-0"
-href=""
+href="{{route('detail-project-portofolio', $project->slug)}}"
 >{{$project->judul}}</a
 >
 </div>
@@ -357,7 +315,7 @@ class="btn btn-light"
 href="{{ Storage::url('images/cover/'.$project->cover)}}"
 data-lightbox="portfolio"
 ><i
-class="fa fa-plus fa-2x text-primary"
+class="fa fa-eye fa-2x text-primary"
 ></i
 ></a>
 <div class="mt-auto">
@@ -366,7 +324,7 @@ class="fa fa-plus fa-2x text-primary"
 >
 <a
 class="h5 d-block text-white mt-1 mb-0"
-href=""
+href="{{route('detail-project-portofolio', $project->slug)}}"
 >{{$project->judul}}</a
 >
 </div>
@@ -387,7 +345,7 @@ class="btn btn-light"
 href="{{ Storage::url('images/cover/'.$project->cover)}}"
 data-lightbox="portfolio"
 ><i
-class="fa fa-plus fa-2x text-primary"
+class="fa fa-eye fa-2x text-primary"
 ></i
 ></a>
 <div class="mt-auto">
@@ -396,7 +354,7 @@ class="fa fa-plus fa-2x text-primary"
 >
 <a
 class="h5 d-block text-white mt-1 mb-0"
-href=""
+href="{{route('detail-project-portofolio', $project->slug)}}"
 >{{ $project->judul}}</a
 >
 </div>
@@ -429,7 +387,7 @@ My Skills
 
 <div class="skill-logo col-lg-12 col-md-12 col-sm-12 d-inline d-flex flex-wrap gap-3 justify-content-center align-items-center text-center">
 @foreach($datas["skills"] as $skill)
-<img src="{{Storage::url('images/logo/'.$skill->logo)}}" title="{{$skill->nama_skill}}" alt="{{$skill->nama_skill}}" width="80px" height="60px" class="image shadow-dark" style="
+<img src="{{Storage::url('images/logo/'.$skill->logo)}}" title="{{$skill->nama_skill}}" alt="{{$skill->nama_skill}}" width="90px" height="70px" class="image shadow-dark" style="
 filter: grayscale(100%);
 ">
 @endforeach
@@ -650,19 +608,7 @@ class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"
 ></a>
 </div>
 
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ url('Frontend/lib/wow/wow.min.js')}}"></script>
-<script src="{{ url('Frontend/lib/easing/easing.min.js')}}"></script>
-<script src="{{ url('Frontend/lib/waypoints/waypoints.min.js')}}"></script>
-<script src="{{ url('Frontend/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-<script src="{{ url('Frontend/lib/isotope/isotope.pkgd.min.js')}}"></script>
-<script src="{{ url('Frontend/lib/lightbox/js/lightbox.min.js')}}"></script>
-<script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script>
-
-<!-- Template Javascript -->
-<script src="{{ url('Frontend/js/main.js')}}"></script>
+@include("Layouts.Pengguna.footer")
 </body>
 
 </html>

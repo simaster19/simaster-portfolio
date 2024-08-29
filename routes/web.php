@@ -13,11 +13,18 @@ use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CvController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\EbookController;
 use App\Http\Controllers\Admin\TestimonialController;
 
 //Halaman Portofolio
 Route::get("/", [DashboardUserController::class, "index"])->name("my-profile");
+Route::get("/project/{slug}", [DashboardUserController::class, "detailProject"])->name("detail-project-portofolio");
+
+//Ebook
+Route::get("/ebook", [EbookController::class, "ebook"])->name("data-ebook");
+
 Route::post("/sendMessage", [DashboardUserController::class, "sendMessage"])->name("send");
+
 //Halamn Login
 Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "proccessLogin"])->name("proccess-login");

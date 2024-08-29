@@ -63,4 +63,10 @@ class DashboardUserController extends Controller
 
     //return redirect()->route('my-profile')->with("message", "Pesan berhasil terkirim!");
   }
+  
+  
+  //Project 
+  public function detailProject($slug){
+    return response()->view("project-detail");
+  }
 }
