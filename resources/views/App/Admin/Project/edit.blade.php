@@ -2,6 +2,8 @@
 @section('header-title', 'Ubah Project')
 @push('css-style')
 <link rel="stylesheet" href="{{ url('Backend/node_modules/select2/dist/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.css') }}">
+
 @endpush
 @section('content')
 <form action="{{ route('update-project', $data->id_project) }}" method="POST" enctype="multipart/form-data">
@@ -88,7 +90,7 @@
       </div>
       <div class="form-row">
         <label for="keterangan">Keterangan</label>
-        <textarea name="keterangan" id="keterangan" class="form-control" cols="30" rows="10">{{ $data->keterangan }}</textarea>
+        <textarea name="keterangan" id="keterangan" class="summernote">{{ $data->keterangan }}</textarea>
       </div>
 
     </div>
@@ -100,4 +102,6 @@
 @endsection
 @push('script-js')
 <script src="{{ url('Backend/node_modules/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ url('Backend/node_modules/summernote/dist/summernote-bs4.js') }}"></script>
+
 @endpush

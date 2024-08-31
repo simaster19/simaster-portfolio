@@ -43,6 +43,7 @@ class DashboardUserController extends Controller
     ]);
   }
 
+
   public function sendMessage(Request $request) {
     $admin = User::all(["email"])[0];
 
@@ -63,10 +64,13 @@ class DashboardUserController extends Controller
 
     //return redirect()->route('my-profile')->with("message", "Pesan berhasil terkirim!");
   }
-  
-  
-  //Project 
-  public function detailProject($slug){
-    return response()->view("project-detail");
+
+
+  //Project
+  public function detailProject($slug) {
+    $project = Project::where("slug", $slug)->with([ "image"])->first();
+    return response()->view("project-detail", [
+      "data" => $project
+    ]);
   }
 }
