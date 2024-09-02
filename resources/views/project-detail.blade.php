@@ -87,7 +87,7 @@
     </div>
     <div class="row mt-3">
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <h5 class=" text-bold">Tech</h5>
+        <h1 class=" text-bold">Tech</h1>
         @php
         $dibuat_dengan = json_decode($data->dibuat_dengan, true)
         @endphp
@@ -98,7 +98,7 @@
         </ul>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <h5 class="text-bold">Informasi</h5>
+        <h1 class="text-bold">Informasi</h1>
         <table class="table table-sm table-borderless table-responsive border-0">
           <tr>
             <th>Jenis Project</th>
@@ -113,7 +113,7 @@
           <tr>
             <th>Tahun Dibuat</th>
             <td>:</td>
-            <td>{{$data->tahun}}</td>
+            <td>{{$data->tahun_project}}</td>
           </tr>
           <tr>
             <th>Status Project</th>
