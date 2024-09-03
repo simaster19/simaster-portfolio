@@ -1,6 +1,11 @@
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 <title>Dashboard &mdash; SI-{{ auth()->user()->nama }}</title>
+{{-- <style>
+    .modal-backdrop {
+        z-index: -9999 !important;
+    }
+</style> --}}
 
 <!-- General CSS Files -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,6 +22,7 @@
 
 <!-- Toastr -->
 <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
+@stack('js-up')
 
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{ url('Backend/assets/css/style.css') }}">

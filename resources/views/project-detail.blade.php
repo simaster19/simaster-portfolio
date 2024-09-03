@@ -86,55 +86,70 @@
                     </div>
 
                 </div>
-                <div class="row mt-3">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <h1 class=" text-bold">Tech</h1>
-                        @php
-                            $dibuat_dengan = json_decode($data->dibuat_dengan, true);
-                        @endphp
-                        <ul>
-                            @foreach ($dibuat_dengan as $tech)
-                                <li>{{ $tech }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <h1 class="text-bold">Informasi</h1>
-                        <table class="table table-sm table-borderless table-responsive border-0">
-                            <tr>
-                                <th>Jenis Project</th>
-                                <td>:</td>
-                                <td>{{ $data->jenis_project }}</td>
-                            </tr>
-                            <tr>
-                                <th>URL</th>
-                                <td>:</td>
-                                <td>{{ $data->url }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tahun Dibuat</th>
-                                <td>:</td>
-                                <td>{{ $data->tahun_project }}</td>
-                            </tr>
-                            <tr>
-                                <th>Status Project</th>
-                                <td>:</td>
-                                <td>{{ $data->status }}</td>
-                            </tr>
+                <div class="card mb-3 mt-2">
+                    <div class="card-body shadow-lg">
+                        <div class="row mt-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h1 class=" text-bold">Tech</h1>
+                                @php
+                                    $dibuat_dengan = json_decode($data->dibuat_dengan, true);
+                                @endphp
+                                <ul>
+                                    @foreach ($dibuat_dengan as $tech)
+                                        <li>{{ $tech }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h1 class="text-bold">Informasi</h1>
+                                <table class="table table-sm table-borderless table-responsive border-0">
+                                    <tr>
+                                        <th>Jenis Project</th>
+                                        <td>:</td>
+                                        <td>{{ $data->jenis_project }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>URL</th>
+                                        <td>:</td>
+                                        <td>{{ $data->url }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tahun Dibuat</th>
+                                        <td>:</td>
+                                        <td>{{ $data->tahun_project }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status Project</th>
+                                        <td>:</td>
+                                        <td>{{ $data->status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Downloads</th>
+                                        <td>:</td>
+                                        <td>{{ $data->status }} | <a href="#" class=" btn btn-primary btn-sm"><i
+                                                    class="fas fa-download"></i> Download</a></td>
+                                    </tr>
 
-                        </table>
+                                </table>
 
-                        Download redirect login
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <span>
-                    <p>
-                        {!! $data->keterangan !!}
-                    </p>
-                </span>
-                Keterangan Dan Penjelasan singkat tiap prosses
-                Halaman Login
-                Halaman Dashboard
+
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div class="container mt-2">
+
+                            {!! $data->keterangan !!}
+
+                        </div>
+
+                    </div>
+                </div>
+
+
 
             </div>
         </div>
