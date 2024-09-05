@@ -68,9 +68,38 @@ class DashboardUserController extends Controller
 
   //Project
   public function detailProject($slug) {
-    $project = Project::where("slug", $slug)->with([ "image"])->first();
+    $project = Project::where("slug", $slug)->with(["image"])->first();
     return response()->view("project-detail", [
       "data" => $project
     ]);
   }
+
+  //Blog
+  public function indexBlog(Request $request) {
+    // Ambil kategori dari permintaan, jika ada, atau default ke 'all'
+    $category = $request->input('category', 'all');
+
+    // Filter artikel berdasarkan kategori, jika 'all' maka ambil semua artikel
+    if ($category === 'all') {
+      $blogs = Post::with(["category"])->get();
+    } else {
+      // Sesuaikan dengan nama kolom kategori di tabel Anda
+      $cat = Category::where("nama_category",$category)->get();
+      $blogs = Post::where('category_id', $cat->id_category)->get();
+    }
+
+    // Jika permintaan adalah AJAX, kembalikan data JSON
+    if ($request->ajax()) {
+      return response()->json([
+        'articles' => $blogs
+      ]);
+    }
+
+    // Jika bukan AJAX, kembalikan view dengan semua data artikel
+    return view('blog-loadmore', [
+      'blogs' => $blogs // kirim data artikel ke view
+    ]);
+  }
+
+
 }
