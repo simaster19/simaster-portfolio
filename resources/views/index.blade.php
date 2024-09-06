@@ -206,7 +206,7 @@ class="service-item d-flex flex-column justify-content-center text-center rounde
 <img
 class="img img-thumbnail"
 src="{{ Storage::url('images/post/cover/'.$post->gambar)}}"
-alt=""
+alt="{{$post->slug}}" width="500px" height="500px"
 />
 </div>
 <h5 class="mb-3">{{ $post->judul}}</h5>
@@ -227,7 +227,7 @@ alt=""
 <a
 class="btn btn-primary px-3 mt-auto mx-auto wow fadeInUp"
 data-wow-delay="0.2s"
-href=""
+href="{{route('data-blog')}}"
 >Load More</a
 >
 </div>
