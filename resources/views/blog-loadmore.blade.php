@@ -3,8 +3,7 @@
 
 <head>
     @include('Layouts.Pengguna.header')
-    @push('css-custom')
-    @endpush
+
 </head>
 
 <body>

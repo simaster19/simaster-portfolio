@@ -31,7 +31,6 @@ rel="stylesheet" />
 <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 <!-- Template Stylesheet -->
 <link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
-@stack('css-custom')
 <style>
 .article {
 border: 1px solid #ddd;

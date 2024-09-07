@@ -19,7 +19,7 @@
 <script>
   function loadArticles(category) {
   $.ajax({
-  url: '/get-article', // URL untuk API yang mengembalikan artikel berdasarkan kategori
+  url: '{{ url("/get-article") }}', // URL untuk API yang mengembalikan artikel berdasarkan kategori
   method: 'GET',
   data: {
   category: category
