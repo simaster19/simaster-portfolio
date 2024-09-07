@@ -70,16 +70,19 @@ class PostController extends Controller
 
     return back()->with("message", ToastrMessage::message("error", "Error", "Data anda berhasil di Post", "topRight"));
   }
+
   public function edit($id) {
     $post = Post::where("id_post", $id)->get()->first();
-    $category = Category::all();
-    dd($category);
+    $category = Category::all(["id_category", "nama_category"]);
+
+
     return response()->view("App.Admin.Post.edit", [
       "data" => $post,
       "categories" => $category
     ]);
   }
   public function update(Request $request, $id) {
+  
     $data = Validator::make($request->all(), [
       "judul" => ["required", "min:5"],
       "gambar" => ["image", "mimes:jpg,png,webp", "nullable"],
@@ -119,5 +122,14 @@ class PostController extends Controller
 
   }
   public function show($id) {}
-  public function destroy($id) {}
+  public function destroy($id) {
+    $post = Post::find($id);
+
+    Storage::disk("public")->delete("images/post/cover/" . $post->gambar);
+    $post->delete();
+
+    return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
+
+
+  }
 }

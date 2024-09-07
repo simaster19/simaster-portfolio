@@ -19,7 +19,11 @@ use App\Http\Controllers\Admin\TestimonialController;
 //Halaman Portofolio
 Route::get("/", [DashboardUserController::class, "index"])->name("my-profile");
 Route::get("/project/{slug}", [DashboardUserController::class, "detailProject"])->name("detail-project-portofolio");
+
+//Blog
 Route::get("/blog", [DashboardUserController::class, "indexBlog"])->name("data-blog");
+Route::get("/blog-detail",[DashboardUserController::class, "detailBlog"])->name("detail-blog");
+//Ajac
 Route::get("/get-article", [DashboardUserController::class, "indexBlog"])->name("get-blog");
 
 //Ebook

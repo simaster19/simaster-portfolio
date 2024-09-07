@@ -32,39 +32,41 @@
           <input type="text" class="form-control" id="judul" name="judul" value="{{$data->judul}}">
         </div>
 
+
         <div class="form-group col-md-6">
           <label for="nama_category">Category</label>
-          <select name="nama_category" class="form-control select2" multiple="">
+
+          <select name="nama_category" class="form-control select2">
             <option value="" disabled>--Pilih--</option>
             @foreach ($categories as $category)
-            <option value="{{ $category->id_category == $data->id_category ? 'selected' : '' }}">{{ $category->nama_category }}</option>
-            @endforeach
+            <option value="{{ $category->id_category }}"{{ $category->id_category == $data->id_category ? 'selected' : '' }}>{{ $category->nama_category }}</option>
+          @endforeach
 
-          </select>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+
+
+
+
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea name="content" id="content" class="summernote">{!! $data->content !!}</textarea>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-12">
 
 
 
-
-          <div class="form-group">
-            <label for="content">Content</label>
-            <textarea name="content" id="content" class="summernote">{!! $data->content !!}</textarea>
-          </div>
-        </div>
-
-
-
-
-      </div>
 
     </div>
-    <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Simpan</button>
-    </div>
+
   </div>
+  <div class="card-footer">
+    <button type="submit" class="btn btn-primary">Simpan</button>
+  </div>
+</div>
 </form>
 @endsection
 @push('script-js')
