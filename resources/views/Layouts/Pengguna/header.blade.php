@@ -26,8 +26,89 @@
 <link href="{{ url('Frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
 
-@stack("css-custom")
 
 <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 <!-- Template Stylesheet -->
 <link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
+@stack('css-custom')
+<style>
+    .article {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .list-view .article {
+        flex-direction: row;
+    }
+
+    .article img {
+        max-width: 100%;
+        border-radius: 8px;
+        width: 100%;
+        /* Membuat gambar penuh lebar card */
+        height: auto;
+        object-fit: cover;
+        /* Menjaga rasio gambar */
+    }
+
+    .list-view .article img {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    .article-body {
+        flex-grow: 1;
+    }
+
+    .article-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    .article-rating {
+        margin-bottom: 10px;
+    }
+
+    .article-meta {
+        margin-top: 10px;
+    }
+
+    .grid-view .article {
+        width: 30%;
+        margin-right: 1%;
+    }
+
+    .list-view .article {
+        width: 100%;
+    }
+
+    .article-category {
+        margin-right: 10px;
+    }
+
+    .rating {
+        color: #FFD700;
+    }
+
+    .view-toggle {
+        cursor: pointer;
+    }
+
+    .sidebar {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .category-list .list-group-item.active {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>
