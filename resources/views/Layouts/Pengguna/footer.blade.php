@@ -52,6 +52,12 @@
   }
   // Ketika halaman dimuat, tampilkan semua artikel
   $(document).ready(function() {
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
   // Klik kategori
   $('.category-list .list-group-item').on('click', function() {
 
