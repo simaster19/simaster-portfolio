@@ -26,7 +26,7 @@
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+                },
                 dataType: 'json',
                 success: function(response) {
                     $('#articleContainer').empty(); // Kosongkan kontainer artikel sebelum memuat baru
