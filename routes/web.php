@@ -22,8 +22,8 @@ Route::get("/project/{slug}", [DashboardUserController::class, "detailProject"])
 
 //Blog
 Route::get("/blog", [DashboardUserController::class, "indexBlog"])->name("data-blog");
-Route::get("/blog-detail",[DashboardUserController::class, "detailBlog"])->name("detail-blog");
-//Ajac
+Route::get("/blog-detail/{slug}", [DashboardUserController::class, "detailBlog"])->name("detail-blog");
+//Ajax
 Route::get("/get-article", [DashboardUserController::class, "indexBlog"])->name("get-blog");
 
 //Ebook

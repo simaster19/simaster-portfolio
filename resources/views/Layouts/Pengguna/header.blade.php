@@ -3,7 +3,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="Portofolio Web" name="keywords" />
 <meta content="Portofolio Web" name="description" />
-<meta name="csrf-token" content="{{ csrf_token() }}">
+@yield("meta")
 
 <!-- Favicon -->
 <link href="{{ url('Frontend/img/favicon.ico') }}" rel="icon" />
@@ -32,6 +32,12 @@ rel="stylesheet" />
 <!-- Template Stylesheet -->
 <link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
 <style>
+.article-body a h5:hover {
+color: black;
+-webkit-text-fill-color: black;
+-webkit-text-stroke: 1px var(--primary);
+transition: all 0.3s ease-in-out;
+}
 .article {
 border: 1px solid #ddd;
 border-radius: 8px;
@@ -81,7 +87,7 @@ margin-top: 10px;
 }
 
 .grid-view .article {
-width: 30%;
+width: 37%;
 margin-right: 1%;
 }
 
