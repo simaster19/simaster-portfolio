@@ -3,7 +3,7 @@
 <head>
   @include('Layouts.Pengguna.header')
   @section("meta")
- @endsection
+  @endsection
 
 </head>
 
@@ -190,10 +190,7 @@
 <script>
 function loadArticles(category) {
 $.ajax({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-},
-url: '{{ url('/get-article') }}', // URL untuk API yang mengembalikan artikel berdasarkan kategori
+url: '{{ url("/get-article") }}', // URL untuk API yang mengembalikan artikel berdasarkan kategori
 method: 'GET',
 data: {
 category: category
@@ -227,7 +224,11 @@ $('#articleContainer').append(articleHtml);
 }
 // Ketika halaman dimuat, tampilkan semua artikel
 $(document).ready(function() {
-
+$.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
 
 // Klik kategori
 $('.category-list .list-group-item').on('click', function() {
