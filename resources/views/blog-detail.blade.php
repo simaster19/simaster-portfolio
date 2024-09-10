@@ -5,7 +5,19 @@
   @section("meta")
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @endsection
-
+  <style>
+    .article-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+    .article-content {
+    margin-top: 20px;
+    }
+    .article-meta {
+    margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -51,7 +63,48 @@
     </div>
 
     <div class="container-fluid mt-5">
-      {{$data->content}}
+
+      <div class="container mt-5">
+        <div class="row">
+          <!-- Article Image -->
+          <div class="col-md-8 mx-auto align-items-center">
+            <img src="{{Storage::url('images/post/cover/'.$data->gambar)}}" alt="Article Image" class="article-image">
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <!-- Article Title -->
+          <div class="col-md-8 mx-auto">
+            <h1 class="display-4">{{$data->judul}}</h1>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <!-- Article Content -->
+          <div class="col-md-8 mx-auto">
+            <div class="article-content">
+              {!!$data->content!!}
+              <!-- Add more content as needed -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <!-- Article Meta -->
+          <div class="col-md-8 mx-auto article-meta">
+            <span class="badge bg-primary">{{$data->category->nama_category}}</span>
+            <span class="text-muted">Published on: {{ $data->created_at->format('d M Y, H:i') }}</span>
+          </div>
+        </div>
+
+        <!-- Back to List Button -->
+        <div class="row mt-4">
+          <div class="col-md-8 mx-auto">
+            <a href="{{route('data-blog')}}" class="btn btn-primary">Back to List</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
 
