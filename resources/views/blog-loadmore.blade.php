@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   @include('Layouts.Pengguna.header')
-  @section("meta")
-  @endsection
+  @push("csrf")
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  @endpush
 
 </head>
 

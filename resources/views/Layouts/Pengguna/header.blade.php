@@ -3,7 +3,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="Portofolio Web" name="keywords" />
 <meta content="Portofolio Web" name="description" />
-@yield("meta")
+@stack("meta")
 
 <!-- Favicon -->
 <link href="{{ url('Frontend/img/favicon.ico') }}" rel="icon" />
