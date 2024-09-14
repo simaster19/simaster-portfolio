@@ -6,9 +6,9 @@
 
 
 
-    @push('meta')
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    @endpush
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 </head>
 
