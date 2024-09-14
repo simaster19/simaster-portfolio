@@ -153,9 +153,7 @@
                                 </div>
 
                                 <h5 class="mb-3">{{ $post->judul }}</h5>
-                                <span>
-                                    {!! \Str::limit($post->content, 25, '....') !!}
-                                </span>
+
                                 <a class="btn px-3 mt-auto mx-auto"
                                     href="{{ route('detail-blog', $post->slug) }}">Read More</a>
                             </div>
