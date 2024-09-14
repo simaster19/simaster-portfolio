@@ -14,7 +14,6 @@
 
 
 <!-- Template Javascript -->
-<script src="{{ url('Frontend/js/main.js') }}"></script>
 @section('js-custom')
-   
 @endsection
+<script src="{{ url('Frontend/js/main.js') }}"></script>
