@@ -148,14 +148,13 @@
                         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                             <div class="service-item d-flex flex-column justify-content-center text-center rounded">
                                 <div class="service-icon flex-shrink-0">
-                                    <img class="img img-thumbnail"
-                                        src="{{ Storage::url('images/post/cover/' . $post->gambar) }}"
-                                        alt="" />
+                                    <img class="img" src="{{ Storage::url('images/post/cover/' . $post->gambar) }}"
+                                        alt="" width="60px" height="60px" />
                                 </div>
 
                                 <h5 class="mb-3">{{ $post->judul }}</h5>
                                 <span>
-                                    {!! \Str::limit($post->content, 70, '....') !!}
+                                    {!! \Str::limit($post->content, 25, '....') !!}
                                 </span>
                                 <a class="btn px-3 mt-auto mx-auto"
                                     href="{{ route('detail-blog', $post->slug) }}">Read More</a>
