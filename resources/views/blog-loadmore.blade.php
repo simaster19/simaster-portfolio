@@ -194,9 +194,10 @@
         function loadArticles(category) {
             $.ajax({
                 url: '{{ url('/get-article') }}', // URL untuk API yang mengembalikan artikel berdasarkan kategori
-                method: 'GET',
+                method: 'POST',
                 data: {
-                    category: category
+                    category: category,
+                    data: '{{ csrf_token() }}'
                 },
 
                 dataType: 'json',
