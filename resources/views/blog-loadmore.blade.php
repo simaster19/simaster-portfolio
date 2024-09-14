@@ -200,6 +200,9 @@
                 },
 
                 dataType: 'json',
+                error: function(response) {
+                    console.log(response)
+                },
                 success: function(response) {
                     $('#articleContainer').empty(); // Kosongkan kontainer artikel sebelum memuat baru
 
