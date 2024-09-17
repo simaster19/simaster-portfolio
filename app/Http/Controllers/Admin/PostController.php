@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DOMDocument;
 use App\Models\Post;
+use App\Models\SubscribeMe;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
