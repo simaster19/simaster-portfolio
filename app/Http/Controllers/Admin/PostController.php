@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Notifications\EmailSubscribeNotification;
+use App\Notifications\EmailSubscribeMe;
 
 class PostController extends Controller
 {
