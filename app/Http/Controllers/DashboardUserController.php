@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Message;
+use App\Models\SubscribeMe;
 use App\Models\Project;
 use App\Models\Category;
 use App\Mail\ContactEmail;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\EmailNotification;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardUserController extends Controller
 {
@@ -66,6 +68,24 @@ class DashboardUserController extends Controller
     return back()->with("message", ToastrMessage::message("success", "Success", "Pesan berhasil terkirim!"));
 
     //return redirect()->route('my-profile')->with("message", "Pesan berhasil terkirim!");
+  }
+
+  public function subscribeMe(Request $request) {
+    $data = Validator::make($request->all(), [
+      "email" => "required",
+    ]);
+
+    if ($data->fails()) {
+      return back()->with("message", "Masukkan email yang benar!");
+    }
+
+    $subscribeMe = SubscribeMe::create([
+      "email" => $request->input("email"),
+      "status" => 1
+    ]);
+
+    return redirect()->route("my-profile")->with("message", "Anda berhasil berlangganan!");
+
   }
 
 

@@ -14,6 +14,7 @@ use Database\Seeders\Seeder\ImageSeeder;
 use Database\Seeders\Seeder\CvSeeder;
 use Database\Seeders\Seeder\CertificateSeeder;
 use Database\Seeders\Seeder\TestimonialSeeder;
+use Database\Seeders\Seeder\SubscribeMeSeeder;
 use Database\Seeders\Seeder\RolePermissionSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
       TestimonialSeeder::class,
       CategorySeeder::class,
       RolePermissionSeeder::class,
+      SubscribeMeSeeder::class,
     ]);
     // \App\Models\User::factory(10)->create();
 

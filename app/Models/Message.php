@@ -13,7 +13,7 @@ class Message extends Model
 
   protected $table = "messages";
   protected $primaryKey = "id_message";
-  public $keyatype = "int";
+  public $keyType = "int";
   public $timestamps = true;
 
   protected $guarded = ["id_message"];

@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\EmailSubscribeNotification;
 
 class PostController extends Controller
 {
@@ -59,7 +60,7 @@ class PostController extends Controller
       $finalGambar = $gambarName;
     }
 
-    Post::create([
+    $post = Post::create([
       "id_user" => auth()->user()->id_user,
       "judul" => $request->input("judul"),
       "slug" => Str::slug($request->input("judul")),
@@ -67,6 +68,12 @@ class PostController extends Controller
       "id_category" => $request->input("nama_category"),
       "content" => $request->input("content")
     ]);
+
+    //Kirim Email
+    $subscribe_me = SubscribeMe::where("status", 1)->get();
+    foreach ($subscribe_me as $notification) {
+      $email = $notification->notify(new EmailSubscribeMe($post));
+    }
 
     return back()->with("message", ToastrMessage::message("error", "Error", "Data anda berhasil di Post", "topRight"));
   }
@@ -82,7 +89,7 @@ class PostController extends Controller
     ]);
   }
   public function update(Request $request, $id) {
-  
+
     $data = Validator::make($request->all(), [
       "judul" => ["required", "min:5"],
       "gambar" => ["image", "mimes:jpg,png,webp", "nullable"],
