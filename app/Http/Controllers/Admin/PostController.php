@@ -76,7 +76,7 @@ class PostController extends Controller
       $email = $notification->notify(new EmailSubscribeMe($post));
     }
 
-    return back()->with("message", ToastrMessage::message("error", "Error", "Data anda berhasil di Post", "topRight"));
+    return back()->with("message", ToastrMessage::message("success", "Success", "Data anda berhasil di Post", "topRight"));
   }
 
   public function edit($id) {

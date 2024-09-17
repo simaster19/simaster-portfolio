@@ -35,8 +35,8 @@ class EmailSubscribeMe extends Notification
   public function toMail(object $notifiable): MailMessage
   {
     return (new MailMessage)
-    ->line('New article published: ' . $this->post->title)
-    ->action('Read Article', url('/blog/'.$this->post->slug))
+    ->line('New article published: ' . $this->post->judul)
+    ->action('Read Article', url('/blog-detail/'.$this->post->slug))
     ->line('Thank you for subscribing to our blog!');
   }
 
