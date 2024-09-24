@@ -49,7 +49,7 @@
                 <td>
                   {{ $loop->iteration }}
                 </td>
-                <td>{{Storage::url('images/logo/'.$data->logo)}}</td>
+                <td><img class="img rounded-circle mx-auto d-block" src="{{Storage::url('images/logo/'.$data->logo)}}" width="50px" height="50px"></td>
                 <td><strong>{{ $data->nama_skill }}</strong></td>
                 <td>{!! $data->level == 'BEGINNER'
                   ? "<span class='badge badge-danger'>BEGINNER</span>"

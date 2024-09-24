@@ -166,10 +166,14 @@ href="{{ route('detail-blog', $post->slug) }}">Read More</a>
 
 </div>
 </div>
+
+@if(count($datas["posts"]) > 0)
 <div class="d-flex justify-content-center text-center rounded mt-5">
 <a class="btn btn-primary px-3 mt-auto mx-auto wow fadeInUp" data-wow-delay="0.2s"
 href="{{ route('data-blog') }}">Load More</a>
 </div>
+@else 
+@endif
 </div>
 <!-- Blog End -->
 

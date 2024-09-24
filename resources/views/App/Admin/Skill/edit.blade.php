@@ -21,8 +21,8 @@
           <select name="level" id="level" class="form-control">
             <option value="">--Pilih--</option>
             @foreach ($levelSkill as $level_skill)
-            <option value="{{ $level_skill }}"
-              {{ in_array($level_skill, $levelSkill) ? 'selected' : '' }}>
+            <option value="{{ $data->level }}"
+              {{ in_array($data->level, $levelSkill) ? 'selected' : '' }}>
               {{ $level_skill }}
             </option>
             @endforeach
