@@ -20,7 +20,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="file_cv">File</label>
-                        <input type="file" class="form-control" id="file_cv" name="file_cv">
+                        <input type="file" class="form-control" id="file_cv" name="file_cv" required>
                     </div>
 
                 </div>

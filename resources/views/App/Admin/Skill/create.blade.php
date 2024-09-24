@@ -19,15 +19,15 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="logo">Logo</label>
-          <input type="file" class="form-control" id="logo" name="logo">
+          <input type="file" class="form-control" id="logo" name="logo" required>
         </div>
         <div class="form-group col-md-4">
           <label for="nama_skill">Skill</label>
-          <input type="text" class="form-control" id="nama_skill" name="nama_skill" value="{{old('nama_skill')}}">
+          <input type="text" class="form-control" id="nama_skill" name="nama_skill" required value="{{old('nama_skill')}}">
         </div>
         <div class="form-group col-md-4">
           <label for="level">Level</label>
-          <select name="level" id="level" class="form-control">
+          <select name="level" id="level" class="form-control" required>
             <option value="">--Pilih--</option>
             @foreach ($levelSkill as $level_skill)
             <option value="{{ $level_skill }}">{{ $level_skill }}</option>

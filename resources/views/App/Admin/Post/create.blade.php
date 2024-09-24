@@ -9,11 +9,11 @@
   @csrf
   <div class="card">
     @if (session()->has('message'))
-    
-      <script>
-        {!! session('message') !!}
-      </script>
-    
+
+    <script>
+      {!! session('message') !!}
+    </script>
+
     @endif
     @if (session()->has('messageError'))
     <script>
@@ -24,16 +24,16 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="gambar">Gambar</label>
-          <input type="file" class="form-control" id="gambar" name="gambar">
+          <input type="file" class="form-control" id="gambar" name="gambar" required>
         </div>
         <div class="form-group col-md-6">
           <label for="judul">Judul</label>
-          <input type="text" class="form-control" id="judul" name="judul">
+          <input type="text" class="form-control" id="judul" name="judul" required>
         </div>
 
         <div class="form-group col-md-6">
           <label for="nama_category">Category</label>
-          <select name="nama_category" class="form-control select2">
+          <select name="nama_category" class="form-control select2" required>
             <option value="" disabled>--Pilih--</option>
             @foreach ($categories as $category)
             <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
@@ -44,13 +44,9 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
-
-
-
-
           <div class="form-group">
             <label for="content">Content</label>
-            <textarea name="content" id="content" class="summernote"></textarea>
+            <textarea name="content" id="content" class="summernote" required></textarea>
           </div>
         </div>
 

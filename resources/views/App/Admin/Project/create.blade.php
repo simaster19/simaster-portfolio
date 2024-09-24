@@ -34,11 +34,11 @@
         <div class="form-group col-md-4">
           <label for="judul">Judul</label>
           <input type="text" class="form-control" id="judul" name="judul"
-          value="{{ old('judul') }}">
+          value="{{ old('judul') }}" required>
         </div>
         <div class="form-group col-md-4">
           <label for="jenis_project">Jenis Project</label>
-          <select name="jenis_project" id="jenis_project" class="form-control">
+          <select name="jenis_project" id="jenis_project" class="form-control" required>
             <option value="">--Pilih--</option>
             @foreach ($jenisProject as $jenis_project)
             <option value="{{ $jenis_project }}">{{ $jenis_project }}</option>
@@ -53,7 +53,7 @@
 
         <div class="form-group col-md-4">
           <label for="dibuat_dengan">Dibuat Dengan</label>
-          <select name="dibuat_dengan[]" class="form-control select2" multiple="">
+          <select name="dibuat_dengan[]" class="form-control select2" multiple="" required>
             <option value="">--Pilih--</option>
             @foreach ($listBahasa as $dibuat_dengan)
             <option value="{{ $dibuat_dengan }}">{{ $dibuat_dengan }}</option>
@@ -63,7 +63,7 @@
         </div>
         <div class="form-group col-md-4">
           <label for="status">Status Project</label>
-          <select name="status" id="status" class="form-control">
+          <select name="status" id="status" class="form-control" required>
             <option value="">--Pilih--</option>
             @foreach ($statusProject as $status_project)
             <option value="{{ $status_project }}">{{ $status_project }}</option>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-group col-md-4">
           <label for="tahun_project">Tahun Project</label>
-          <select name="tahun_project" id="tahun_project" class="form-control">
+          <select name="tahun_project" id="tahun_project" class="form-control" required>
             <option value="">--Pilih--</option>
             @php
             for ($i = date('Y'); $i >= date('Y') - 20; $i--) {
@@ -86,7 +86,7 @@
       </div>
       <div class="form-row">
         <label for="keterangan">Keterangan</label>
-        <textarea name="keterangan" id="keterangan" class="summernote">{{ old('judul') }}</textarea>
+        <textarea name="keterangan" id="keterangan" class="summernote" required>{{ old('judul') }}</textarea>
       </div>
 
     </div>

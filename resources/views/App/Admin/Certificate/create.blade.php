@@ -20,17 +20,17 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="gambar">Gambar</label>
-          <input type="file" class="" id="gambar" name="gambar">
+          <input type="file" class="" id="gambar" name="gambar" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="judul">Judul</label>
-          <input type="text" class="form-control" id="judul" name="judul" value="{{old('judul')}}">
+          <input type="text" class="form-control" id="judul" name="judul" value="{{old('judul')}}" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="nama_online_course">Nama Online Course</label>
-          <input type="text" class="form-control" id="nama_online_course" name="nama_online_course" value="{{old('nama_online_course')}}">
+          <input type="text" class="form-control" id="nama_online_course" name="nama_online_course" value="{{old('nama_online_course')}}" required>
         </div>
         <div class="form-group col-md-4">
           <label for="link_certificate">Link Certificate</label>

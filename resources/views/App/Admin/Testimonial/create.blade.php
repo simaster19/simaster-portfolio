@@ -25,11 +25,11 @@
         </div>
         <div class="form-group col-md-4">
           <label for="nama_client">Nama</label>
-          <input type="text" class="form-control" id="nama_client" name="nama_client" value="{{old('nama_client')}}">
+          <input type="text" class="form-control" id="nama_client" name="nama_client" value="{{old('nama_client')}}" required="">
         </div>
         <div class="form-group col-md-4">
           <label for="id_project">Project</label>
-          <select name="id_project" id="id_project" class="form-control">
+          <select name="id_project" id="id_project" class="form-control" required>
             <option value="">--Pilih--</option>
             @foreach ($projects as $project)
             <option value="{{ $project->id_project }}">{{ $project->judul }}</option>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group col-md-12">
           <label for="keterangan">Keterangan</label>
-          <textarea cols="30" rows="50" class="form-control" id="keterangan" name="keterangan">{{old('judul')}}</textarea>
+          <textarea cols="30" rows="50" class="form-control" id="keterangan" name="keterangan" required="">{{old('judul')}}</textarea>
         </div>
       </div>
 
