@@ -1,11 +1,11 @@
 @extends('App.Admin.index')
-@section('header-title', 'Detail Project')
+@section('header-title', 'Detail Post {{$data->judul}}')
 @section('content')
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <img src="{{ Storage::url('images/cover/' . $data->cover) }}" width="300" height="300"
+        <img src="{{ Storage::url('images/blog/cover/' . $data->cover) }}" width="300" height="300"
         class="img img-cover mx-auto d-block" alt="Cover">
 
         <div class="table-responsive">

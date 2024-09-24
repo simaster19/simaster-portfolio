@@ -10,16 +10,16 @@
   @csrf
   @method('put')
   <div class="card">
-    if (session()->has('message'))
-                <script>
-                    {!! session('message') !!}
-                </script>
-            @endif
-            @if (session()->has('messageError'))
-                <script>
-                    {!! session('messageError') !!}
-                </script>
-            @endif
+    @if (session()->has('message'))
+    <script>
+      {!! session('message') !!}
+    </script>
+    @endif
+    @if (session()->has('messageError'))
+    <script>
+      {!! session('messageError') !!}
+    </script>
+    @endif
     <div class="card-body">
       <div class="form-row">
         <div class="form-group col-md-12">
