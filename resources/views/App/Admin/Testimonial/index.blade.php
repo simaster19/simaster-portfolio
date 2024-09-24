@@ -52,7 +52,7 @@
                                                 height="50px"></td>
                                         <td>{{ $data->nama_client }}</td>
                                         <td>{{ $data->keterangan }}</td>
-                                        <td>{{ $data->project->judul }}</td>
+                                        <td>{{ empty($data->project) ? '' : $data->project->judul }}</td>
 
 
                                         <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}

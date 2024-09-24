@@ -307,7 +307,7 @@ src="{{ is_null($testimonial->foto) ? url('Backend/assets/img/avatar/avatar-' . 
 style="width: 50px; height: 50px" />
 <div class="ps-3">
 <h6 class="text-white mb-1">{{ $testimonial->nama_client }}</h6>
-<small>{{ $testimonial->project->judul }}</small>
+<small>{{ empty($testimonial->project) ? '' : $testimonial->project->judul }}</small>
 </div>
 </div>
 </div>
