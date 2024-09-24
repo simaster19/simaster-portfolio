@@ -47,7 +47,10 @@
                 <td>Images</td>
                 <td>:</td>
                 <td>
-                  @foreach($data->image as $image)
+                  @php 
+                  $images = json_decode($data->image);
+                  @endphp
+                  @foreach($images as $key => $image)
                   <img class="d-inline mr-1 mb-1 mt-0 img" src="{{Storage::url('images/image/'.$image->image)}}" width="200px" height="200px">
                   @endforeach
 
