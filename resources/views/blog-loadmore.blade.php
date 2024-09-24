@@ -213,7 +213,7 @@ let articleHtml = `
 <div class="article">
 <img src="${article.gambar_url}" class="img img-thumbnail">
 <div class="article-body">
-<a href="{{ route('detail-blog', ${article.slug}) }}">
+<a href="">
 <h5 class="article-title">${article.judul}</h5>
 </a>
 <div class="article-rating">

@@ -16,7 +16,7 @@ class TestimonialController extends Controller
 {
   public function index() {
     $testimonial = Testimonial::with(["project" => function ($query) {
-      $query->select("id_project", "judul");
+      return $query->select("id_project", "judul");
     }])->orderBy("id_testimonial", "desc")->get();
 
     return response()->view("App.Admin.Testimonial.index", [
@@ -118,7 +118,7 @@ class TestimonialController extends Controller
 
   public function show($id) {
     $testimonial = Testimonial::with(["project"])->find($id);
-    
+
     return response()->view("App.Admin.Testimonial.detail", [
       "data" => $testimonial
     ]);
