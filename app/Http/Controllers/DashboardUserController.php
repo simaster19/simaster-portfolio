@@ -72,20 +72,18 @@ class DashboardUserController extends Controller
 
   public function subscribeMe(Request $request) {
     $data = Validator::make($request->all(), [
-      "email" => "required",
+      "email" => "required|unique:subscribe_me,email",
     ]);
 
     if ($data->fails()) {
-      return back()->with("message", "Masukkan email yang benar!");
+      return back()->with("message", ToastrMessage::message("warning", "Warning", "Masukkan email yang benar!"));
     }
 
     $subscribeMe = SubscribeMe::create([
       "email" => $request->input("email"),
       "status" => 1
     ]);
-
     return redirect()->route("my-profile")->with("message", "Anda berhasil berlangganan!");
-
   }
 
 
