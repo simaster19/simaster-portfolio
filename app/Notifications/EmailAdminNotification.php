@@ -6,17 +6,17 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\Message;
 
-class EmailNotification extends Notification
+class EmailAdminNotification extends Notification
 {
   use Queueable;
 
   /**
   * Create a new notification instance.
   */
-  public function __construct($message) {
-    $this->message = $message;
+  public function __construct($admin, $data) {
+    $this->admin = $admin;
+    $this->data = $data;
   }
 
   /**
@@ -35,9 +35,12 @@ class EmailNotification extends Notification
   public function toMail(object $notifiable): MailMessage
   {
     return (new MailMessage)
-    ->subject("SiMaster19")
-    ->action('Hubungi Saya', url('https://wa.me/6289635032061'))
-    ->line("Terimakasih telah Menghubungi Saya, Secepat-cepatnya email kamu akan saya balas.");
+    ->subject("Pesan Dari Pengguna : ".$this->data->nama)
+    ->action('Redirect', url('/admin/message'))
+    ->line("Email : ".$this->data->email)
+    ->line("Subject : ".$this->data->subject)
+    ->line("Message : ".$this->data->message)
+    ->line('Cek Dashboard Message!');
   }
 
   /**

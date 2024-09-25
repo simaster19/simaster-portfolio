@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\EmailNotification;
+use App\Notifications\EmailAdminNotification;
 use Illuminate\Support\Facades\Validator;
 
 class DashboardUserController extends Controller
@@ -61,8 +62,12 @@ class DashboardUserController extends Controller
       "status" => 0
     ]);
 
-    $mail = Mail::to("miftakhulkirom@simaster19.my.id")->send(new ContactEmail($message));
-    //$notification = $message->notify(new EmailNotification($message));
+    // $mail = Mail::to("miftakhulkirom@simaster19.my.id")->send(new ContactEmail($message));
+    $notification = $message->notify(new EmailNotification($message));
+
+    //Kirim Email Ke Admin
+    $email = $admin->notify(new EmailAdminNotification($admin,$message));
+
 
     //return response()->json([], 200);
     return back()->with("message", ToastrMessage::message("success", "Success", "Pesan berhasil terkirim!"));
