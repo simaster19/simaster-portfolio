@@ -18,7 +18,12 @@ class DashboardController extends Controller
     $project = Project::all();
     $post = Post::all();
 
-    $allData = collect(["user" => $user, "message" => $message, "project" => $project, "post" => $post]);
+    $blog = Post::with(["category", "user" => function ($query) {
+      return $query->select("id_user", "nama", "foto", "username");
+    }])->orderBy("id_post", "desc")->take(8)->get();
+
+
+    $allData = collect(["user" => $user, "message" => $message, "project" => $project, "post" => $post, "blog" => $blog]);
 
     return response()->view("App.Admin.Dashboard.dashboard", [
       "data" => $allData

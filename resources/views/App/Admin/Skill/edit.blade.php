@@ -17,12 +17,12 @@
           value="{{ $data->nama_skill }}">
         </div>
         <div class="form-group col-md-4">
+
           <label for="level">Level</label>
           <select name="level" id="level" class="form-control">
             <option value="">--Pilih--</option>
             @foreach ($levelSkill as $level_skill)
-            <option value="{{ $data->level }}"
-              {{ in_array($data->level, $levelSkill) ? 'selected' : '' }}>
+            <option value="{{ $level_skill }}" {{ $data->level == $level_skill ? 'selected' : '' }}>
               {{ $level_skill }}
             </option>
             @endforeach
@@ -34,7 +34,7 @@
             <option value="">--Pilih--</option>
             @foreach ($typeSkill as $type_skill)
             <option value="{{ $type_skill }}"
-              {{ in_array($type_skill, $typeSkill) ? 'selected' : '' }}>
+              {{ $data->type == $type_skill ? 'selected' : '' }}>
               {{ $type_skill }}
             </option>
             @endforeach

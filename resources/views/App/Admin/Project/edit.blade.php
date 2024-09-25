@@ -42,7 +42,7 @@
             <option value="">--Pilih--</option>
             @foreach ($jenisProject as $jenis_project)
             <option value="{{ $jenis_project }}"
-              {{ in_array($jenis_project, $jenisProject) ? 'selected' : '' }}>
+              {{ $data->jenis_project == $jenis_project ? 'selected' : '' }}>
               {{ $jenis_project }}
             </option>
             @endforeach
@@ -76,7 +76,7 @@
           <select name="status" id="status" class="form-control">            <option value="">--Pilih--</option>
             @foreach ($statusProject as $status_project)
             <option value="{{ $status_project }}"
-              {{ in_array($status_project, $statusProject) ? 'selected' : '' }}>
+              {{ $data->status == $status_project ? 'selected' : '' }}>
               {{ $status_project }}
             </option>
             @endforeach
