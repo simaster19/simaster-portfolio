@@ -21,7 +21,7 @@
             <h4>Total User</h4>
           </div>
           <div class="card-body">
-            {{ count($data['user']) }}
+            {{ $data['userCount']}}
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
             <h4>Total Postingan</h4>
           </div>
           <div class="card-body">
-            {{ count($data['post']) }}
+            {{ $data['postCount'] }}
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
             <h4>Total Project</h4>
           </div>
           <div class="card-body">
-            {{ count($data['project']) }}
+            {{ $data['projectCount'] }}
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
             <h4>Total Message</h4>
           </div>
           <div class="card-body">
-            {{ count($data['message']) }}
+            {{ $data['messageCount'] }}
           </div>
         </div>
       </div>
@@ -164,40 +164,15 @@
         <div class="card-body">
           <div class="row pb-2">
             <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+              @foreach($data["blog"] as $author)
               <div class="avatar-item mb-0">
-                <img alt="image" src="../assets/img/avatar/avatar-5.png" class="img-fluid"
-                data-toggle="tooltip" title="Alfa Zulkarnain">
-                <div class="avatar-badge" title="Editor" data-toggle="tooltip">
+                <img alt="{{$author->user->nama}}" src="{{Storage::url('images/foto/'.$author->user->foto)}}" class="img-fluid"
+                data-toggle="tooltip" title="{{$author->user->nama}}">
+                <div class="avatar-badge" title="" data-toggle="tooltip">
                   <i class="fas fa-wrench"></i>
                 </div>
               </div>
-            </div>
-            <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
-              <div class="avatar-item mb-0">
-                <img alt="image" src="../assets/img/avatar/avatar-4.png" class="img-fluid"
-                data-toggle="tooltip" title="Egi Ferdian">
-                <div class="avatar-badge" title="Admin" data-toggle="tooltip">
-                  <i class="fas fa-cog"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
-              <div class="avatar-item mb-0">
-                <img alt="image" src="../assets/img/avatar/avatar-1.png" class="img-fluid"
-                data-toggle="tooltip" title="Jaka Ramadhan">
-                <div class="avatar-badge" title="Author" data-toggle="tooltip">
-                  <i class="fas fa-pencil-alt"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
-              <div class="avatar-item mb-0">
-                <img alt="image" src="../assets/img/avatar/avatar-2.png" class="img-fluid"
-                data-toggle="tooltip" title="Ryan">
-                <div class="avatar-badge" title="Admin" data-toggle="tooltip">
-                  <i class="fas fa-cog"></i>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -206,37 +181,12 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-5 col-md-12 col-12 col-sm-12">
-      <form method="post" class="needs-validation" novalidate="">
-        <div class="card">
-          <div class="card-header">
-            <h4>Quick Draft</h4>
-          </div>
-          <div class="card-body pb-0">
-            <div class="form-group">
-              <label>Title</label>
-              <input type="text" name="title" class="form-control" required>
-              <div class="invalid-feedback">
-                Please fill in the title
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Content</label>
-              <textarea class="summernote-simple"></textarea>
-            </div>
-          </div>
-          <div class="card-footer pt-0">
-            <button class="btn btn-primary">Save Draft</button>
-          </div>
-        </div>
-      </form>
-    </div>
     <div class="col-lg-7 col-md-12 col-12 col-sm-12">
       <div class="card">
         <div class="card-header">
           <h4>Latest Posts</h4>
           <div class="card-header-action">
-            <a href="#" class="btn btn-primary">View All</a>
+            <a href="{{route('data-post')}}" class="btn btn-primary">View All</a>
           </div>
         </div>
         <div class="card-body p-0">

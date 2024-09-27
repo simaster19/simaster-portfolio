@@ -15,4 +15,24 @@ reject(error); // Memanggil reject di sini
 });
 };
 
-export { getMessage};
+const readAllMessage = () => {
+return new Promise((resolve,reject) => {
+$.ajax({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+url: "readAllMessage",
+type: "POST",
+success: function(response){
+
+resolve(response);
+
+},
+error: function(error){
+reject(error);
+}
+});
+});
+}
+
+export { getMessage, readAllMessage};
