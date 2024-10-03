@@ -21,11 +21,15 @@
           <label for="logo">Logo</label>
           <input type="file" class="form-control" id="logo" name="logo" required>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label for="nama_skill">Skill</label>
           <input type="text" class="form-control" id="nama_skill" name="nama_skill" required value="{{old('nama_skill')}}">
         </div>
-        <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
+          <label for="link">Link</label>
+          <input type="text" class="form-control" id="link" name="link" required value="{{old('link')}}">
+        </div>
+        <div class="form-group col-md-3">
           <label for="level">Level</label>
           <select name="level" id="level" class="form-control" required>
             <option value="">--Pilih--</option>
@@ -35,7 +39,7 @@
 
           </select>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label for="type">Type</label>
           <select name="type" id="type" class="form-control" required>
             <option value="">--Pilih--</option>

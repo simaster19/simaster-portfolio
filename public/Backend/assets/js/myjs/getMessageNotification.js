@@ -22,7 +22,7 @@ headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 },
 url: "readAllMessage",
-type: "POST",
+type: "GET",
 success: function(response){
 
 resolve(response);

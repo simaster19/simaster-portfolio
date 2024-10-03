@@ -283,9 +283,9 @@ My Skills
 <div
 class="skill-logo col-lg-12 col-md-12 col-sm-12 d-inline d-flex flex-wrap gap-3 justify-content-center align-items-center text-center">
 @foreach ($datas['skills'] as $skill)
-<a href="#" class="d-inline">
+<a href="{{$skill->link}}" class="d-inline">
 <img src="{{ Storage::url('images/logo/' . $skill->logo) }}"
-title="{{ $skill->nama_skill }}" alt="{{ $skill->nama_skill }}" width="90px"
+title="{{ $skill->nama_skill }}" alt="{{ $skill->nama_skill }}" width="80px"
 height="70px" class="image shadow-dark">
 </a>
 

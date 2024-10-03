@@ -16,6 +16,10 @@
           <input type="text" class="form-control" id="nama_skill" name="nama_skill"
           value="{{ $data->nama_skill }}">
         </div>
+        <div class="form-group col-md-3">
+          <label for="link">Link</label>
+          <input type="text" class="form-control" id="link" name="link" required value="{{old('link')}}">
+        </div>
         <div class="form-group col-md-4">
 
           <label for="level">Level</label>

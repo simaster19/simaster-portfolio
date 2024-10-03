@@ -4,9 +4,6 @@
 <head>
   @include('Layouts.Pengguna.header')
 
-
-
-
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
@@ -207,13 +204,14 @@ console.log(response)
 },
 success: function(response) {
 $('#articleContainer').empty(); // Kosongkan kontainer artikel sebelum memuat baru
+let baseUrl = window.location.origin;
 
 response.articles.forEach(function(article) {
 let articleHtml = `
 <div class="article">
 <img src="${article.gambar_url}" class="img img-thumbnail">
 <div class="article-body">
-<a href="">
+<a href="${baseUrl}/project/${article.slug}">
 <h5 class="article-title">${article.judul}</h5>
 </a>
 <div class="article-rating">

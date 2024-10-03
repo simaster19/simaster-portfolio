@@ -79,6 +79,7 @@ class SkillController extends Controller
     $skill = Skill::create([
       "logo" => $imageLogo,
       "nama_skill" => strtoupper($request->input("nama_skill")),
+      "link" => $request->input("link"),
       "level" => strtoupper($request->input("level")),
       "type" => strtoupper($request->input('type'))
     ]);
@@ -151,6 +152,7 @@ class SkillController extends Controller
     $skill->update([
       "logo" => $imageLogo,
       "nama_skill" => strtoupper($request->input("nama_skill")),
+      "link" => $request->input("link"),
       "level" => strtoupper($request->input("level")),
       "type" => strtoupper($request->input("type"))
     ]);
