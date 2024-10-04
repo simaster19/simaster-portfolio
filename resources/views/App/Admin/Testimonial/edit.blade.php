@@ -22,7 +22,7 @@
                         <select name="id_project" id="id_project" class="form-control">
                         <option value="">--Pilih--</option>
                             @foreach ($projects as $project)
-                                <option value="{{ $project->id_project }}" {{ $data->project->id_project == $project->id_project ? 'selected' : ''}}>{{ $project->judul }}</option>
+                                <option value="{{ $project->id_project }}" {{ empty($data->project) ? '' : ($data->project->id_project == $project->id_project ? 'selected' : '')}}>{{ $project->judul }}</option>
                             @endforeach
                         </select>
                     </div>

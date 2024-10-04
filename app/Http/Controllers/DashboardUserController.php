@@ -21,10 +21,12 @@ use Illuminate\Support\Facades\Storage;
 use App\Notifications\EmailNotification;
 use App\Notifications\EmailAdminNotification;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardUserController extends Controller
 {
   public function index() {
+   // $userLogin = User::where("id_user", Auth::user()->id_user)->where("role", 2)->get()->first();
     $user = User::where("nama", "Miftakhul Kirom")->where("role", 1)->get(
       ["nama", "email", "alamat", "foto", "no_hp"]
     )->first();
@@ -66,7 +68,7 @@ class DashboardUserController extends Controller
     $notification = $message->notify(new EmailNotification($message));
 
     //Kirim Email Ke Admin
-    $email = $admin->notify(new EmailAdminNotification($admin,$message));
+    $email = $admin->notify(new EmailAdminNotification($admin, $message));
 
 
     //return response()->json([], 200);

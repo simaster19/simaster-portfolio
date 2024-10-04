@@ -36,7 +36,7 @@
         </div>
         <a href="#contact" class="nav-item nav-link">Contact</a>
         <hr />
-      <a href="{{ route('login') }}" class="nav-item nav-link">Login/Register</a>
+      <a href="{{ route('login') }}" class="nav-item nav-link">{{!auth()->check() ? 'Login/Register' : auth()->user()->nama.' | '. \Carbon\Carbon::parse(auth()->user()->last_login)->isoFormat('LL')." | Dashboard" }}</a>
     </div>
   </div>
 </nav>
@@ -172,7 +172,7 @@ href="{{ route('detail-blog', $post->slug) }}">Read More</a>
 <a class="btn btn-primary px-3 mt-auto mx-auto wow fadeInUp" data-wow-delay="0.2s"
 href="{{ route('data-blog') }}">Load More</a>
 </div>
-@else 
+@else
 @endif
 </div>
 <!-- Blog End -->

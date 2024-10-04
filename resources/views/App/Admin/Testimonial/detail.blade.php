@@ -19,12 +19,7 @@
               <th>Project</th>
               <th>:</th>
               <td>
-
-
-
-                {{$data->project->judul}}
-
-
+                {{empty($data->project) ? '' : $data->project->judul}}
               </td>
             </tr>
             <tr>

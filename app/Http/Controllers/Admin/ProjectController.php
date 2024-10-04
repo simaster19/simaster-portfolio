@@ -217,9 +217,10 @@ class ProjectController extends Controller
       "status" => $request->input("status")
     ]);
 
-    $image = Images::where("id_project", $project->image[0]->id_project);
+
+    $image = Images::where("id_project", $project->id_project);
     $image->update([
-      "id_project" => $project->image[0]->id_project,
+      "id_project" => $project->id_project,
       "gambar" => !$request->file('image') ? $finalImage : json_encode($finalImage[0])
     ]);
 
@@ -236,13 +237,14 @@ class ProjectController extends Controller
     $project = Project::with(["image"])->where("id_project", $id)->get()->first();
 
     Storage::disk("public")->delete("images/cover/" . $project->cover);
-    foreach (json_decode($project->image[0]->gambar) as $gambar) {
-      Storage::disk("public")->delete("images/image/" . $gambar);
+    if (!empty($project->image)) {
+      foreach (json_decode($project->image[0]->gambar) as $gambar) {
+        Storage::disk("public")->delete("images/image/" . $gambar);
+      }
+      Images::where("id_project", $id)->delete();
     }
 
-    Images::where("id_project", $id)->delete();
     Project::where("id_project", $id)->delete();
-
     return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!"));
   }
 }

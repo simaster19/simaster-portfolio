@@ -35,7 +35,7 @@
           </div>
         </div>
         <hr />
-      <a href="{{ route('login') }}" class="nav-item nav-link">Login/Register</a>
+      <a href="{{ route('login') }}" class="nav-item nav-link">{{!auth()->check() ? 'Login/Register' : auth()->user()->nama.' | '. \Carbon\Carbon::parse(auth()->user()->last_login)->isoFormat('LL')." | Dashboard" }}</a>
     </div>
   </div>
 </nav>
