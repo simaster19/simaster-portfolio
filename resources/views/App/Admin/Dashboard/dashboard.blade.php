@@ -72,81 +72,81 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-4 col-md-12 col-12 col-sm-12">
-      <div class="card">
-        <div class="card-header">
-          <h4>Recent Activities</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled list-unstyled-border">
-            <li class="media">
-              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png"
-              alt="avatar">
-              <div class="media-body">
-                <div class="float-right text-primary">
-                  Now
+  <!--<div class="row">
+      <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Recent Activities</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled list-unstyled-border">
+              <li class="media">
+                <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png"
+                alt="avatar">
+                <div class="media-body">
+                  <div class="float-right text-primary">
+                    Now
+                  </div>
+                  <div class="media-title">
+                    Farhan A Mujib
+                  </div>
+                  <span class="text-small text-muted">Cras sit amet nibh libero, in
+                    gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
                 </div>
-                <div class="media-title">
-                  Farhan A Mujib
+              </li>
+              <li class="media">
+                <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png"
+                alt="avatar">
+                <div class="media-body">
+                  <div class="float-right">
+                    12m
+                  </div>
+                  <div class="media-title">
+                    Ujang Maman
+                  </div>
+                  <span class="text-small text-muted">Cras sit amet nibh libero, in
+                    gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
                 </div>
-                <span class="text-small text-muted">Cras sit amet nibh libero, in
-                  gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-              </div>
-            </li>
-            <li class="media">
-              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png"
-              alt="avatar">
-              <div class="media-body">
-                <div class="float-right">
-                  12m
+              </li>
+              <li class="media">
+                <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-3.png"
+                alt="avatar">
+                <div class="media-body">
+                  <div class="float-right">
+                    17m
+                  </div>
+                  <div class="media-title">
+                    Rizal Fakhri
+                  </div>
+                  <span class="text-small text-muted">Cras sit amet nibh libero, in
+                    gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
                 </div>
-                <div class="media-title">
-                  Ujang Maman
+              </li>
+              <li class="media">
+                <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-4.png"
+                alt="avatar">
+                <div class="media-body">
+                  <div class="float-right">
+                    21m
+                  </div>
+                  <div class="media-title">
+                    Alfa Zulkarnain
+                  </div>
+                  <span class="text-small text-muted">Cras sit amet nibh libero, in
+                    gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
                 </div>
-                <span class="text-small text-muted">Cras sit amet nibh libero, in
-                  gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-              </div>
-            </li>
-            <li class="media">
-              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-3.png"
-              alt="avatar">
-              <div class="media-body">
-                <div class="float-right">
-                  17m
-                </div>
-                <div class="media-title">
-                  Rizal Fakhri
-                </div>
-                <span class="text-small text-muted">Cras sit amet nibh libero, in
-                  gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-              </div>
-            </li>
-            <li class="media">
-              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-4.png"
-              alt="avatar">
-              <div class="media-body">
-                <div class="float-right">
-                  21m
-                </div>
-                <div class="media-title">
-                  Alfa Zulkarnain
-                </div>
-                <span class="text-small text-muted">Cras sit amet nibh libero, in
-                  gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-              </div>
-            </li>
-          </ul>
-          <div class="text-center pt-1 pb-1">
-            <a href="#" class="btn btn-primary btn-lg btn-round">
-              View All
-            </a>
+              </li>
+            </ul>
+            <div class="text-center pt-1 pb-1">
+              <a href="#" class="btn btn-primary btn-lg btn-round">
+                View All
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
+    </div>-->
+  <!--<div class="row">
     <div class="col-lg-6 col-md-12 col-12 col-sm-12">
       <div class="card">
         <div class="card-body pt-2 pb-2">
@@ -156,29 +156,29 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-      <div class="card">
-        <div class="card-header">
-          <h4>Authors</h4>
-        </div>
-        <div class="card-body">
-          <div class="row pb-2">
-            <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
-              @foreach($data["blog"] as $author)
-              <div class="avatar-item mb-0">
-                <img alt="{{$author->user->nama}}" src="{{Storage::url('images/foto/'.$author->user->foto)}}" class="img-fluid"
-                data-toggle="tooltip" title="{{$author->user->nama}}">
-                <div class="avatar-badge" title="" data-toggle="tooltip">
-                  <i class="fas fa-wrench"></i>
+    <!--  <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Authors</h4>
+            </div>
+            <div class="card-body">
+              <div class="row pb-2">
+                <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
+                  @foreach($data["blog"] as $author)
+                  <div class="avatar-item mb-0">
+                    <img alt="{{$author->user->nama}}" src="{{Storage::url('images/foto/'.$author->user->foto)}}" class="img-fluid"
+                    data-toggle="tooltip" title="{{$author->user->nama}}">
+                    <div class="avatar-badge" title="" data-toggle="tooltip">
+                      <i class="fas fa-wrench"></i>
+                    </div>
+                  </div>
+                  @endforeach
                 </div>
               </div>
-              @endforeach
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </div> -->
+  </div>-->
 
   <div class="row">
     <div class="col-lg-7 col-md-12 col-12 col-sm-12">
