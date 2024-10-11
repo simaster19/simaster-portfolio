@@ -162,6 +162,8 @@ class SkillController extends Controller
 
 
   public function destroy($id) {
+    return back()->with("message", ToastrMessage::message("info", "Info", "Fitur Nonaktif!"));
+
     $skill = Skill::findOrFail($id);
     if (!$skill->logo == null || !$skill->logo == "") {
       Storage::disk("public")->delete("images/logo/" . $skill->logo);

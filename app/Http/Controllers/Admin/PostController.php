@@ -129,7 +129,10 @@ class PostController extends Controller
     return redirect()->route("data-post")->with("message", ToastrMessage::message("success", "Success", "Data berhasil diubah!", "topRight"));
 
   }
-  public function show($id) {}
+  public function show($id) {
+    return back()->with("message", ToastrMessage::message("info", "Info", "Fitur Nonaktif!"));
+
+  }
   public function destroy($id) {
     $post = Post::find($id);
 

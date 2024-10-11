@@ -234,6 +234,8 @@ class ProjectController extends Controller
     ]);
   }
   public function destroy($id) {
+    return back()->with("message", ToastrMessage::message("info", "Info", "Fitur Nonaktif!"));
+
     $project = Project::with(["image"])->where("id_project", $id)->get()->first();
 
     Storage::disk("public")->delete("images/cover/" . $project->cover);

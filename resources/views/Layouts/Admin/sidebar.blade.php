@@ -48,7 +48,7 @@
       </ul>
     </li>
 
-    <li class="menu-header">Lainnya</li>
+    <!--     <li class="menu-header">Lainnya</li>
     <li class="nav-item dropdown">
       <a href="#" class="nav-link" onclick="return alert('Under Maintenance')"><i class="fas fa-file-archive"></i><span>Source Code</span></a>
 
@@ -62,14 +62,14 @@
         <li><a class="nav-link" href="#">gg</a></li>
         <li><a class="nav-link" href="#">gg</a></li>
       </ul>
-    </li>
+    </li> -->
 
 
   </ul>
 
-  <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-    <a href="#" class="btn btn-primary btn-lg btn-block btn-icon-split">
-      <i class="fas fa-rocket"></i> Simaster Wallet
-    </a>
-  </div>
+<!--   <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+  <a href="#" class="btn btn-primary btn-lg btn-block btn-icon-split">
+    <i class="fas fa-rocket"></i> Simaster Wallet
+  </a>
+</div> -->
 </aside>

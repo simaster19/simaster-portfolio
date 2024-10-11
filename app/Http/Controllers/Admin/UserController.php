@@ -111,6 +111,8 @@ class UserController extends Controller
   }
 
   public function destroy($id) {
+    return back()->with("message", ToastrMessage::message("info", "Info", "Fitur Nonaktif!"));
+
     $user = User::find($id);
 
     $message = Message::where("id_user", $id)->delete();
