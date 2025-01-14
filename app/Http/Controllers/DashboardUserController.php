@@ -104,6 +104,7 @@ class DashboardUserController extends Controller
 
 
   //Blog
+  /*
   public function indexBlog(Request $request) {
     // Ambil kategori dari permintaan, jika ada, atau default ke 'all'
     $category = $request->input('category', 'all');
@@ -151,4 +152,5 @@ class DashboardUserController extends Controller
       "data" => $blog
     ]);
   }
+  */
 }
