@@ -29,9 +29,9 @@
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
           <div class="dropdown-menu m-0">
-            <!--<a href="{{ route('data-blog') }}" class="dropdown-item">Blog</a>-->
+            <!--<a href="#" class="dropdown-item">Blog</a>-->
             <a href="#" class="dropdown-item">Source Code</a>
-            <!--<a href="{{ route('data-ebook') }}" target="_blank" class="dropdown-item">E-book</a> -->
+            <!--<a href="#" target="_blank" class="dropdown-item">E-book</a> -->
           </div>
         </div>
         <a href="#contact" class="nav-item nav-link">Contact</a>
@@ -171,7 +171,7 @@ href="{{ route('detail-blog', $post->slug) }}">Read More</a>
 @if(count($datas["posts"]) > 0)
 <div class="d-flex justify-content-center text-center rounded mt-5">
 <a class="btn btn-primary px-3 mt-auto mx-auto wow fadeInUp" data-wow-delay="0.2s"
-href="{{ route('data-blog') }}">Load More</a>
+href="#">Load More</a>
 </div>
 @else
 @endif
