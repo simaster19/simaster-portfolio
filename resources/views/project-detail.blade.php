@@ -27,7 +27,7 @@
           <div class="dropdown-menu m-0">
             <!--<a href="" class="dropdown-item">Blog</a>-->
             <a href="#" class="dropdown-item">Source Code</a>
-            <!-- <a href="{{ route('data-ebook') }}" target="_blank" class="dropdown-item">E-book</a>-->
+            <!-- <a href="#" target="_blank" class="dropdown-item">E-book</a>-->
           </div>
         </div>
         <hr />
