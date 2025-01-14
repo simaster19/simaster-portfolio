@@ -22,13 +22,13 @@ Route::get("/project/{slug}", [DashboardUserController::class, "detailProject"])
 Route::post("/subscribe", [DashboardUserController::class, "subscribeMe"])->name("subscribe_me");
 
 //Blog
-Route::get("/blog", [DashboardUserController::class, "indexBlog"])->name("data-blog");
-Route::get("/blog-detail/{slug}", [DashboardUserController::class, "detailBlog"])->name("detail-blog");
+/*Route::get("/blog", [DashboardUserController::class, "indexBlog"])->name("data-blog");
+Route::get("/blog-detail/{slug}", [DashboardUserController::class, "detailBlog"])->name("detail-blog");*/
 //Ajax
-Route::post("/get-article", [DashboardUserController::class, "indexBlog"])->name("get-blog");
+//Route::post("/get-article", [DashboardUserController::class, "indexBlog"])->name("get-blog");
 
 //Ebook
-Route::get("/ebook", [EbookController::class, "ebook"])->name("data-ebook");
+//Route::get("/ebook", [EbookController::class, "ebook"])->name("data-ebook");
 
 Route::post("/sendMessage", [DashboardUserController::class, "sendMessage"])->name("send");
 

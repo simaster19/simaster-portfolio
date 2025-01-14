@@ -34,9 +34,9 @@ class DashboardUserController extends Controller
     ->orderByRaw("FIELD(jenis_project, 'WEB', 'DESKTOP', 'ANDROID')")
     ->get();
     //dd($project);
-    $posts = Post::with(["category", "user" => function ($query) {
+    /*$posts = Post::with(["category", "user" => function ($query) {
       return $query->select("id_user", "nama", "foto", "username");
-    }])->orderBy("id_post", "desc")->take(6)->get();
+    }])->orderBy("id_post", "desc")->take(6)->get();*/
     //dd($posts);
     $skill = Skill::all();
     $cv = Cv::where("status", 1)->get()->first();
@@ -44,7 +44,7 @@ class DashboardUserController extends Controller
     $testimonial = Testimonial::with(["project"])->get();
 
     //dd($testimonial);
-    $allData = collect(["user" => $user, "projects" => $project, "posts" => $posts, "skills" => $skill, "testimonials" => $testimonial, "cv" => $cv]);
+    $allData = collect(["user" => $user, "projects" => $project, "skills" => $skill, "testimonials" => $testimonial, "cv" => $cv]);
     //dd($allData);
     return response()->view("index", [
       "datas" => $allData

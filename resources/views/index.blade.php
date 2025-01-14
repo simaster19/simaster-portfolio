@@ -9,7 +9,7 @@
   <div class="container-fluid bg-white p-0">
     <!-- Navbar & Hero Start -->
     <nav class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-      <a href="" class="navbar-brand p-0">
+      <a href="{{route('my-profile')}}" class="navbar-brand p-0">
         <h1 class="m-0">
           <img src="{{ url('Frontend/img/logo.png') }}" alt="Logo" />
         <span class="fs-2">Miftakhul</span>
@@ -23,15 +23,15 @@
       <div class="navbar-nav ms-auto py-0">
         <a href="#home" class="nav-item nav-link active">Home</a>
         <a href="#about" class="nav-item nav-link">About</a>
-        <a href="#blog" class="nav-item nav-link">Blog</a>
+        <!--<a href="#blog" class="nav-item nav-link">Blog</a>-->
         <a href="#project" class="nav-item nav-link">Project</a>
         <a href="#skill" class="nav-item nav-link">Skill</a>
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
           <div class="dropdown-menu m-0">
-            <a href="{{ route('data-blog') }}" class="dropdown-item">Blog</a>
-          <!--  <a href="" class="dropdown-item">Source Code</a>
-            <a href="{{ route('data-ebook') }}" target="_blank" class="dropdown-item">E-book</a> -->
+            <!--<a href="{{ route('data-blog') }}" class="dropdown-item">Blog</a>-->
+            <a href="#" class="dropdown-item">Source Code</a>
+            <!--<a href="{{ route('data-ebook') }}" target="_blank" class="dropdown-item">E-book</a> -->
           </div>
         </div>
         <a href="#contact" class="nav-item nav-link">Contact</a>
@@ -80,7 +80,7 @@
             About Me
           </h6>
           <h2 class="mt-2">
-            Web Developer with more than 2 years of
+            Web Developer with more than 2,5 years of
             experience
           </h2>
         </div>
@@ -138,6 +138,7 @@
 <!-- Newsletter End -->
 
 <!-- Blog Start -->
+<!--
 <div id="blog" class="container-fluid py-5">
 <div class="container px-lg-5">
 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
@@ -175,6 +176,7 @@ href="{{ route('data-blog') }}">Load More</a>
 @else
 @endif
 </div>
+-->
 <!-- Blog End -->
 
 <!-- Portfolio Start -->
