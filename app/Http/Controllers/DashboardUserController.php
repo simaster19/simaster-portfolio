@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 class DashboardUserController extends Controller
 {
   public function index() {
-   // $userLogin = User::where("id_user", Auth::user()->id_user)->where("role", 2)->get()->first();
+    // $userLogin = User::where("id_user", Auth::user()->id_user)->where("role", 2)->get()->first();
     $user = User::where("nama", "Miftakhul Kirom")->where("role", 1)->get(
       ["nama", "email", "alamat", "foto", "no_hp"]
     )->first();
@@ -34,6 +34,7 @@ class DashboardUserController extends Controller
     ->orderByRaw("FIELD(jenis_project, 'WEB', 'DESKTOP', 'ANDROID')")
     ->get();
     //dd($project);
+    
     /*$posts = Post::with(["category", "user" => function ($query) {
       return $query->select("id_user", "nama", "foto", "username");
     }])->orderBy("id_post", "desc")->take(6)->get();*/
@@ -44,7 +45,7 @@ class DashboardUserController extends Controller
     $testimonial = Testimonial::with(["project"])->get();
 
     //dd($testimonial);
-    $allData = collect(["user" => $user, "projects" => $project, "skills" => $skill, "testimonials" => $testimonial, "cv" => $cv]);
+    $allData = collect(["user" => $user, "projects" => $project, "skills" => $skill, "posts" => [], "testimonials" => $testimonial, "cv" => $cv]);
     //dd($allData);
     return response()->view("index", [
       "datas" => $allData
