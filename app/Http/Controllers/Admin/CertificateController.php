@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Certificate;
+use Imagick;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,8 +28,12 @@ class CertificateController extends Controller
     return response()->view("App.Admin.Certificate.create");
   }
   public function store(Request $request) {
+
+
+
+
     $data = Validator::make($request->all(), [
-      "gambar" => ["required", "image", "mimes:jpg,png,webp"],
+      "gambar" => ["required", "mimes:jpg,png,webp"],
       "judul" => ["required"],
       "nama_online_course" => ["required"],
     ]);
@@ -49,6 +54,37 @@ class CertificateController extends Controller
 
       Storage::disk("public")->put($tmp, file_get_contents($gambar->getRealPath()));
       $gambarImage = $gambarName;
+
+      //Pdf Convert ke Gambar Jika Format PDF
+      if ($gambar->getClientOriginalExtension() == 'pdf') {
+        $imagick = new Imagick();
+
+        $imagick->readImage($gambar->getRealPath());
+
+        $imagick->setImageFormat('jpeg');
+
+        $gambar = explode('.', $gambarImage)[0];
+        if (count($gambar) > 1) {
+          $data = [];
+          foreach ($imagick as $pageNumber => $page) {
+            $page->writeImage(public_path("storage/public/images/certificate/{$gambar}_{$pageNumber}.jpeg"));
+
+            $data[] = $gambar . '_' . $pageNumber . '.jpeg';
+          }
+          $imagick->clear();
+          $imagick->destroy();
+
+          $gambarImage = $data;
+        } else {
+          $gambarImage = $gambar;
+
+          $imagick->clear();
+          $imagick->destroy();
+        }
+
+        unlink(storage_path('app/public/images/certificate/' . $gambarName));
+      }
+
     }
 
 
@@ -62,6 +98,7 @@ class CertificateController extends Controller
 
     return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil ditambahkan!", "topRight"));
   }
+
   public function edit($id) {
     $certificate = Certificate::where("id_certificate", $id)->get()->first();
 
