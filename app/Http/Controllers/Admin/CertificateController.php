@@ -33,7 +33,7 @@ class CertificateController extends Controller
 
 
     $data = Validator::make($request->all(), [
-      "gambar" => ["required", "mimes:jpg,png,webp"],
+      "gambar" => ["required", "mimes:jpg,png,webp,pdf"],
       "judul" => ["required"],
       "nama_online_course" => ["required"],
     ]);
