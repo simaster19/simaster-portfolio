@@ -6,6 +6,16 @@
 </head>
 
 <body>
+      @if (session()->has('message'))
+    <script>
+      {!! session('message') !!}
+    </script>
+    @endif
+    @if (session()->has('messageError'))
+    <script>
+      {!! session('messageError') !!}
+    </script>
+    @endif
   <div class="container-fluid bg-white p-0">
     <!-- Navbar & Hero Start -->
     <nav class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">

@@ -26,8 +26,10 @@ rel="stylesheet" />
 <!-- Customized Bootstrap Stylesheet -->
 <link href="{{ url('Frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ url('Backend/node_modules/izitoast/dist/css/iziToast.min.css') }}">
 
 
+<!-- Toastr -->
 <script src="{{ url('Backend/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
 <!-- Template Stylesheet -->
 <link href="{{ url('Frontend/css/style.css') }}" rel="stylesheet" />
