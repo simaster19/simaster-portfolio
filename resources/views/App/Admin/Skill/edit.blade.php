@@ -18,7 +18,7 @@
         </div>
         <div class="form-group col-md-3">
           <label for="link">Link</label>
-          <input type="text" class="form-control" id="link" name="link" required value="{{old('link')}}">
+          <input type="text" class="form-control" id="link" name="link" required value="{{$data->link}}">
         </div>
         <div class="form-group col-md-4">
 

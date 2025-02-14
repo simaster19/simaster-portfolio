@@ -27,7 +27,7 @@
           <input type="file" class="" id="cover" name="cover" required="required">
         </div>
         <div class="form-group col-md-12">
-          <label for="image">Image</label>
+          <label for="image">Images</label>
           <input type="file" class="" id="image" name="image[]" required="required" multiple>
         </div>
 

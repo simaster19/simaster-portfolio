@@ -13,7 +13,6 @@ use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CvController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\EbookController;
 use App\Http\Controllers\Admin\TestimonialController;
 
 //Halaman Portofolio
