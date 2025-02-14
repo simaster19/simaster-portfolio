@@ -34,7 +34,7 @@ class DashboardUserController extends Controller
     ->orderByRaw("FIELD(jenis_project, 'WEB', 'DESKTOP', 'ANDROID')")
     ->get();
     //dd($project);
-    
+
     /*$posts = Post::with(["category", "user" => function ($query) {
       return $query->select("id_user", "nama", "foto", "username");
     }])->orderBy("id_post", "desc")->take(6)->get();*/
@@ -91,21 +91,21 @@ class DashboardUserController extends Controller
       "email" => $request->input("email"),
       "status" => 1
     ]);
-    return redirect()->route("my-profile")->with("message", ToastrMessage::message("success","Success","Anda berhasil berlangganan!");
-  }
+    return redirect()->route("my-profile")->with("message", ToastrMessage::message("success", "Success", "Anda berhasil berlangganan!"));
+    }
 
 
-  //Project
-  public function detailProject($slug) {
-    $project = Project::where("slug", $slug)->with(["image"])->first();
-    return response()->view("project-detail", [
-      "data" => $project
-    ]);
-  }
+    //Project
+    public function detailProject($slug) {
+      $project = Project::where("slug", $slug)->with(["image"])->first();
+      return response()->view("project-detail", [
+        "data" => $project
+      ]);
+    }
 
 
-  //Blog
-  /*
+    //Blog
+    /*
   public function indexBlog(Request $request) {
     // Ambil kategori dari permintaan, jika ada, atau default ke 'all'
     $category = $request->input('category', 'all');
@@ -154,4 +154,4 @@ class DashboardUserController extends Controller
     ]);
   }
   */
-}
+  }
