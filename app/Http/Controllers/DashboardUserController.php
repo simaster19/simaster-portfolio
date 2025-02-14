@@ -91,7 +91,7 @@ class DashboardUserController extends Controller
       "email" => $request->input("email"),
       "status" => 1
     ]);
-    return redirect()->route("my-profile")->with("message", "Anda berhasil berlangganan!");
+    return redirect()->route("my-profile")->with("message", ToastrMessage::message("success","Success","Anda berhasil berlangganan!");
   }
 
 
