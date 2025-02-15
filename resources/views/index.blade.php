@@ -11,11 +11,6 @@
       {!! session('message') !!}
     </script>
     @endif
-    @if (session()->has('messageError'))
-    <script>
-      {!! session('messageError') !!}
-    </script>
-    @endif
   <div class="container-fluid bg-white p-0">
     <!-- Navbar & Hero Start -->
     <nav class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -335,12 +330,6 @@ style="width: 50px; height: 50px" />
 <!-- Testimonial End -->
 
 <!-- Contact Start -->
-
-@if (session()->has('message'))
-<script>
-{!! session('message') !!}
-</script>
-@endif
 
 <div id="contact" class="container-fluid py-5 certificate wow fadeInUp" data-wow-delay="0.2s">
 <div class="container px-lg-5">
