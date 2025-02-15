@@ -8,7 +8,7 @@
 <script src="{{ url('Frontend/lib/isotope/isotope.pkgd.min.js') }}"></script>
 {{-- <script src="{{ url('Frontend/lib/lightbox/js/lightbox.min.js') }}"></script>
 --}}
-<script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script>
+{{-- <script src="{{ url('Backend/assets/js/page/modules-toastr.js') }}"></script> --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 

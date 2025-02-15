@@ -84,7 +84,7 @@ class DashboardUserController extends Controller
     ]);
 
     if ($data->fails()) {
-      return back()->with("message", ToastrMessage::message("warning", "Warning", "Masukkan email yang benar!"));
+      return back()->with("message", ToastrMessage::message("warning", "Warning", "Anda sudah berlangganan!"));
     }
 
     $subscribeMe = SubscribeMe::create([
