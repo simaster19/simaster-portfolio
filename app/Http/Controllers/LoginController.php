@@ -20,22 +20,22 @@ class LoginController extends Controller
   }
 
   public function proccessLogin(Request $request) {
-        //Throttle 3x
+    //Throttle 3x
     $key = "login_attempts_".Str::lower($request->username)."|".$request->ip();
     if (RateLimiter::tooManyAttempts($key, 3)) {
       $seconds = RateLimiter::availableIn($key);
-      return back()->with("message", "Terlalu banyak percobaan login, silahkan coba lagi dalam ".gmdate("H:i:s", $seconds));
+      return redirect()->route("login")->with("message", "Terlalu banyak percobaan login, silahkan coba lagi dalam ".gmdate("H:i:s", $seconds));
 
     }
-    
+
     $data = Validator::make($request->all(), [
       "username" => ["required", "min:5"],
       "password" => ["required"]
     ]);
 
     if ($data->fails()) {
-      RateLimiter::hit($key,7200); //second
-      return back()->withErrors($data, "messageError")->withInput();
+      RateLimiter::hit($key, 7200); //second
+      return back()->withErrors($data, "message")->withInput();
     }
 
 
@@ -45,7 +45,7 @@ class LoginController extends Controller
     $rememberDuration = 60; //Minute
 
     if (Auth::attempt($credentials, $remember_me) || Auth::attempt(["email" => $credentials["username"], "password" => $credentials["password"]], $remember_me)) {
-RateLimiter::clear($key);
+      RateLimiter::clear($key);
       $user = Auth::user();
 
       if ($user->role == 1) {
