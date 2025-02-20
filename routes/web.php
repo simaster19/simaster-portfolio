@@ -33,7 +33,7 @@ Route::post("/sendMessage", [DashboardUserController::class, "sendMessage"])->na
 
 //Halamn Login
 Route::get("/login", [LoginController::class, "index"])->name("login");
-Route::post("/login", [LoginController::class, "proccessLogin"])->middleware("throttle:3,120")->name("proccess-login");
+Route::post("/login", [LoginController::class, "proccessLogin"])->name("proccess-login");
 
 
 // Halaman Register

@@ -27,7 +27,7 @@ class LoginController extends Controller
       return redirect()->route("login")->with("message", "Terlalu banyak percobaan login, silahkan coba lagi dalam ".gmdate("H:i:s", $seconds));
 
     }
-
+    
     $data = Validator::make($request->all(), [
       "username" => ["required", "min:5"],
       "password" => ["required"]
@@ -96,6 +96,7 @@ class LoginController extends Controller
       }
 
     } else {
+      
       return back()->with("message", "Username atau Password salah!, Silahkan coba lagi.");
     }
   }
