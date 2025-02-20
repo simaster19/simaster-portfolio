@@ -55,7 +55,15 @@ class DashboardUserController extends Controller
 
   public function sendMessage(Request $request) {
     $admin = User::all(["email"])[0];
+    
+    //Cek Apakah Pesan sudah dibaca Oleh Admin
+    $adminMessage = Message::where("email",$request->input("email"))->where("status",1)->get()->first();
+    
+    if (!empty($adminMessage)) {
+      return back()->with("message", ToastrMessage::message("info", "Info", "Anda sudah mengirim pesan sebelumnya, Tunggu Konfirmasi dari Admin."));
 
+    }
+    
     $message = Message::create([
       "id_user" => null,
       "nama" => $request->input("name"),

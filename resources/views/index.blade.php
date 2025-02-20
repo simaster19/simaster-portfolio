@@ -6,11 +6,11 @@
 </head>
 
 <body>
-      @if (session()->has('message'))
-    <script>
-      {!! session('message') !!}
-    </script>
-    @endif
+  @if (session()->has('message'))
+  <script>
+    {!! session('message') !!}
+  </script>
+  @endif
   <div class="container-fluid bg-white p-0">
     <!-- Navbar & Hero Start -->
     <nav class="navbar fixed-top position-fixed bg-light navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -91,7 +91,7 @@
         </div>
         <p class="mb-4">
           Hi folks, I'm <strong>{{ $datas['user']->nama }}</strong>. Web Developer based
-          on Kabupaten Kendal, Indonesia. I'am more than 2
+          on Kabupaten Kendal, Indonesia. I'am more than 2,5
           Year of Freelance Experience. Experienced in various
           development for dynamic web and strong analitycal
           skill.
@@ -105,7 +105,7 @@
               class="fab fa-youtube"></i></a>
           <a class="btn btn-outline-primary btn-square me-3"
             href="https://instagram.com/simaster19"><i class="fab fa-instagram"></i></a>
-          <a class="btn btn-outline-primary btn-square" href="#"><i
+          <a class="btn btn-outline-primary btn-square" href="https://www.linkedin.com/in/miftakhulkirom"><i
             class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
@@ -409,7 +409,7 @@ href="https://youtube.com/playlist?list=PLrv8ONZDrRJSWd8q5J4bLWa6pB1Tju9RY"><i
 class="fab fa-youtube"></i></a>
 <a class="btn btn-outline-light btn-social" href="https://instagram.com/simaster19"><i
 class="fab fa-instagram"></i></a>
-<a class="btn btn-outline-light btn-social" href=""><i
+<a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/in/miftakhulkirom"><i
 class="fab fa-linkedin-in"></i></a>
 </div>
 </div>
@@ -441,8 +441,8 @@ All Right Reserved.
 </div>
 <div class="col-md-6 text-center text-md-end">
 <div class="footer-menu">
-<a href="">Home</a>
-<a href="">Ebook</a>
+<a href="{{route('my-profile')}}">Home</a>
+<a href="#">Sourcecode</a>
 </div>
 </div>
 </div>

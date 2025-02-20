@@ -36,7 +36,7 @@
             Admin</span>
           </h4>
           @if (session('message'))
-          <div class="alert alert-info alert-dismissible show fade">
+          <div class="alert alert-warning alert-dismissible show fade">
             <div class="alert-body">
               <button class="close" data-dismiss="alert">
                 <span>&times;</span>
@@ -81,9 +81,9 @@
             </div>
 
             <div class="form-group text-right">
-              {{-- <a href="#" class="float-left mt-3">
+             <a href="#" class="float-left mt-3">
                 Forgot Password?
-              </a> --}}
+              </a> 
               <a href="{{route('my-profile')}}" class="btn btn-secondary btn-lg">
                 Cancel
               </a>
