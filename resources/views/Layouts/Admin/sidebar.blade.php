@@ -28,6 +28,10 @@
       <a href="{{ route('data-message') }}" class="nav-link"><i
         class="fas fa-envelope"></i><span>Message</span></a>
     </li>
+        <li class="nav-item dropdown">
+      <a href="{{ route('data-subscriber') }}" class="nav-link"><i
+        class="fas fa-users"></i><span>Subscriber</span></a>
+    </li>
     <li class="nav-item dropdown">
       <a href="{{ route('data-testimonial') }}" class="nav-link"><i
         class="fas fa-quote-left"></i><span>Testimonial</span></a>
