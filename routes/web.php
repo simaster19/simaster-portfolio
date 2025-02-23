@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CvController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\SubscriberController;
 
 //Halaman Portofolio
 Route::get("/", [DashboardUserController::class, "index"])->name("my-profile");
@@ -105,6 +106,13 @@ Route::middleware(['auth'])->prefix("admin/")->group(function () {
     Route::get("message", "index")->name("data-message");
     Route::get("message/{id}/detail", "show")->name("detail-message");
     Route::delete("message/{id}/delete", "destroy")->name("delete-message");
+  });
+
+  //Subscriber
+  Route::middleware(["is_admin"])->controller(SubscribeController::class)->group(function () {
+    Route::get("subscriber", "index")->name("data-subscriber");
+    Route::get("subscriber/{id}/detail", "show")->name("detail-subscriber");
+    Route::delete("subscriber/{id}/delete", "destroy")->name("delete-subscriber");
   });
 
   //Testimonial

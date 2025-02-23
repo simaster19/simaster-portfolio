@@ -34,6 +34,7 @@
                   #
                 </th>
                 <th>Email</th>
+                <th>Status</th>
                 <th>Dibuat Tanggal</th>
                 <th>Diubah Tanggal</th>
                 <th>Action</th>
@@ -46,16 +47,25 @@
                   {{ $loop->iteration }}
                 </td>
                 <td>{{ $data->email }}</td>
+                <td>
+                  @if ($data->status == 1)
+                  {{"Belum Dibaca"}}
+                  @else
+                  {{"Sudah Dibaca"}}
+                  @endif
+                </td>
 
                 <td>{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('LLLL') }}</td>
                 <td>{{ \Carbon\Carbon::parse($data->updated_at)->isoFormat('LLLL') }}</td>
 
                 <td>
                   <div class="d-flex align-items-center gap-2">
-                    <a href="{{ route('edit-category', $data->id_category) }}"
-                      class="btn btn-primary btn-sm btn-round"><i class="fas fa-edit"></i>
+
+                    <a href="{{ route('detail-subscriber', $data->id) }}"
+                      class="btn btn-warning btn-sm btn-round" {{$data->status == 1 ? '' : 'disabled'}}><i class="fas fa-eye"></i>
                     </a>
-                    <form action="{{ route('delete-category', $data->id_category) }}"
+
+                    <form action="{{ route('delete-subscriber', $data->id) }}"
                       method="POST">
                       @csrf
                       @method('delete')
