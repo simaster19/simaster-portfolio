@@ -17,7 +17,7 @@ class SubscribeController extends Controller
   }
 
   public function show($id) {
-    $data = SubscriberMe::where("id", $id)->get()->first();
+    $data = SubscribeMe::where("id", $id)->get()->first();
 
     if ($data->status == 1) {
       $data->update([
