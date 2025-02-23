@@ -11,7 +11,7 @@ class SubscribeController extends Controller
 {
   public function index() {
     $subscribeMe = SubscribeMe::all();
-    return response()->view("Admin.Subscriber.index", [
+    return response()->view("App.Admin.Subscriber.index", [
       "datas" => $subscribeMe
     ]);
   }
