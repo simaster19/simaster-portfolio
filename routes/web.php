@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\CvController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\SubscribeController;
 
 //Halaman Portofolio
 Route::get("/", [DashboardUserController::class, "index"])->name("my-profile");
