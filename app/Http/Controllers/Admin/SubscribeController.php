@@ -31,7 +31,7 @@ class SubscribeController extends Controller
   }
 
   public function destroy($id) {
-    $data = SubscribeMe::where("id", $id)->get();
+    $data = SubscribeMe::findOrFail($id);
     $data->delete();
 
     return back()->with("message", ToastrMessage::message("success", "Success", "Data berhasil dihapus!", "topRight"));

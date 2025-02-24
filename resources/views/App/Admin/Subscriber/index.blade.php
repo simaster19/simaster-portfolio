@@ -49,9 +49,10 @@
                 <td>{{ $data->email }}</td>
                 <td>
                   @if ($data->status == 1)
-                  {{"Belum Dibaca"}}
+                  <span class="badge badge-warning">{{"Belum Dibaca"}}</span>
                   @else
-                  {{"Sudah Dibaca"}}
+                  <span class="badge badge-succesa">{{"Dibaca"}}</span>
+
                   @endif
                 </td>
 
@@ -62,7 +63,7 @@
                   <div class="d-flex align-items-center gap-2">
 
                     <a href="{{ route('detail-subscriber', $data->id) }}"
-                      class="btn btn-warning btn-sm btn-round" {{$data->status == 1 ? '' : 'disabled'}}><i class="fas fa-eye"></i>
+                      class="btn btn-warning btn-sm btn-round" {{$data->status == 1 ? '' : 'disable'}}><i class="fas fa-eye"></i>
                     </a>
 
                     <form action="{{ route('delete-subscriber', $data->id) }}"
