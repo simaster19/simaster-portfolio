@@ -51,7 +51,7 @@
                   @if ($data->status == 1)
                   <span class="badge badge-warning">{{"Belum Dibaca"}}</span>
                   @else
-                  <span class="badge badge-succesa">{{"Dibaca"}}</span>
+                  <span class="badge badge-success">{{"Dibaca"}}</span>
 
                   @endif
                 </td>
